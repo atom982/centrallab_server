@@ -1,0 +1,146 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require("../app");
+var debug = require("debug")("mycrud:server");
+var http = require("http");
+var fs = require("fs");
+var io = require("socket.io")(http);
+var net = require("net");
+var controller = require("../controllers/RezultatController.js");
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || "5003");
+app.set("port", port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+// var io = require("socket.io")(server);
+
+/**
+ * Startaj LIS server
+ */
+
+// importuj klasu server
+const lisServer = require("../LISserver/server");
+var lisserver = new lisServer();
+const loggerServer =require("../Logserver/logserver");
+var loggerserver= new loggerServer();
+
+// var allClients = [];
+// io.sockets.on("connection", function(socket) {
+//   allClients.push(socket);
+//   console.log("Connection: ", socket.request.connection._peername);
+//   io.emit("get", allClients.length);
+//   socket.on("dohvati", function() {
+//     io.emit("get", allClients.length);
+//   });
+//   socket.on("disconnect", function() {
+//     console.log("The client disconnected.");
+//     var i = allClients.indexOf(socket);
+//     allClients.splice(i, 1);
+//     io.emit("get", allClients.length);
+//   });
+//   // socket.on("PRIJEM", function(data) {
+//   //   console.log("Event Triggered LIS Server- www");
+//   //   console.log(data);
+//   // });
+// });
+
+// app.set("socketio", io);
+
+// Starting our server
+
+//  lisserver.start(io,9581,"Atrijum (Avaz BC): Mindray BC 5120");
+//  lisserver.start(io,9582,"Atrijum (Skenderija): Mindray BC 5390");
+//  lisserver.start(io,9583,"Atrijum (Skenderija): Mindray BS 480");
+//  lisserver.start(io,9584,"Atrijum (Skenderija): Mindray CL 900i");
+//  lisserver.start(io,9585,"Atrijum (Gorazde): Mindray BC 5120");
+//  lisserver.start(io,9586,"Atrijum (Gorazde): Mindray BS 380");
+//  lisserver.start(io,9587,"Atrijum (Gorazde): Mindray CL 900i");
+//  lisserver.start(io,9588,"Atrijum (Gorazde): iCHROMA II");
+
+//lisserver.start(io,50020,"Alinity Receiver Channel");//Alinity receiverr
+
+// loggerserver.start(io)
+
+/*
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port, err => {
+  if (err) {
+    return console.log("Error starting HTTP server", err);
+  }
+
+  console.log(`HTTP server running || PORT: ${port}`);
+});
+//server.listen(port);
+
+server.on("error", onError);
+server.on("listening", onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
+}

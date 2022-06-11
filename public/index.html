@@ -1,0 +1,150 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="shortcut icon" href=/static/favicon.ico><title>ATOM | Lab Software</title><link href=/static/css/app.c9a3f87241744a86f7e10e971d0842e2.css rel=stylesheet></head><script type=text/javascript src=/static/rsvp-3.1.0.min.js></script><script type=text/javascript src=/static/sha-256.min.js></script><script type=text/javascript src=/static/qz-tray.js></script><script type=text/javascript src=/static/request-cert.js></script><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script><body><div id=app></div><script type=text/javascript src=/static/js/manifest.0de33c7195355e3a6bd2.js></script><script type=text/javascript src=/static/js/vendor.92e1e8ac09ff47bd6c7f.js></script><script type=text/javascript src=/static/js/app.1d87335be810572ffb12.js></script></body><script>qz.security.setCertificatePromise(function(resolve, reject) {
+      $.ajax({ url: cert, cache: false, dataType: "text" }).then(resolve, reject);
+    });
+
+    qz.security.setSignaturePromise(function(toSign) {
+      return function(resolve, reject) {
+        $.ajax(request + toSign).then(resolve, reject);
+      };
+    });
+    qz.websocket.connect().then(function() {});
+
+    function printEPL(ime, sid, rbr, godiste, datum, link, code, site, response, protokol) {
+
+      console.log(sid + ": " + code)
+
+      var date = datum.slice(0, 8) + " " + datum.slice(-5);
+      var labelwidth = 40;
+      var labelheight = 30;
+      var smallq = "320";
+      var bigQ = "200,24";
+      var xDiff = 10;
+      var yDiff = 10;
+      var printer = "";
+      var secondprinter = "";
+      secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\ZDesigner GC420t (EPL)";
+
+      qz.printers
+        .find()
+        .then(function(data) {
+
+          var list = [];
+
+          for (var i = 0; i < data.length; i++) {
+            list.push(data[i]);
+          }
+
+          list.forEach(element => {
+            // console.log(element)
+            if (element === "Zebra") {
+              printer = "Zebra";
+              // secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\Zebra";
+            }else if(element === "WizardLAB(ZPL)"){
+              printer = "WizardLAB(ZPL)";
+              // secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\WizardLAB(ZPL)";
+            }else if(element === "ZDesigner GC420t (EPL)"){
+              printer = "ZDesigner GC420t (EPL)";
+              // secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\ZDesigner GC420t (EPL)";
+            }
+          });
+
+          var str1 = "";
+
+          if (rbr.length < 3) {
+            str1 = 'A25,20,0,2,1,1,N,"' + godiste + " P " + rbr + '"\n';
+          } else {
+            str1 = 'A25,20,0,2,1,1,N,"' + godiste + " P" + rbr + '"\n';
+          }
+
+          if (printer === "Zebra" || printer === "WizardLAB(ZPL)" || printer === "ZDesigner GC420t (EPL)") {
+
+            console.warn("Zebra printer found.");
+            // console.log(printer)
+            
+            var config = qz.configs.create(printer, {
+              size: {
+                width: labelwidth,
+                height: labelheight
+              },
+              units: "mm"
+            });
+
+            qz.print(config, [
+              "\nN\n",
+              "q" + smallq + "\n",
+              "Q" + bigQ + "\n",
+              "I8,B\n",
+
+              {
+                type: "raw",
+                format: "image",
+                data: link,
+                options: {
+                  language: "EPL",
+                  x: xDiff,
+                  y: yDiff
+                }
+              },
+
+              'A25,0,0,2,1,1,N,"' + ime + '"\n',
+              str1,
+              'A145,20,0,2,1,1,N,"' + date + '"\n',
+              'A27,40,0,2,1,1,N,"' + code + '"\n',
+              "X77,37,2,77,17\n",
+              "X140,37,2,140,17\n",
+              "X248,37,2,248,17\n",
+              "X25,37,1,310,37\n",
+
+              "\nP1,1\n"
+            ]).catch(function(e) {
+              console.error(e);
+            });
+          } else {
+
+            console.warn("Zebra printer not found.");
+            // console.log(secondprinter)
+
+            var config = qz.configs.create(secondprinter, {
+              size: {
+                width: labelwidth,
+                height: labelheight
+              },
+              units: "mm"
+            });
+
+            qz.print(config, [
+              "\nN\n",
+              "q" + smallq + "\n",
+              "Q" + bigQ + "\n",
+              "I8,B\n",
+
+              {
+                type: "raw",
+                format: "image",
+                data: link,
+                options: {
+                  language: "EPL",
+                  x: xDiff,
+                  y: yDiff
+                }
+              },
+
+              'A25,0,0,2,1,1,N,"' + ime + '"\n',
+              str1,
+              'A145,20,0,2,1,1,N,"' + date + '"\n',
+              'A27,40,0,2,1,1,N,"' + code + '"\n',
+              "X77,37,2,77,17\n",
+              "X140,37,2,140,17\n",
+              "X248,37,2,248,17\n",
+              "X25,37,1,310,37\n",
+
+              "\nP1,1\n"
+            ]).catch(function(e) {
+              console.error(e);
+            });
+          }
+        })
+        .catch(function(e) {
+          console.error(e);
+        });
+    }</script></html>
