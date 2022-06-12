@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="shortcut icon" href=/static/favicon.ico><title>ATOM | Lab Software</title><link href=/static/css/app.c9a3f87241744a86f7e10e971d0842e2.css rel=stylesheet></head><script type=text/javascript src=/static/rsvp-3.1.0.min.js></script><script type=text/javascript src=/static/sha-256.min.js></script><script type=text/javascript src=/static/qz-tray.js></script><script type=text/javascript src=/static/request-cert.js></script><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script><body><div id=app></div><script type=text/javascript src=/static/js/manifest.66e8062219a90c67fe71.js></script><script type=text/javascript src=/static/js/vendor.92e1e8ac09ff47bd6c7f.js></script><script type=text/javascript src=/static/js/app.660f2b630e774617f0ac.js></script></body><script>qz.security.setCertificatePromise(function(resolve, reject) {
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="shortcut icon" href=/static/favicon.ico><title>ATOM | Lab Software</title><link href=/static/css/app.c9a3f87241744a86f7e10e971d0842e2.css rel=stylesheet></head><script type=text/javascript src=/static/rsvp-3.1.0.min.js></script><script type=text/javascript src=/static/sha-256.min.js></script><script type=text/javascript src=/static/qz-tray.js></script><script type=text/javascript src=/static/request-cert.js></script><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js></script><body><div id=app></div><script type=text/javascript src=/static/js/manifest.67aea5472c63b4626d80.js></script><script type=text/javascript src=/static/js/vendor.92e1e8ac09ff47bd6c7f.js></script><script type=text/javascript src=/static/js/app.660f2b630e774617f0ac.js></script></body><script>qz.security.setCertificatePromise(function(resolve, reject) {
       $.ajax({ url: cert, cache: false, dataType: "text" }).then(resolve, reject);
     });
 
@@ -22,7 +22,6 @@
       var yDiff = 10;
       var printer = "";
       var secondprinter = "";
-      secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\ZDesigner GC420t (EPL)";
 
       qz.printers
         .find()
@@ -38,13 +37,10 @@
             // console.log(element)
             if (element === "Zebra") {
               printer = "Zebra";
-              // secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\Zebra";
             }else if(element === "WizardLAB(ZPL)"){
               printer = "WizardLAB(ZPL)";
-              // secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\WizardLAB(ZPL)";
             }else if(element === "ZDesigner GC420t (EPL)"){
               printer = "ZDesigner GC420t (EPL)";
-              // secondprinter = "\\\SAV-LAB-01.ad.poliklinika-atrijum.ba\\ZDesigner GC420t (EPL)";
             }
           });
 

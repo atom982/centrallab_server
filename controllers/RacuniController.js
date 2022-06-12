@@ -137,8 +137,8 @@ class PDFDocumentWithTables extends PDFDocument {
   }
 }
 
-// PREDRAČUN, Poliklinika Atrijum
-// 26.02.2021. godine
+// PREDRAČUN, Medicinsko-biohemijski laboratorij "Central Lab" Gradačac
+// 12.06.2022. godine
 
 racuniController.Get = function (req, res) {
   if (mongoose.connection.readyState != 1) {
@@ -469,99 +469,42 @@ racuniController.Get = function (req, res) {
           });
 
           switch (code) {
-            case "A": // Avaz BC
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Skenderija 5", 388, 20);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("71000 Sarajevo, Bosna i Hercegovina", 388, 32.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45)
-                .text("+387 (0)33 922-152", 427.6, 45);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)61 071-181", 388, 57.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
-
-              break;
-
             case "B": // Skenderija
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Skenderija 5", 388, 20);
+                .text("Josipa Šibera 3", 388, 20);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("71000 Sarajevo, Bosna i Hercegovina", 388, 32.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45)
-                .text("+387 (0)33 922-152", 427.6, 45);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)61 071-181", 388, 57.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
-
-              break;
-
-            case "G": // Goražde
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("43. drinske brigade 20", 388, 20);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("73000 Goražde, Bosna i Hercegovina", 388, 32.5);
+                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
                 .text("Telefon:", 388, 45)
-                .text("+387 (0)38 941-845", 427.6, 45);
+                .text("+387 (0)35 816-317", 427.6, 45);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Mobitel: +387 (0)61 316-607", 388, 57.5);
+                .text("Mobitel: +387 (0)62 737-303", 388, 57.5);
+              // doc
+              //   .font("PTSansRegular")
+              //   .fontSize(10.5)
+              //   .fillColor("black")
+              //   .text("Web:", 388, 70)
+              //   .fillColor("#0000EE")
+              //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
+                .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+              // .fillColor("#0000EE")
+              // .text("www.facebook.com/CentralLabGradacac", 414, 70);
 
               break;
 
@@ -1153,99 +1096,42 @@ racuniController.Popust = function (req, res) {
           });
 
           switch (code) {
-            case "A": // Avaz BC
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Skenderija 5", 388, 20);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("71000 Sarajevo, Bosna i Hercegovina", 388, 32.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45)
-                .text("+387 (0)33 922-152", 427.6, 45);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)61 071-181", 388, 57.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
-
-              break;
-
             case "B": // Skenderija
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Skenderija 5", 388, 20);
+                .text("Josipa Šibera 3", 388, 20);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("71000 Sarajevo, Bosna i Hercegovina", 388, 32.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45)
-                .text("+387 (0)33 922-152", 427.6, 45);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)61 071-181", 388, 57.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
-
-              break;
-
-            case "G": // Goražde
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("43. drinske brigade 20", 388, 20);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("73000 Goražde, Bosna i Hercegovina", 388, 32.5);
+                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
                 .text("Telefon:", 388, 45)
-                .text("+387 (0)38 941-845", 427.6, 45);
+                .text("+387 (0)35 816-317", 427.6, 45);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Mobitel: +387 (0)61 316-607", 388, 57.5);
+                .text("Mobitel: +387 (0)62 737-303", 388, 57.5);
+              // doc
+              //   .font("PTSansRegular")
+              //   .fontSize(10.5)
+              //   .fillColor("black")
+              //   .text("Web:", 388, 70)
+              //   .fillColor("#0000EE")
+              //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
+                .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+              // .fillColor("#0000EE")
+              // .text("www.facebook.com/CentralLabGradacac", 414, 70);
 
               break;
 
@@ -1866,99 +1752,42 @@ racuniController.Cijena = function (req, res) {
           });
 
           switch (code) {
-            case "A": // Avaz BC
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Skenderija 5", 388, 20);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("71000 Sarajevo, Bosna i Hercegovina", 388, 32.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45)
-                .text("+387 (0)33 922-152", 427.6, 45);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)61 071-181", 388, 57.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
-
-              break;
-
             case "B": // Skenderija
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Skenderija 5", 388, 20);
+                .text("Josipa Šibera 3", 388, 20);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("71000 Sarajevo, Bosna i Hercegovina", 388, 32.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45)
-                .text("+387 (0)33 922-152", 427.6, 45);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)61 071-181", 388, 57.5);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
-
-              break;
-
-            case "G": // Goražde
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("43. drinske brigade 20", 388, 20);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("73000 Goražde, Bosna i Hercegovina", 388, 32.5);
+                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
                 .text("Telefon:", 388, 45)
-                .text("+387 (0)38 941-845", 427.6, 45);
+                .text("+387 (0)35 816-317", 427.6, 45);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Mobitel: +387 (0)61 316-607", 388, 57.5);
+                .text("Mobitel: +387 (0)62 737-303", 388, 57.5);
+              // doc
+              //   .font("PTSansRegular")
+              //   .fontSize(10.5)
+              //   .fillColor("black")
+              //   .text("Web:", 388, 70)
+              //   .fillColor("#0000EE")
+              //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Web:", 388, 70)
-                .fillColor("#0000EE")
-                .text("www.poliklinika-atrijum.ba", 414, 70);
+                .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+              // .fillColor("#0000EE")
+              // .text("www.facebook.com/CentralLabGradacac", 414, 70);
 
               break;
 
@@ -2319,12 +2148,7 @@ racuniController.Report = function (req, res) {
 
               TOTAL += parseFloat(Number(element.total).toFixed(2));
 
-              if (
-                partner === "Lični zahtjev" ||
-                partner === "Poliklinika Atrijum" ||
-                partner === "Porodična Tim 2" ||
-                partner === "Kućna posjeta"
-              ) {
+              if (partner === "Lični zahtjev") {
                 CASH += parseFloat(Number(element.total).toFixed(2));
               } else {
                 VIRMAN += parseFloat(Number(element.total).toFixed(2));

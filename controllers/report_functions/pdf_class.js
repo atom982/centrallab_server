@@ -322,8 +322,8 @@ class PDFDocumentWithTables extends PDFDocument {
       // Separation line between rows
       this.moveTo(startX, rowBottomY - rowSpacing * 0.5)
         .lineTo(startX + usableWidth, rowBottomY - rowSpacing * 0.5)
-        .lineWidth(0.3)
-        .opacity(0.2)
+        .lineWidth(0.5)
+        .opacity(1)
         .stroke()
         .opacity(1); // Reset opacity after drawing the line
     });
@@ -654,8 +654,8 @@ class PDFDocumentWithTables extends PDFDocument {
       // Separation line between rows
       this.moveTo(startX, rowBottomY - rowSpacing * 0.5)
         .lineTo(startX + usableWidth, rowBottomY - rowSpacing * 0.5)
-        .lineWidth(0.3)
-        .opacity(0.2)
+        .lineWidth(0.5)
+        .opacity(1)
         .stroke()
         .opacity(1); // Reset opacity after drawing the line
     });
@@ -986,8 +986,8 @@ class PDFDocumentWithTables extends PDFDocument {
       // Separation line between rows
       this.moveTo(startX, rowBottomY - rowSpacing * 0.5)
         .lineTo(startX + usableWidth, rowBottomY - rowSpacing * 0.5)
-        .lineWidth(0.3)
-        .opacity(0.2)
+        .lineWidth(0.5)
+        .opacity(1)
         .stroke()
         .opacity(1); // Reset opacity after drawing the line
     });
@@ -1308,8 +1308,8 @@ class PDFDocumentWithTables extends PDFDocument {
       // Separation line between rows
       this.moveTo(startX, rowBottomY - rowSpacing * 0.5)
         .lineTo(startX + usableWidth, rowBottomY - rowSpacing * 0.5)
-        .lineWidth(0.3)
-        .opacity(0.2)
+        .lineWidth(0.5)
+        .opacity(1)
         .stroke()
         .opacity(1); // Reset opacity after drawing the line
     });
@@ -1559,8 +1559,8 @@ class PDFDocumentWithTables extends PDFDocument {
       // Separation line between rows
       this.moveTo(startX, rowBottomY - rowSpacing * 0.5)
         .lineTo(startX + usableWidth, rowBottomY - rowSpacing * 0.5)
-        .lineWidth(0.3)
-        .opacity(0.2)
+        .lineWidth(0.5)
+        .opacity(1)
         .stroke()
         .opacity(1); // Reset opacity after drawing the line
     });
@@ -1725,8 +1725,8 @@ class PDFDocumentWithTables extends PDFDocument {
       // Separation line between rows
       this.moveTo(startX, rowBottomY - rowSpacing * 0.5)
         .lineTo(startX + usableWidth, rowBottomY - rowSpacing * 0.5)
-        .lineWidth(0.3)
-        .opacity(0.2)
+        .lineWidth(0.5)
+        .opacity(1)
         .stroke()
         .opacity(1); // Reset opacity after drawing the line
     });

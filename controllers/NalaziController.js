@@ -164,9 +164,6 @@ nalazController.Mail = function (req, res) {
                   nalaz.site.mobitel
                 );
 
-                // laboratorija@poliklinika-atrijum.ba
-                // Laboratorija2021!#
-
                 var smtpConfig = {
                   pool: true,
                   host: process.env.MAIL_HOST,
@@ -1530,6 +1527,7 @@ nalazController.Nalaz = function (req, res) {
                     baseConfig.nalaz_signature = config.nalaz_signature;
                     baseConfig.user = req.body.decoded.user;
                     baseConfig.barcode_path  = config.sample_path;
+                    
                     report_template.create_report(
                       report,
                       baseConfig,

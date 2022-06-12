@@ -60,14 +60,9 @@ var loggerserver= new loggerServer();
 
 // Starting our server
 
-//  lisserver.start(io,9581,"Atrijum (Avaz BC): Mindray BC 5120");
-//  lisserver.start(io,9582,"Atrijum (Skenderija): Mindray BC 5390");
-//  lisserver.start(io,9583,"Atrijum (Skenderija): Mindray BS 480");
-//  lisserver.start(io,9584,"Atrijum (Skenderija): Mindray CL 900i");
-//  lisserver.start(io,9585,"Atrijum (Gorazde): Mindray BC 5120");
-//  lisserver.start(io,9586,"Atrijum (Gorazde): Mindray BS 380");
-//  lisserver.start(io,9587,"Atrijum (Gorazde): Mindray CL 900i");
-//  lisserver.start(io,9588,"Atrijum (Gorazde): iCHROMA II");
+//  lisserver.start(io,PORT A,"Central Lab (Gradačac): Analizator A");
+//  lisserver.start(io,PORT B,"Central Lab (Gradačac): Analizator B");
+//  lisserver.start(io,PORT C,"Central Lab (Gradačac): Analizator C");
 
 //lisserver.start(io,50020,"Alinity Receiver Channel");//Alinity receiverr
 
