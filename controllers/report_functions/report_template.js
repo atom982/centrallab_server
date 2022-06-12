@@ -208,14 +208,14 @@ module.exports = {
         //   .fillColor("black")
         //   .text("Web:", 388, 70)
         //   .fillColor("#0000EE")
-        //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
+        //   .text("facebook.com/CentralLabGradacac", 414, 70);
         doc
           .font("PTSansRegular")
           .fontSize(10.5)
           .fillColor("black")
-          .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+          .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
         // .fillColor("#0000EE")
-        // .text("www.facebook.com/CentralLabGradacac", 414, 70);
+        // .text("facebook.com/CentralLabGradacac", 414, 70);
 
         break;
 
@@ -734,7 +734,7 @@ module.exports = {
 
           doc
             .fontSize(12)
-            .opacity(0.4)
+            .opacity(0.25)
             .rect(50, doc.y, 511.5, 15)
             .fill("#7B8186")
             .fillColor("black")
@@ -919,7 +919,7 @@ module.exports = {
             // doc.fontSize(12).text(mul.naslov, 50);
             doc
               .fontSize(12)
-              .opacity(0.4)
+              .opacity(0.25)
               .rect(50, doc.y, 511.5, 15)
               .fill("#7B8186")
               .fillColor("black")
@@ -1052,7 +1052,7 @@ module.exports = {
                 });
                 doc
                   .fontSize(12)
-                  .opacity(0.4)
+                  .opacity(0.25)
                   .rect(50, doc.y, 511.5, 15)
                   .fill("#7B8186")
                   .fillColor("black")
@@ -1079,7 +1079,7 @@ module.exports = {
                 });
                 doc
                   .fontSize(12)
-                  .opacity(0.4)
+                  .opacity(0.25)
                   .rect(50, doc.y, 511.5, 15)
                   .fill("#7B8186")
                   .fillColor("black")
@@ -1119,7 +1119,7 @@ module.exports = {
               } else {
                 doc
                   .fontSize(12)
-                  .opacity(0.4)
+                  .opacity(0.25)
                   .rect(50, doc.y, 511.5, 15)
                   .fill("#7B8186")
                   .fillColor("black")
@@ -1184,7 +1184,7 @@ module.exports = {
 
           doc
             .fontSize(12)
-            .opacity(0.4)
+            .opacity(0.25)
             .rect(50, doc.y, 511.5, 15)
             .fill("#7B8186")
             .fillColor("black")
@@ -1313,7 +1313,7 @@ module.exports = {
             if (doc.y > 650) {
               doc.addPage();
             }
-            doc.fontSize(12).opacity(0.4).rect(50, doc.y, 511.5, 15).fill("#7B8186").fillColor("black").opacity(1).fontSize(8).fillColor("red").text(mul.naslov.slice(1, 2), 50).fontSize(12).fillColor("black").text(mul.naslov.slice(4), 57, doc.y - 11);
+            doc.fontSize(12).opacity(0.25).rect(50, doc.y, 511.5, 15).fill("#7B8186").fillColor("black").opacity(1).fontSize(8).fillColor("red").text(mul.naslov.slice(1, 2), 50).fontSize(12).fillColor("black").text(mul.naslov.slice(4), 57, doc.y - 11);
             // HEX #7B8186
             doc.table_antibiotici({ headers: mul.headers, rows: mul.rows }, { prepareHeader: () => doc.fontSize(8), prepareRow: (row, i) => doc.fontSize(10) });
           });

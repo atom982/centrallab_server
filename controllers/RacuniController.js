@@ -497,14 +497,14 @@ racuniController.Get = function (req, res) {
               //   .fillColor("black")
               //   .text("Web:", 388, 70)
               //   .fillColor("#0000EE")
-              //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
+              //   .text("facebook.com/CentralLabGradacac", 414, 70);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+                .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
               // .fillColor("#0000EE")
-              // .text("www.facebook.com/CentralLabGradacac", 414, 70);
+              // .text("facebook.com/CentralLabGradacac", 414, 70);
 
               break;
 
@@ -1124,14 +1124,14 @@ racuniController.Popust = function (req, res) {
               //   .fillColor("black")
               //   .text("Web:", 388, 70)
               //   .fillColor("#0000EE")
-              //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
+              //   .text("facebook.com/CentralLabGradacac", 414, 70);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+                .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
               // .fillColor("#0000EE")
-              // .text("www.facebook.com/CentralLabGradacac", 414, 70);
+              // .text("facebook.com/CentralLabGradacac", 414, 70);
 
               break;
 
@@ -1780,14 +1780,14 @@ racuniController.Cijena = function (req, res) {
               //   .fillColor("black")
               //   .text("Web:", 388, 70)
               //   .fillColor("#0000EE")
-              //   .text("www.facebook.com/CentralLabGradacac", 414, 70);
+              //   .text("facebook.com/CentralLabGradacac", 414, 70);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("www.facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+                .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
               // .fillColor("#0000EE")
-              // .text("www.facebook.com/CentralLabGradacac", 414, 70);
+              // .text("facebook.com/CentralLabGradacac", 414, 70);
 
               break;
 
