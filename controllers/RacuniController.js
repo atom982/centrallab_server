@@ -463,7 +463,7 @@ racuniController.Get = function (req, res) {
 
           var code = samples[0].site.sifra;
 
-          doc.image(config.nalaz_logo + code + ".jpg", 50, 13, {
+          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 3, {
             width: 280,
             keepAspectRatio: true,
           });
@@ -474,23 +474,23 @@ racuniController.Get = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Josipa Šibera 3", 388, 20);
+                .text("Josipa Šibera 3", 388, 20 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5);
+                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
                 .text("Telefon:", 388, 45)
-                .text("+387 (0)35 816-317", 427.6, 45);
+                .text("+387 (0)35 816-317", 427.6, 45 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Mobitel: +387 (0)62 737-303", 388, 57.5);
+                .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
               // doc
               //   .font("PTSansRegular")
               //   .fontSize(10.5)
@@ -502,7 +502,7 @@ racuniController.Get = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+                .text("facebook.com/CentralLabGradacac", 388, 70 - 3); // Facebook
               // .fillColor("#0000EE")
               // .text("facebook.com/CentralLabGradacac", 414, 70);
 
@@ -1090,7 +1090,7 @@ racuniController.Popust = function (req, res) {
 
           var code = samples[0].site.sifra;
 
-          doc.image(config.nalaz_logo + code + ".jpg", 50, 13, {
+          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 3, {
             width: 280,
             keepAspectRatio: true,
           });
@@ -1101,23 +1101,23 @@ racuniController.Popust = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Josipa Šibera 3", 388, 20);
+                .text("Josipa Šibera 3", 388, 20 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5);
+                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
                 .text("Telefon:", 388, 45)
-                .text("+387 (0)35 816-317", 427.6, 45);
+                .text("+387 (0)35 816-317", 427.6, 45 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Mobitel: +387 (0)62 737-303", 388, 57.5);
+                .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
               // doc
               //   .font("PTSansRegular")
               //   .fontSize(10.5)
@@ -1129,7 +1129,7 @@ racuniController.Popust = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+                .text("facebook.com/CentralLabGradacac", 388, 70 - 3); // Facebook
               // .fillColor("#0000EE")
               // .text("facebook.com/CentralLabGradacac", 414, 70);
 
@@ -1746,7 +1746,7 @@ racuniController.Cijena = function (req, res) {
 
           var code = samples[0].site.sifra;
 
-          doc.image(config.nalaz_logo + code + ".jpg", 50, 13, {
+          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 3, {
             width: 280,
             keepAspectRatio: true,
           });
@@ -1757,23 +1757,23 @@ racuniController.Cijena = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Josipa Šibera 3", 388, 20);
+                .text("Josipa Šibera 3", 388, 20 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5);
+                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
                 .text("Telefon:", 388, 45)
-                .text("+387 (0)35 816-317", 427.6, 45);
+                .text("+387 (0)35 816-317", 427.6, 45 - 3);
               doc
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Mobitel: +387 (0)62 737-303", 388, 57.5);
+                .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
               // doc
               //   .font("PTSansRegular")
               //   .fontSize(10.5)
@@ -1785,7 +1785,7 @@ racuniController.Cijena = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("facebook.com/CentralLabGradacac:", 388, 70); // Facebook
+                .text("facebook.com/CentralLabGradacac", 388, 70 - 3); // Facebook
               // .fillColor("#0000EE")
               // .text("facebook.com/CentralLabGradacac", 414, 70);
 

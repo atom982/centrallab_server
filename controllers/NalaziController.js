@@ -1310,9 +1310,12 @@ nalazController.Nalaz = function (req, res) {
           var god = d.getFullYear();
 
           Data.pid = rezultati[0].sample.pid;
+
+          Data.protokol = "CLG" + rezultati[0].sample.pid + "/" + rezultati[0].sample.id.substr(rezultati[0].sample.id.length - 5);
+
           Data.uzorkovano = rezultati[0].sample.datum;
 
-          Data.protokol = rezultati[0].sample.protokol;
+          // Data.protokol = rezultati[0].sample.protokol;
 
           Data.uzorkovano_t = rezultati[0].sample.datum.substring(11, 16);
           // console.log(Data.uzorkovano_t)
@@ -1452,6 +1455,7 @@ nalazController.Nalaz = function (req, res) {
                     baseConfig.nalaz_signature = config.nalaz_signature;
                     baseConfig.user = req.body.decoded.user;
                     baseConfig.barcode_path  = config.sample_path;
+                    baseConfig.QRCodes = config.QRCodes;
 
                     report_template.create_report(
                       report,
@@ -1527,6 +1531,7 @@ nalazController.Nalaz = function (req, res) {
                     baseConfig.nalaz_signature = config.nalaz_signature;
                     baseConfig.user = req.body.decoded.user;
                     baseConfig.barcode_path  = config.sample_path;
+                    baseConfig.QRCodes = config.QRCodes;
                     
                     report_template.create_report(
                       report,
