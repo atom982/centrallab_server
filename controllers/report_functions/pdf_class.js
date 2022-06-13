@@ -105,6 +105,8 @@ class PDFDocumentWithTables extends PDFDocument {
       let shadow = 0;
       let res = [];
 
+      var separator = 0;
+
       // Switch to next page if we cannot go any further because the space is ove
       // For safety, consider 3 rows margin instead of just one
       if (startY + 3 * rowHeight < maxY) {
@@ -122,6 +124,16 @@ class PDFDocumentWithTables extends PDFDocument {
         if (i === 0) {
           this.fillColor("black");
           tempcell0 = cell;
+
+          if (cell.includes(";;")) {
+            separator = 2;
+            cell = cell.replace(";;", "");
+          }
+
+          if (cell.includes(";")) {
+            separator = 1;
+            cell = cell.replace(";", "");
+          }
 
           if (cell.includes("[")) {
             this.fontSize(7);
@@ -168,6 +180,8 @@ class PDFDocumentWithTables extends PDFDocument {
         }
 
         if (i === 1) {
+          // console.log(separator)
+
           if (
             cell.rezultat.trim().length >= 20 &&
             cell.rezultat.trim().length < 27
@@ -187,17 +201,46 @@ class PDFDocumentWithTables extends PDFDocument {
             cell.kontrola === "L" ||
             cell.kontrola === "H"
           ) {
-            this.font("PTSansBold")
-              .rect(
-                this.x + columnContainerWidth,
-                this.y - 0.2,
-                columnContainerWidth,
-                -12
-              )
-              .opacity(0.25)
-              .fill("#7B8186")
-              .fillColor("black")
-              .opacity(1);
+            if (separator == 2) {
+              this.font("PTSansBold")
+                .rect(
+                  this.x + columnContainerWidth,
+                  this.y - 12 - 11.5 - 0.2,
+                  columnContainerWidth,
+                  -12
+                )
+                .opacity(0.25)
+                .fill("#7B8186")
+                .fillColor("black")
+                .opacity(1);
+            } else if (separator == 1) {
+              this.font("PTSansBold")
+                .rect(
+                  this.x + columnContainerWidth,
+                  this.y - 11.5 - 0.2,
+                  columnContainerWidth,
+                  -12
+                )
+                .opacity(0.25)
+                .fill("#7B8186")
+                .fillColor("black")
+                .opacity(1);
+            } else if (separator == 0) {
+              this.font("PTSansBold")
+                .rect(
+                  this.x + columnContainerWidth,
+                  this.y - 0.2,
+                  columnContainerWidth,
+                  -12
+                )
+                .opacity(0.25)
+                .fill("#7B8186")
+                .fillColor("black")
+                .opacity(1);
+            } else {
+              console.log("More than 3 lines...");
+              console.log("Assay Configuration error.");
+            }
           } else {
           }
 
