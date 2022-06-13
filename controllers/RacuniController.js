@@ -484,7 +484,7 @@ racuniController.Get = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Telefon:", 388, 45)
+                .text("Telefon:", 388, 45 - 3)
                 .text("+387 (0)35 816-317", 427.6, 45 - 3);
               doc
                 .font("PTSansRegular")
@@ -1111,7 +1111,7 @@ racuniController.Popust = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Telefon:", 388, 45)
+                .text("Telefon:", 388, 45 - 3)
                 .text("+387 (0)35 816-317", 427.6, 45 - 3);
               doc
                 .font("PTSansRegular")
@@ -1767,7 +1767,7 @@ racuniController.Cijena = function (req, res) {
                 .font("PTSansRegular")
                 .fontSize(10.5)
                 .fillColor("black")
-                .text("Telefon:", 388, 45)
+                .text("Telefon:", 388, 45 - 3)
                 .text("+387 (0)35 816-317", 427.6, 45 - 3);
               doc
                 .font("PTSansRegular")
