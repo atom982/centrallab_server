@@ -69,7 +69,7 @@ module.exports = {
         return [test, rezultat, interpretacija.Reaktivan(rezultat, dref, gref)[0], jedinica, "nereaktivan", interpretacija.Reaktivan(rezultat, dref, gref)[1], extend];
         break;
       case "cov2":
-        return [test, rezultat, interpretacija.COV2(rezultat, dref, gref)[0], jedinica, " ≤ " + gref, interpretacija.COV2(rezultat, dref, gref)[1], extend];
+        return [test, rezultat, interpretacija.COV2(rezultat, dref, gref)[0], jedinica, " < " + gref, interpretacija.COV2(rezultat, dref, gref)[1], extend];
         break;
       case "norm":
         return [test, rezultat, interpretacija.Normalan(rezultat, dref, gref)[0], jedinica, "normalna", interpretacija.Normalan(rezultat, dref, gref)[1], extend];

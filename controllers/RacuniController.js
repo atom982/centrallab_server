@@ -210,7 +210,7 @@ racuniController.Get = function (req, res) {
                     OGTT = true;
                   }
 
-                  if (test.labassay.naziv.includes("Insulin -")) {
+                  if (test.labassay.naziv.includes("INS -")) {
                     // Not allowed
                     Insulin = true;
                   }
@@ -312,7 +312,13 @@ racuniController.Get = function (req, res) {
           // Patient data
 
           var ime = samples[0].patient.ime;
-          var prezime = samples[0].patient.prezime;
+
+          if(samples[0].patient.roditelj.trim() != ""){
+            var prezime = samples[0].patient.prezime + " (" + samples[0].patient.roditelj + ")"
+          }else{
+            var prezime = samples[0].patient.prezime;
+          }
+          
           var jmbg = samples[0].patient.jmbg;
           var telefon = samples[0].patient.telefon;
           var spol =
@@ -561,10 +567,10 @@ racuniController.Get = function (req, res) {
             var pacijent =
               prezime.toUpperCase() +
               " " +
-              ime.toUpperCase() +
-              " (" +
-              godiste +
-              ")";
+              ime.toUpperCase() // +
+              // " (" +
+              // godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -574,10 +580,10 @@ racuniController.Get = function (req, res) {
             var pacijent =
               prezime.toUpperCase() +
               " " +
-              ime.toUpperCase() +
-              " (" +
-              godiste +
-              ")";
+              ime.toUpperCase() // +
+              // " (" +
+              // godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -602,7 +608,7 @@ racuniController.Get = function (req, res) {
             telefon.length < 9
           ) {
             telefon = "";
-            nvisina = nvisina - 12;
+            // nvisina = nvisina - 12;
           } else {
             doc
               .font("PTSansRegular")
@@ -810,7 +816,7 @@ racuniController.Popust = function (req, res) {
                     OGTT = true;
                   }
 
-                  if (test.labassay.naziv.includes("Insulin -")) {
+                  if (test.labassay.naziv.includes("INS -")) {
                     // Not allowed
                     Insulin = true;
                   }
@@ -908,7 +914,13 @@ racuniController.Popust = function (req, res) {
           // Patient data
 
           var ime = samples[0].patient.ime;
-          var prezime = samples[0].patient.prezime;
+
+          if(samples[0].patient.roditelj.trim() != ""){
+            var prezime = samples[0].patient.prezime + " (" + samples[0].patient.roditelj + ")"
+          }else{
+            var prezime = samples[0].patient.prezime;
+          }
+
           var jmbg = samples[0].patient.jmbg;
           var telefon = samples[0].patient.telefon;
           var spol =
@@ -1188,10 +1200,10 @@ racuniController.Popust = function (req, res) {
             var pacijent =
               prezime.toUpperCase() +
               " " +
-              ime.toUpperCase() +
-              " (" +
-              godiste +
-              ")";
+              ime.toUpperCase() // +
+              // " (" +
+              // godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -1201,10 +1213,10 @@ racuniController.Popust = function (req, res) {
             var pacijent =
               prezime.toUpperCase() +
               " " +
-              ime.toUpperCase() +
-              " (" +
-              godiste +
-              ")";
+              ime.toUpperCase() // +
+              // " (" +
+              // godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -1229,7 +1241,7 @@ racuniController.Popust = function (req, res) {
             telefon.length < 9
           ) {
             telefon = "";
-            nvisina = nvisina - 12;
+            // nvisina = nvisina - 12;
           } else {
             doc
               .font("PTSansRegular")
@@ -1437,7 +1449,7 @@ racuniController.Cijena = function (req, res) {
                     OGTT = true;
                   }
 
-                  if (test.labassay.naziv.includes("Insulin -")) {
+                  if (test.labassay.naziv.includes("INS -")) {
                     // Not allowed
                     Insulin = true;
                   }
@@ -1535,7 +1547,13 @@ racuniController.Cijena = function (req, res) {
           // Patient data
 
           var ime = samples[0].patient.ime;
-          var prezime = samples[0].patient.prezime;
+          
+          if(samples[0].patient.roditelj.trim() != ""){
+            var prezime = samples[0].patient.prezime + " (" + samples[0].patient.roditelj + ")"
+          }else{
+            var prezime = samples[0].patient.prezime;
+          }
+
           var jmbg = samples[0].patient.jmbg;
           var telefon = samples[0].patient.telefon;
           var spol =
@@ -1844,10 +1862,10 @@ racuniController.Cijena = function (req, res) {
             var pacijent =
               prezime.toUpperCase() +
               " " +
-              ime.toUpperCase() +
-              " (" +
-              godiste +
-              ")";
+              ime.toUpperCase() // +
+              // " (" +
+              // godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -1857,10 +1875,10 @@ racuniController.Cijena = function (req, res) {
             var pacijent =
               prezime.toUpperCase() +
               " " +
-              ime.toUpperCase() +
-              " (" +
-              godiste +
-              ")";
+              ime.toUpperCase() // +
+              // " (" +
+              // godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -1885,7 +1903,7 @@ racuniController.Cijena = function (req, res) {
             telefon.length < 9
           ) {
             telefon = "";
-            nvisina = nvisina - 12;
+            // nvisina = nvisina - 12;
           } else {
             doc
               .font("PTSansRegular")

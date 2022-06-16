@@ -30,6 +30,16 @@ apiUrlController.apiUrlPatients = function (req, res) {
       limit = 50000;
     }
 
+    // console.log(req.query.filter + "/" + parametar)
+
+    if (!isNaN(req.query.filter) && req.query.filter.length == 13) {
+      limit = 500000;
+      if (parametar == "") {
+        parametar = "jmbg";
+      }
+      console.log(req.query.filter + "/" + parametar);
+    } else {
+    }
     var uslov = { site: mongoose.Types.ObjectId(req.query.site) };
 
     switch (parametar) {
@@ -511,6 +521,15 @@ apiUrlController.apiUrlObradaPregled = function (req, res) {
                 var godisteTemp = godiste;
               }
 
+              if (element.sample.prioritet == "CITO") {
+                var prioritet =
+                  '<span style="font-size: 12px; color:#e34a4a;" class="fa fa-star"></span>';
+                var cito = true;
+              } else {
+                var prioritet =
+                  '<span style="font-size: 12px; color:#d9d9d9;" class="fa fa-star-o"></span>';
+                var cito = false;
+              }
               Rezultati.push({
                 partneri: partner,
                 narucioc: element.narucioc,
@@ -534,6 +553,8 @@ apiUrlController.apiUrlObradaPregled = function (req, res) {
                 _id: element.patient._id,
                 date: element.created_at,
 
+                prioritet: prioritet,
+                cito: cito,
                 datum:
                   JSON.stringify(
                     JSON.stringify(element.created_at).substring(1, 11)
@@ -618,35 +639,42 @@ apiUrlController.apiUrlObradaPregled = function (req, res) {
 
             newrez.verificiran = verificiran;
 
-            if(newrez.nodiscount == null || newrez.discount == null || newrez.total == null){
+            if (
+              newrez.nodiscount == null ||
+              newrez.discount == null ||
+              newrez.total == null
+            ) {
               newrez.racun =
-              "<button style='font-size: 12px; white-space: nowrap;' title='' id='" +
-              pac +
-              "?uzorci=" +
-              samples +
-              "' class='btn btn-secondary-danger btn-micro'><span id='" +
-              pac +
-              "?uzorci=" +
-              samples +
-              "' class='fa fa-credit-card'></span> RAČUN</button>";
-
-            }else{
+                "<button style='font-size: 12px; white-space: nowrap;' title='' id='" +
+                pac +
+                "?uzorci=" +
+                samples +
+                "' class='btn btn-secondary-danger btn-micro'><span id='" +
+                pac +
+                "?uzorci=" +
+                samples +
+                "' class='fa fa-credit-card'></span> RAČUN</button>";
+            } else {
               newrez.racun =
-              "<button style='font-size: 12px; white-space: nowrap;' title='' id='" +
-              pac +
-              "?uzorci=" +
-              samples +
-              "' class='btn btn-secondary btn-micro'><span id='" +
-              pac +
-              "?uzorci=" +
-              samples +
-              "' class='fa fa-credit-card'></span> RAČUN</button>";
-            }        
+                "<button style='font-size: 12px; white-space: nowrap;' title='' id='" +
+                pac +
+                "?uzorci=" +
+                samples +
+                "' class='btn btn-secondary btn-micro'><span id='" +
+                pac +
+                "?uzorci=" +
+                samples +
+                "' class='fa fa-credit-card'></span> RAČUN</button>";
+            }
           });
 
           if (req.query.datum === "RADNA LISTA") {
             rezultati = Rezultati.filter(function (rezultat) {
               return rezultat.verificiran === false;
+            });
+          } else if (req.query.datum === "CITO") {
+            rezultati = Rezultati.filter(function (rezultat) {
+              return rezultat.verificiran === false && rezultat.cito === true;
             });
           } else if (req.query.datum === "VERIFICIRAN") {
             rezultati = Rezultati.filter(function (rezultat) {

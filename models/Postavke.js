@@ -224,28 +224,29 @@ var SchemaPatients = mongoose.Schema({
   ime: { type: String, required: true },
   prezime: { type: String, required: true },
   spol: { type: String },
+  adresa: { type: String, default: "" },
   duhan: { type: String, default: "Nema podataka" },
   dijabetes: { type: String, default: "Nema podataka" },
   lokacija: { type: mongoose.Schema.ObjectId, ref: "Lokacija" },
   passport: { type: String, default: "" },
+  roditelj: { type: String, default: "" },
   telefon: { type: String, default: "" },
   email: { type: String, default: "" },
-  adresa: { type: String, default: "" },
   site: { type: mongoose.Schema.ObjectId, ref: "Site" },
+  created_by: { type: String, default: null },
   created_at: {
     type: Date,
     default: new Date(
       new Date().getTime() - new Date().getTimezoneOffset() * 60000
     ),
   },
+  updated_by: { type: String, default: null },
   updated_at: {
     type: Date,
     default: new Date(
       new Date().getTime() - new Date().getTimezoneOffset() * 60000
     ),
   },
-  created_by: { type: String, default: null },
-  updated_by: { type: String, default: null },
 });
 
 var SchemaSamples = mongoose.Schema({

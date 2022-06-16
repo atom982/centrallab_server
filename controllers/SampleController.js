@@ -461,8 +461,8 @@ sampleController.SaveP = function (req, res) {
                       feces.push(test);
                       break;
                     case "Ostalo":
-                        ostalo.push(test);
-                        break;
+                      ostalo.push(test);
+                      break;
                     case "Likvor":
                       likvor.push(test);
                       break;
@@ -2514,6 +2514,7 @@ sampleController.List = function (req, res) {
               uzorak._id +
               "' class='fa fa-trash-o'></span> IZBRIŠI</button>";
           }
+          
 
           if (uzorak.prioritet.includes("HITAN")) {
             var prioritet = "<strong>" + uzorak.prioritet + "</strong>";
@@ -2767,9 +2768,8 @@ sampleController.Delete = function (req, res) {
                       });
                     } else {
                       if (racun) {
-                       
                         racun.valid = false;
-                        
+
                         racun.updated_at = new Date(
                           new Date().getTime() -
                             new Date().getTimezoneOffset() * 60000
@@ -2797,13 +2797,12 @@ sampleController.Delete = function (req, res) {
                           success: true,
                           message: "Uzorak uspješno izbrisan.",
                           id,
-                        });                        
+                        });
                       }
                     }
                   });
 
                   // END
-                  
                 }
               }
             );
@@ -2865,7 +2864,6 @@ sampleController.SectionList = function (req, res) {
 };
 
 sampleController.Update = function (req, res) {
-
   var controlSave = false;
   Results.findOne({
     id: req.body.sid,
@@ -2960,15 +2958,14 @@ sampleController.Update = function (req, res) {
                     e.labassay.equals(mongoose.Types.ObjectId(test.labassay))
                   ).length > 0
                 ) {
-
-                  if(test.cijena.trim() != "" && !isNaN(test.cijena)){
-                    var CIJENA = test.cijena
-                  } else{
-                    var CIJENA = "0"
+                  if (test.cijena.trim() != "" && !isNaN(test.cijena)) {
+                    var CIJENA = test.cijena;
+                  } else {
+                    var CIJENA = "0";
                   }
-             
-                  sampleTeststemp.push({                    
-                    cijena: CIJENA,                    
+
+                  sampleTeststemp.push({
+                    cijena: CIJENA,
                     labassay: mongoose.Types.ObjectId(test.labassay),
                     status_r: false,
                     status_t: status_t,
@@ -3430,9 +3427,8 @@ sampleController.Update = function (req, res) {
                           });
                         } else {
                           if (racun) {
-                          
                             racun.valid = false;
-                            
+
                             racun.updated_at = new Date(
                               new Date().getTime() -
                                 new Date().getTimezoneOffset() * 60000
@@ -3458,17 +3454,15 @@ sampleController.Update = function (req, res) {
                             res.json({
                               success: true,
                               message: "Uzorak uspješno izmjenjen.",
-                            });                      
+                            });
                           }
                         }
                       });
 
-                      // END                  
-                                  
+                      // END
                     });
 
                     //REDNI BROJ PACIJENTA
-
                   }
                 } else {
                   counter++;
@@ -3587,9 +3581,8 @@ sampleController.Update = function (req, res) {
                           });
                         } else {
                           if (racun) {
-                          
                             racun.valid = false;
-                            
+
                             racun.updated_at = new Date(
                               new Date().getTime() -
                                 new Date().getTimezoneOffset() * 60000
@@ -3615,17 +3608,15 @@ sampleController.Update = function (req, res) {
                             res.json({
                               success: true,
                               message: "Uzorak uspješno izmjenjen.",
-                            });                      
+                            });
                           }
                         }
                       });
 
-                      // END                  
-             
+                      // END
                     });
 
                     // REDNI BROJ PACIJENTA
-
                   }
                 }
               }
@@ -4833,7 +4824,7 @@ sampleController.sacuvajUzorke = function (req, res) {
     var from = new Date(datum + "T00:00:00");
 
     var uslov = {};
-    
+
     uslov = {
       created_at: {
         $gt: new Date(from.setHours(1)),
@@ -4892,9 +4883,17 @@ sampleController.sacuvajUzorke = function (req, res) {
           var typeNrOstalo = 0;
           var typeNrEjakulat = 0;
 
+          var priority = "NORMALAN";
+
+          req.body.uzorci.forEach((uzorakFront) => {
+            if (uzorakFront.hitno === true) {
+              priority = "CITO";
+            }
+          });
           req.body.uzorci.forEach((uzorakFront) => {
             uzorakFront.all = [];
 
+            uzorakFront.prioritet = priority;
             if (uzorakFront.ime[0] === "S") {
               uzorakFront.typeNrSerum = typeNrSerum;
               uzorakFront.all.push(
@@ -5564,19 +5563,19 @@ sampleController.sacuvajUzorke = function (req, res) {
             }
             //---------END GET PID and SID---------*
             //********************SINGLE SAMPLE SAVE******************************
-            
+
             tests = [];
-            
+
             uzorakFront.testovi.forEach((test) => {
               // console.log(test.cijena + " KM - " + test.opis);
 
-              if(test.cijena.trim() != "" && !isNaN(test.cijena)){
-                var CIJENA = test.cijena
-              } else{
-                var CIJENA = "0"
+              if (test.cijena.trim() != "" && !isNaN(test.cijena)) {
+                var CIJENA = test.cijena;
+              } else {
+                var CIJENA = "0";
               }
 
-              tests.push({                
+              tests.push({
                 cijena: CIJENA,
                 labassay: mongoose.Types.ObjectId(test._id),
                 status_t: "ZAPRIMLJEN",
@@ -5611,7 +5610,7 @@ sampleController.sacuvajUzorke = function (req, res) {
 
               codeStr = codeStr.substring(2, codeStr.length); */
 
-              codeStr = uzorakFront.code[0]
+              codeStr = uzorakFront.code[0];
             } else {
               codeStr = "";
             }
@@ -5632,7 +5631,7 @@ sampleController.sacuvajUzorke = function (req, res) {
             uzorakFront.created_at = new Date(
               new Date().getTime() - new Date().getTimezoneOffset() * 60000
             );
-            
+
             uzorakFront.updated_at = new Date(
               new Date().getTime() - new Date().getTimezoneOffset() * 60000
             );
@@ -5717,10 +5716,12 @@ sampleController.sacuvajUzorke = function (req, res) {
                                   anaassay: mongoose.Types.ObjectId(param._id),
                                   sn: param.naziv,
                                   vrijeme_prijenosa: new Date(
-                                    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                    new Date().getTime() -
+                                      new Date().getTimezoneOffset() * 60000
                                   ),
                                   vrijeme_rezultata: new Date(
-                                    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                    new Date().getTime() -
+                                      new Date().getTimezoneOffset() * 60000
                                   ),
                                   dilucija: param.opis,
                                   module_sn: param.kod,
@@ -5734,7 +5735,8 @@ sampleController.sacuvajUzorke = function (req, res) {
                                   rezultat_i: "",
                                   odobren: false,
                                   created_at: new Date(
-                                    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                    new Date().getTime() -
+                                      new Date().getTimezoneOffset() * 60000
                                   ),
                                   created_by: req.body.decoded.user,
                                 });
@@ -5769,10 +5771,12 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     anaassay: testm._id,
                                     sn: "MANUAL",
                                     vrijeme_prijenosa: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     vrijeme_rezultata: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     dilucija: "MULTI",
                                     module_sn: "MANUAL",
@@ -5786,7 +5790,8 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     rezultat_i: "",
                                     odobren: false,
                                     created_at: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     created_by: req.body.decoded.user,
                                   },
@@ -5853,10 +5858,12 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     anaassay: testm._id,
                                     sn: "MANUAL",
                                     vrijeme_prijenosa: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     vrijeme_rezultata: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     dilucija: "n/a",
                                     module_sn: "n/a",
@@ -5870,7 +5877,8 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     rezultat_i: "",
                                     odobren: false,
                                     created_at: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     created_by: req.body.decoded.user,
                                   },
@@ -5925,10 +5933,12 @@ sampleController.sacuvajUzorke = function (req, res) {
                                   anaassay: mongoose.Types.ObjectId(param._id),
                                   sn: param.naziv,
                                   vrijeme_prijenosa: new Date(
-                                    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                    new Date().getTime() -
+                                      new Date().getTimezoneOffset() * 60000
                                   ),
                                   vrijeme_rezultata: new Date(
-                                    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                    new Date().getTime() -
+                                      new Date().getTimezoneOffset() * 60000
                                   ),
                                   dilucija: param.opis,
                                   module_sn: param.kod,
@@ -5942,7 +5952,8 @@ sampleController.sacuvajUzorke = function (req, res) {
                                   rezultat_i: "",
                                   odobren: false,
                                   created_at: new Date(
-                                    new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                    new Date().getTime() -
+                                      new Date().getTimezoneOffset() * 60000
                                   ),
                                   created_by: req.body.decoded.user,
                                 });
@@ -5977,10 +5988,12 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     anaassay: testm._id,
                                     sn: "36148BG",
                                     vrijeme_prijenosa: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     vrijeme_rezultata: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     dilucija: "MULTI",
                                     module_sn: "APARAT",
@@ -5994,7 +6007,8 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     rezultat_i: "",
                                     odobren: false,
                                     created_at: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     created_by: req.body.decoded.user,
                                   },
@@ -6057,10 +6071,12 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     anaassay: testm._id,
                                     sn: "AUTO",
                                     vrijeme_prijenosa: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     vrijeme_rezultata: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     dilucija: "",
                                     module_sn: "",
@@ -6074,7 +6090,8 @@ sampleController.sacuvajUzorke = function (req, res) {
                                     rezultat_i: "",
                                     odobren: false,
                                     created_at: new Date(
-                                      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                                      new Date().getTime() -
+                                        new Date().getTimezoneOffset() * 60000
                                     ),
                                     created_by: req.body.decoded.user,
                                   },
@@ -6151,9 +6168,10 @@ sampleController.sacuvajUzorke = function (req, res) {
                                         rezultat.patient = sample.patient;
 
                                         if (req.body.klijent != null) {
-                                          rezultat.customer = mongoose.Types.ObjectId(
-                                            req.body.klijent._id
-                                          );
+                                          rezultat.customer =
+                                            mongoose.Types.ObjectId(
+                                              req.body.klijent._id
+                                            );
                                         }
 
                                         rezultat.status = "U OBRADI";
@@ -6181,7 +6199,6 @@ sampleController.sacuvajUzorke = function (req, res) {
                                         rezultat.site = req.body.site;
                                         var newresult = new Results(rezultat);
                                         newresult.save(function (err, result) {
-
                                           // console.log("Save.")
                                           // Update Racuni Collection
 
@@ -6193,10 +6210,10 @@ sampleController.sacuvajUzorke = function (req, res) {
                                           } else {
                                             uzorcicount++;
                                             data.push({
-                                              jmbg:
-                                                req.body.uzorci[0].patient.jmbg,
-                                              spol:
-                                                req.body.uzorci[0].patient.spol,
+                                              jmbg: req.body.uzorci[0].patient
+                                                .jmbg,
+                                              spol: req.body.uzorci[0].patient
+                                                .spol,
                                               code: sample.code,
                                               sid: result.id,
                                               pid: sample.pid,
@@ -6216,68 +6233,68 @@ sampleController.sacuvajUzorke = function (req, res) {
                                               uzorcicount ===
                                               req.body.uzorci.length
                                             ) {
+                                              // BEGIN
 
-                                                                // BEGIN
+                                              // console.log(sample.timestamp)
 
-                                                                // console.log(sample.timestamp)
+                                              Racuni.findOne({
+                                                site: mongoose.Types.ObjectId(
+                                                  req.body.site
+                                                ),
+                                                timestamp: sample.timestamp,
+                                              }).exec(function (err, racun) {
+                                                if (err) {
+                                                  console.log("Greška:", err);
+                                                  res.json({
+                                                    success: false,
+                                                    message: err,
+                                                  });
+                                                } else {
+                                                  if (racun) {
+                                                    racun.valid = false;
 
-                                                                Racuni.findOne({
-                                                                  site: mongoose.Types.ObjectId(req.body.site),
-                                                                  timestamp: sample.timestamp,
-                                                                }).exec(function (err, racun) {
-                                                                  if (err) {
-                                                                    console.log("Greška:", err);
-                                                                    res.json({
-                                                                      success: false,
-                                                                      message: err,
-                                                                    });
-                                                                  } else {
-                                                                    if (racun) {
-                                                                    
-                                                                      racun.valid = false;
-                                                                      
-                                                                      racun.updated_at = new Date(
-                                                                        new Date().getTime() -
-                                                                          new Date().getTimezoneOffset() * 60000
-                                                                      );
+                                                    racun.updated_at = new Date(
+                                                      new Date().getTime() -
+                                                        new Date().getTimezoneOffset() *
+                                                          60000
+                                                    );
 
-                                                                      // created_by
+                                                    // created_by
 
-                                                                      racun.updated_by = req.body.decoded.user;
+                                                    racun.updated_by =
+                                                      req.body.decoded.user;
 
-                                                                      racun.save(function (err) {
-                                                                        if (err) {
-                                                                          console.log("Greška:", err);
-                                                                          res.json({
-                                                                            success: false,
-                                                                            message: err,
-                                                                          });
-                                                                        } else {
+                                                    racun.save(function (err) {
+                                                      if (err) {
+                                                        console.log(
+                                                          "Greška:",
+                                                          err
+                                                        );
+                                                        res.json({
+                                                          success: false,
+                                                          message: err,
+                                                        });
+                                                      } else {
+                                                        res.json({
+                                                          success: true,
+                                                          message:
+                                                            "Uzorci uspješno sačuvani",
+                                                          data,
+                                                        });
+                                                      }
+                                                    });
+                                                  } else {
+                                                    res.json({
+                                                      success: true,
+                                                      message:
+                                                        "Uzorci uspješno sačuvani",
+                                                      data,
+                                                    });
+                                                  }
+                                                }
+                                              });
 
-                                                                          res.json({
-                                                                            success: true,
-                                                                            message:
-                                                                              "Uzorci uspješno sačuvani",
-                                                                            data,
-                                                                          });
-
-                                                                        }
-                                                                      });
-                                                                    } else {
-
-                                                                      res.json({
-                                                                        success: true,
-                                                                        message:
-                                                                          "Uzorci uspješno sačuvani",
-                                                                        data,
-                                                                      });
-
-                                                                    }
-                                                                  }
-                                                                });
-
-                                                                // END
-
+                                              // END
                                             }
                                           }
                                         });
@@ -6289,7 +6306,6 @@ sampleController.sacuvajUzorke = function (req, res) {
                             );
 
                             // +++++++++++++++++++++++++
-
                           }
                         }
                       }
@@ -6297,7 +6313,6 @@ sampleController.sacuvajUzorke = function (req, res) {
                 });
 
                 // +++++++++++++++++++ REZULTAT ++++++++++++++++++++
-
               }
             });
           });

@@ -59,6 +59,10 @@ module.exports = {
 
     var replace = napomena.trim();
 
+    if(data.roditelj.trim() != ""){
+      data.prezime = data.prezime + " (" + data.roditelj + ")"
+    }
+
     var qrcodeText =
       data.prezime +
       " " +
@@ -327,10 +331,10 @@ module.exports = {
             var pacijent =
               data.prezime.toUpperCase() +
               " " +
-              data.ime.toUpperCase() +
-              " (" +
-              data.godiste +
-              ")";
+              data.ime.toUpperCase() // +
+              // " (" +
+              // data.godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -340,10 +344,10 @@ module.exports = {
             var pacijent =
               data.prezime.toUpperCase() +
               " " +
-              data.ime.toUpperCase() +
-              " (" +
-              data.godiste +
-              ")";
+              data.ime.toUpperCase() // +
+              // " (" +
+              // data.godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -479,10 +483,10 @@ module.exports = {
             var pacijent =
               data.prezime.toUpperCase() +
               " " +
-              data.ime.toUpperCase() +
-              " (" +
-              data.godiste +
-              ")";
+              data.ime.toUpperCase() // +
+              // " (" +
+              // data.godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -492,10 +496,10 @@ module.exports = {
             var pacijent =
               data.prezime.toUpperCase() +
               " " +
-              data.ime.toUpperCase() +
-              " (" +
-              data.godiste +
-              ")";
+              data.ime.toUpperCase() // +
+              // " (" +
+              // data.godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -636,10 +640,10 @@ module.exports = {
             var pacijent =
               data.prezime.toUpperCase() +
               " " +
-              data.ime.toUpperCase() +
-              " (" +
-              data.godiste +
-              ")";
+              data.ime.toUpperCase() // +
+              // " (" +
+              // data.godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -649,10 +653,10 @@ module.exports = {
             var pacijent =
               data.prezime.toUpperCase() +
               " " +
-              data.ime.toUpperCase() +
-              " (" +
-              data.godiste +
-              ")";
+              data.ime.toUpperCase() // +
+              // " (" +
+              // data.godiste +
+              // ")";
             doc
               .font("PTSansRegular")
               .fontSize(12)
@@ -1096,9 +1100,9 @@ module.exports = {
                   // console.log(mul.naslov)
                   // console.log(mul.rows)
 
-                  if (mul.naslov.slice(4).includes("ENA PROFIL")) {
-                    enap = true;
-                  }
+                  // if (mul.naslov.slice(4).includes("ENA PROFIL")) {
+                  //   enap = true;
+                  // }
 
                   if (
                     mul.naslov.slice(4).trim() === "Sediment urina" ||
@@ -1451,17 +1455,17 @@ module.exports = {
           var roma = false;
 
           specificni.forEach((element) => {
-            if (element.extend.includes("Hormones")) {
-              hormoni = true;
-            }
+            // if (element.extend.includes("Hormones")) {
+            //   hormoni = true;
+            // }
 
-            if (element.extend.includes("ROMAindex")) {
-              roma = true;
-            }
+            // if (element.extend.includes("ROMAindex")) {
+            //   roma = true;
+            // }
 
             ref = element.extend;
             // console.log(element.fussnote)
-            // doc.fontSize(7).text(element.fussnote + " " + ref, 50);
+            doc.fontSize(7).text(element.fussnote + " " + ref, 50);
           });
         }
 
@@ -1790,12 +1794,17 @@ module.exports = {
             //   doc.y - 10,
             //   { width: 150, keepAspectRatio: true }
             // );
-            doc.image(
-              config.nalaz_signature + code + "-" + "centrallab" + ".png",
-              372,
-              doc.y - 10,
-              { width: 150, keepAspectRatio: true }
-            );
+
+            doc.moveDown(2);
+
+            doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("       Voditelj laboratorija");
+
+            // doc.image(
+            //   config.nalaz_signature + code + "-" + "centrallab" + ".png",
+            //   372,
+            //   doc.y - 10,
+            //   { width: 150, keepAspectRatio: true }
+            // );
           }
         }
 

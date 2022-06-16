@@ -1016,11 +1016,21 @@ reportController.PPodanu = function (req, res) {
         if (err) {
           console.log("Greška:", err);
         } else {
-          if (rezultati.length) {
-            const doc = new PDFDocumentWithTablesFinansijski({
-              layout: "landscape",
+if (rezultati.length) {
+
+            const fs = require("fs");
+            const PDFTemplate = require("./PDFTemplate");
+
+            const doc = new PDFTemplate({
+              // layout: "landscape",
               bufferPages: true,
+              margins: { top: 50, bottom: 50, left: 50, right: 50 },
             });
+
+            // const doc = new PDFDocumentWithTablesFinansijski({
+            //   layout: "landscape",
+            //   bufferPages: true,
+            // });
 
             doc.registerFont("PTSansRegular", config.nalaz_ptsansregular);
             doc.registerFont("PTSansBold", config.nalaz_ptsansbold);
@@ -1062,7 +1072,7 @@ reportController.PPodanu = function (req, res) {
                       (test) => test.ime === element.labassay.analit
                     ).length > 0
                   ) {
-                    testovi.push({ ime: element.labassay.analit, count: 0 });
+                    testovi.push({ ime: element.labassay.analit, count: 0, cijena: element.labassay.price });
                   }
                   if (
                     testovi.filter(
@@ -1093,7 +1103,7 @@ reportController.PPodanu = function (req, res) {
                 });
                 if (!exists) {
                   if (!tsts.bundledTests.length) {
-                    testovi.push({ ime: tsts.analit, count: 0 });
+                    testovi.push({ ime: tsts.analit, count: 0, cijena: tsts.price });
                   }
                 }
               });
@@ -1102,33 +1112,84 @@ reportController.PPodanu = function (req, res) {
               var linerow = [];
               var i = 0;
               var total = 0;
+              var pojedinacno = 0;
+              var all = 0;
               testovi.forEach((element) => {
                 i++;
                 linerow = [];
-                linerow.push(i);
-                linerow.push(element.ime);
-                linerow.push(element.count);
-                total += element.count;
-                rows.push(linerow);
+
+                if(element.count > 0){
+
+                  if(i == 1){
+                    linerow.push(i);
+                    linerow.push(element.ime );
+
+                    // console.log(element.ime)
+                    linerow.push(element.count + "\n\n");
+                    linerow.push(element.cijena);
+                    linerow.push(parseInt(element.count) * parseInt(element.cijena));
+                    rows.push(linerow);
+                    total += element.count;
+                    pojedinacno += parseInt(element.cijena);
+                    all += parseInt(parseInt(element.count) * parseInt(element.cijena));
+
+                  }else{
+                    linerow.push(i);
+                    linerow.push(element.ime);
+                    linerow.push(element.count);
+                    linerow.push(element.cijena);
+                    linerow.push(parseInt(element.count) * parseInt(element.cijena));
+                    rows.push(linerow);
+                    total += element.count;
+                    pojedinacno += parseInt(element.cijena);
+                    all += parseInt(parseInt(element.count) * parseInt(element.cijena));
+
+                  }
+                 
+                }
+                
+                
+                
                 if (i === testovi.length) {
                   linerow = [];
                   linerow.push("-");
                   linerow.push("UKUPNO");
                   linerow.push(total);
+                  linerow.push("-"); // linerow.push(pojedinacno + " KM");
+                  linerow.push(all + " KM");
                   rows.push(linerow);
                 }
               });
 
-              doc.table(
-                {
-                  headers: headers,
-                  rows: rows,
-                },
-                {
-                  prepareHeader: () => doc.fontSize(8),
-                  prepareRow: (row, i) => doc.fontSize(10),
-                }
-              );
+              const table = {
+                headers: [
+                  // "Redni broj",
+                  "Rank",
+                  "Naziv analize",
+                  "Urađenih analiza",
+                  "Cijena analize",
+                  "Ukupno",
+                  // "Vrijeme uzorkovanja",
+                ],
+                rows: rows,
+              };
+
+              doc.table(table, {
+                prepareHeader: () => doc.font("PTSansBold").fontSize(7),
+                prepareRow: (row, i) => doc.font("PTSansRegular").fontSize(8),
+              });
+
+
+              // doc.table(
+              //   {
+              //     headers: headers,
+              //     rows: rows,
+              //   },
+              //   {
+              //     prepareHeader: () => doc.fontSize(8),
+              //     prepareRow: (row, i) => doc.fontSize(10),
+              //   }
+              // );
 
               const range = doc.bufferedPageRange();
 

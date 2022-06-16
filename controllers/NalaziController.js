@@ -1050,9 +1050,9 @@ nalazController.Nalaz = function (req, res) {
 
                         // console.log(j)
 
-                        // refSpecificni = j + '*';
+                        refSpecificni = j + '*';
 
-                        refSpecificni = "*";
+                        // refSpecificni = "*";
 
                         specificni.push({
                           naziv: tmptest,
@@ -1328,6 +1328,7 @@ nalazController.Nalaz = function (req, res) {
 
           Data.ime = rezultati[0].patient.ime;
           Data.prezime = rezultati[0].patient.prezime;
+          Data.roditelj = rezultati[0].patient.roditelj;
           Data.jmbg = rezultati[0].patient.jmbg;
           Data.godiste = Data.jmbg.substring(4, 7);
 

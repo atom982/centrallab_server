@@ -19,21 +19,24 @@ const SchemaAudit_Patients = mongoose.Schema({
   ime: { type: String, required: true },
   prezime: { type: String, required: true },
   spol: { type: String },
+  adresa: { type: String, default: "" },
   duhan: { type: String, default: "NEPOZNATO" },
   dijabetes: { type: String, default: "NEPOZNATO" },
   lokacija: { type: mongoose.Schema.ObjectId, ref: "Lokacija" },
+  passport: { type: String, default: "" },
+  roditelj: { type: String, default: "" },
   telefon: { type: String, default: "NEPOZNATO" },
   email: { type: String, default: "NEPOZNATO" },
   site: { type: mongoose.Schema.ObjectId, ref: "Site" },
+  created_by: { type: String, default: "" },
   created_at: {
     type: Date,
     default: new Date(
       new Date().getTime() - new Date().getTimezoneOffset() * 60000
     ),
   },
-  updated_at: { type: Date, default: null },
-  created_by: { type: String, default: "" },
   updated_by: { type: String, default: "" },
+  updated_at: { type: Date, default: null },
 });
 
 const SchemaAudit_SampleDelete = mongoose.Schema({
