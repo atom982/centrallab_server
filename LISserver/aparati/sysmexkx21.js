@@ -117,6 +117,8 @@ module.exports = {
                           case 'L':
                                     console.log("terminator"); 
                                     console.log(sid)
+                                    var k = 1
+                                    var j = 1
                                     //console.log(rezultati)  
                                     Results.findOne({id:sid}).populate('aparat').exec(function (err, rezultat) {
                                       if (err) {
@@ -126,8 +128,7 @@ module.exports = {
                                         if(rezultat){
                                           var temp = {}
                                           if(rezultat.multi.length){
-                                            var k = 1
-                                            var j = 1
+
                                             var tempRez = []
                                             rezultat.multi.forEach(instance => { // multi rezultat
                                               instance.forEach(rez => { // rez - analit tj. npr wbc od kks
