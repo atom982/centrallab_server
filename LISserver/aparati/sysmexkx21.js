@@ -80,6 +80,10 @@ module.exports = {
                                             case 'MIX#':                                                    
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
                                             break;
+                                            case 'HCT':                                                    
+                                            temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseInt(temprez)/100).toString()
+                                            break;
                                             case 'MCHC':                                                    
                                             temprez = temprez.substring(1,4)
                                             break;
@@ -178,7 +182,7 @@ module.exports = {
                                             });
                                             console.log(k)
                                             console.log(rezultati.length)
-                                            if(k === rezultati.length){
+                                            if(k === rezultati.length+1){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
                                               //console.log(rezultat.multi)
