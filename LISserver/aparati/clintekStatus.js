@@ -67,14 +67,17 @@ module.exports = {
                                 console.log("Cla: "+result[11])
                                 console.log("GLU: "+result[13])
                                 console.log("BIL: "+result[16])
-                                //     console.log("LEU: "+result[1].split(',')[13].trim())
-                                //     console.log("NIT: "+result[1].split(',')[16].trim())
-                                //     console.log("UBG: "+result[1].split(',')[19].trim())
-                                //     console.log("PRO: "+result[1].split(',')[22].trim())
-                                //     console.log("pH: "+result[1].split(',')[25].trim())
-                                //     console.log("BLD: "+result[1].split(',')[28].trim())
-                                //     console.log("SG: "+result[1].split(',')[31].trim())
-                                //     console.log("KET: "+result[1].split(',')[34].trim())
+                                console.log("KET: "+result[19])
+                                console.log("SG: "+result[22])
+                                console.log("BLD: "+result[25])
+                                console.log("pH: "+result[28])
+                                console.log("PRO: "+result[31])
+                                console.log("UBG: "+result[34])
+                                //     
+                                console.log("NIT: "+result[37])
+                                console.log("LEU: "+result[40])
+                                
+    
                                
                                 
                                 //     console.log("VC: "+result[1].split(',')[43].trim())
@@ -93,6 +96,29 @@ module.exports = {
 
                                            Col = "žuta"
                                           
+                                        }else if (result[10].includes("Orange")){
+
+                                          Col = "narandžasta"
+      
+
+                                        }else if (result[10].includes("Brown")){
+
+                                          Col = "smeđa"
+      
+                                        }else if (result[10].includes("Red")){
+
+                                          Col = "crvena"
+      
+                                        }else if (result[10].includes("Green")){
+
+                                          Col = "zelena"
+      
+                                        }else if (result[10].includes("Blue")){
+
+                                          Col = "plava"
+      
+                                        }else{
+                                          Col = "Greška"
                                         }
 
                                     rezultati.push({
@@ -110,6 +136,24 @@ module.exports = {
 
                                       Cla = "bistar"
                                       
+                                  }else if (result[11].includes("Slight")){
+
+                                    Cla = "blago opalescentan"
+
+                                  }else if (result[11].includes("Turb")){
+
+                                    Cla = "hemoragičan"
+                                    
+                                  }else if (result[11].includes("Cloudy")){
+
+                                    Cla = "mutan"
+                                    
+                                  }else {
+
+                                    
+  
+                                    Cla = "Greška"
+
                                   }
 
                                 rezultati.push({
@@ -189,180 +233,341 @@ module.exports = {
                                         analit_status:"",
                                       })  
 
-                                //     // pH urina
-                                //     var pH = ""
-                                //         pH = result[1].split(',')[25].trim()
 
-                                //         if (result[1].split(',')[25].trim().includes("5.0")) {
+                                              // Ketoni
 
-                                //           pH = "5.0"
+                                      var KET = ""
+                                          KET = result[19]
+
+                                          if (result[19]("Negative")) {
+
+                                            KET = "negativan"
+                                            
+                                        }else if (result[19].includes("1+")) {
+    
+                                          KET = "pozitivan 1+"
+                                            
+                                        }else if (result[19].includes("2+")) {
+    
+                                          KET = "pozitivan 2+"
+                                            
+                                        }else if (result[19].includes("3+")) {
+    
+                                          KET = "pozitivan 3+"
+                                            
+                                        }else if (result[19].includes("4+")) {
+    
+                                          KET = "pozitivan 4+"
+                                            
+                                        }else if (result[19].includes("5+")) {
+    
+                                          KET = "pozitivan 5+"
+                                            
+                                        }else {
+    
+                                          KET = "Greška"
+    
+                                        }
+
+                                      rezultati.push({
+                                        analit:'KET',
+                                        analit_rez:KET,
+                                        analit_jedinica:"",
+                                        analit_status:"",
+                                      }) 
+
+
+                                           // Specifična težina
+                                    var SG = ""
+                                        SG = result[22]
+
+                                        if (result[22].includes("<=1.005")) {
+
+                                          SG = "<=1.005"
                                           
-                                //       }else if (result[1].split(',')[25].trim().includes("5.5")) {
-  
-                                //         pH = "5.5"
-                                          
-                                //       }else if (result[1].split(',')[25].trim().includes("6.0")) {
+                                      }else if (result[22].includes("1.010")) {
 
-                                //         pH = "6.0"
+                                        SG = "1.010"
                                         
-                                //     }else if (result[1].split(',')[25].trim().includes("6.5")) {
+                                    }else if (result[22].includes("1.015")) {
 
-                                //       pH = "6.5"
+                                      SG = "1.015"
                                         
-                                //     }else if (result[1].split(',')[25].trim().includes("7.0")) {
+                                    }else if (result[22].includes("1.020")) {
 
-                                //       pH = "7.0"
+                                      SG = "1.020"
                                       
-                                //   }else if (result[1].split(',')[25].trim().includes("7.5")) {
+                                  }else if (result[22].includes("1.025")) {
 
-                                //     pH = "7.5"
+                                    SG = "1.025"
                                       
-                                //   }else if (result[1].split(',')[25].trim().includes("8.0")) {
+                                  }else if (result[22].includes(">=1.030")) {
   
-                                //         pH = "8.0"
+                                    SG = ">=1.030"
                                           
-                                //       }else if (result[1].split(',')[25].trim().includes("8.5")) {
+                                      }else {
   
-                                //         pH = "8.5"
+                                        SG = "Greška"
+  
+                                      }
+
+                                        rezultati.push({
+                                          analit:'SG',
+                                          analit_rez:SG,
+                                          analit_jedinica:"",
+                                          analit_status:"",
+                                        })
+
+
+
+                                              // Eritrociti (HGB)
+
+                                      var BLO = ""
+                                      BLO = result[25]
+
+                                          if (result[25].includes("Negative")) {
+
+                                            BLO = "negativan"
+                                            
+                                        }else if (result[25].includes("+/- Intact")) {
+    
+                                          BLO = "+/- Intact"
+                                            
+                                        }else if (result[25].includes("+/-")) {
+    
+                                          BLO = "+/-"
+                                            
+                                        }else if (result[25].includes("1+")) {
+    
+                                          BLO = "pozitivan 1+"
+                                            
+                                        }else if (result[25].includes("2+")) {
+    
+                                          BLO = "pozitivan 2+"
+                                            
+                                        }else if (result[25].includes("3+")) {
+    
+                                          BLO = "pozitivan 3+"
+                                            
+                                        }else {
+    
+                                          BLO = "Greška"
+    
+                                        }
+
+                                      rezultati.push({
+                                        analit:'BLO', // BLD
+                                        analit_rez:BLO,
+                                        analit_jedinica:"",
+                                        analit_status:"",
+                                      })  
+
+
+                                    // pH urina
+                                    var pH = ""
+                                        pH = result[28]
+
+                                        if (result[28].includes("5.0")) {
+
+                                          pH = "5.0"
                                           
-                                //       }else if (result[1].split(',')[25].trim().includes("9.0")) {
+                                      }else if (result[28].includes("5.5")) {
   
-                                //         pH = "9.0"
+                                        pH = "5.5"
                                           
-                                //       }else {
-  
-                                //         pH = "Error"
-  
-                                //       }
+                                      }else if (result[28].includes("6.0")) {
 
-                                //     rezultati.push({
-                                //       analit:'pH',
-                                //       analit_rez:pH,
-                                //       analit_jedinica:"",
-                                //       analit_status:"",
-                                //     })  
-
-                                //     // Specifična težina
-                                //     var SG = ""
-                                //         SG = result[1].split(',')[31].trim()
-
-                                //         if (result[1].split(',')[31].trim().includes("1.000")) {
-
-                                //           SG = "1.000"
-                                          
-                                //       }else if (result[1].split(',')[31].trim().includes("1.005")) {
-  
-                                //         SG = "1.005"
-                                          
-                                //       }else if (result[1].split(',')[31].trim().includes("1.010")) {
-
-                                //         SG = "1.010"
+                                        pH = "6.0"
                                         
-                                //     }else if (result[1].split(',')[31].trim().includes("1.015")) {
+                                    }else if (result[28].includes("6.5")) {
 
-                                //       SG = "1.015"
+                                      pH = "6.5"
                                         
-                                //     }else if (result[1].split(',')[31].trim().includes("1.020")) {
+                                    }else if (result[28].includes("7.0")) {
 
-                                //       SG = "1.020"
+                                      pH = "7.0"
                                       
-                                //   }else if (result[1].split(',')[31].trim().includes("1.025")) {
+                                  }else if (result[28].includes("7.5")) {
 
-                                //     SG = "1.025"
+                                    pH = "7.5"
                                       
-                                //   }else if (result[1].split(',')[31].trim().includes("1.030")) {
+                                  }else if (result[28].includes("8.0")) {
   
-                                //     SG = "1.030"
+                                        pH = "8.0"
                                           
-                                //       }else {
+                                      }else if (result[28].includes("8.5")) {
   
-                                //         SG = "Error"
+                                        pH = "8.5"
+                                          
+                                      }else if (result[28].includes(">=9.0")) {
   
-                                //       }
+                                        pH = ">=9.0"
+                                          
+                                      }else {
+  
+                                        pH = "Greška"
+  
+                                      }
 
-                                //         rezultati.push({
-                                //           analit:'SG',
-                                //           analit_rez:SG,
-                                //           analit_jedinica:"",
-                                //           analit_status:"",
-                                //         })
+                                    rezultati.push({
+                                      analit:'pH',
+                                      analit_rez:pH,
+                                      analit_jedinica:"",
+                                      analit_status:"",
+                                    })  
+
+                               
                                         
-                                //     // Proteini
-                                //     var PRO = ""
-                                //         PRO = result[1].split(',')[22].trim()
+                                    // Proteini
 
-                                //         if (result[1].split(',')[22].trim().includes("Neg")) {
+                                    var PRO = ""
+                                        PRO = result[31]
 
-                                //           PRO = "negativan"
+                                        if (result[31].includes("Negative")) {
+
+                                          PRO = "negativan"
                                           
-                                //       }else if (result[1].split(',')[22].trim().includes("0.15")) {
+                                      }else if (result[31].includes("+/-")) {
   
-                                //           PRO = "0.15"
+                                          PRO = "+/-"
                                           
-                                //       }else if (result[1].split(',')[22].trim().includes("0.3")) {
+                                      }else if (result[31].includes("1+")) {
   
-                                //           PRO = "0.3"
+                                          PRO = "pozitivan 1+"
                                           
-                                //       }else if (result[1].split(',')[22].trim().includes("1.0")) {
+                                      }else if (result[31].includes("2+")) {
   
-                                //           PRO = "1.0"
+                                          PRO = "pozitivan 2+"
                                           
-                                //       }else if (result[1].split(',')[22].trim().includes("3.0")) {
+                                      }else if (result[31].includes("3+")) {
   
-                                //           PRO = "3.0"
+                                          PRO = "pozitivan 3+"
                                           
-                                //       }else {
+                                      }else {
   
-                                //           PRO = "Error"
+                                          PRO = "Greška"
   
-                                //       }
+                                      }
   
-                                //         rezultati.push({
-                                //           analit:'PRO',
-                                //           analit_rez:PRO,
-                                //           analit_jedinica:"g/L",
-                                //           analit_status:"",
-                                //         })  
+                                        rezultati.push({
+                                          analit:'PRO',
+                                          analit_rez:PRO,
+                                          analit_jedinica:"",
+                                          analit_status:"",
+                                        })  
+
+
+
+                                               // Urobilinogen
+
+                                      var URO = ""
+                                      URO = result[34]
+
+                                      if (result[34].includes("3.2")) {
+
+                                        URO = "3.2"
+                                        
+                                    }else if (result[34].includes("16")) {
+
+                                        URO = "16"
+                                        
+                                    }else if (result[34].includes("33")) {
+
+                                        URO = "33"
+                                        
+                                    }else if (result[34].includes("66")) {
+
+                                        URO = "66"
+                                        
+                                    }else if (result[34].includes(">=131")) {
+
+                                        URO = ">=131"
+                                        
+                                    }else {
+
+                                        URO = "Greška"
+
+                                    }
+                                    
+                                      rezultati.push({
+                                        analit:'URO', // UBG         
+                                        analit_rez:URO,
+                                        analit_jedinica:"µmol/L",
+                                        analit_status:"",
+                                      })  
+
+
+                                             // Nitriti
+
+                                             var NIT = ""
+                                             NIT = result[37]
+       
+                                             if (result[37].includes("Negative")) {
+       
+                                               NIT = "negativan"
+                                               
+                                           }else if (result[37].includes("Positive")) {
+       
+                                             NIT = "pozitivan"
+                                               
+                                           }else {
+       
+                                             NIT = "Greška"
+       
+                                           }
+       
+                                             rezultati.push({
+                                               analit:'NIT',
+                                               analit_rez:NIT,
+                                               analit_jedinica:"",
+                                               analit_status:"",
+                                             })    
+
+
+
+                                                         // Leukociti (HGB)
+
+                                      var LEU = ""
+                                      LEU = result[40]
+
+                                          if (result[40].includes("Negative")) {
+
+                                            LEU = "negativan"
+                                            
+                                        }else if (result[40].includes("1+")) {
+    
+                                          LEU = "pozitivan 1+"
+                                            
+                                        }else if (result[40].includes("2+")) {
+    
+                                          LEU = "pozitivan 2+"
+                                            
+                                        }else if (result[40].includes("3+")) {
+    
+                                          LEU = "pozitivan 3+"
+                                            
+                                        }else if (result[40].includes("4+")) {
+    
+                                          LEU = "pozitivan 4+"
+                                            
+                                        }else {
+    
+                                          LEU = "Greška" 
+    
+                                        }
+
+
+
+                                      rezultati.push({
+                                        analit:'LEU',
+                                        analit_rez:LEU,
+                                        analit_jedinica:"Leu/µL",
+                                        analit_status:"",
+                                      }) 
 
 
                         
-                                //       // Ketoni
-
-                                //       var KET = ""
-                                //           KET = result[1].split(',')[34].trim()
-
-                                //           if (result[1].split(',')[34].trim().includes("Neg")) {
-
-                                //             KET = "negativan"
-                                            
-                                //         }else if (result[1].split(',')[34].trim().includes("0.5")) {
-    
-                                //           KET = "0.5"
-                                            
-                                //         }else if (result[1].split(',')[34].trim().includes("1.5")) {
-    
-                                //           KET = "1.5"
-                                            
-                                //         }else if (result[1].split(',')[34].trim().includes("4.0")) {
-    
-                                //           KET = "4.0"
-                                            
-                                //         }else if (result[1].split(',')[34].trim().includes("8.0")) {
-    
-                                //           KET = "8.0"
-                                            
-                                //         }else {
-    
-                                //           KET = "Error"
-    
-                                //         }
-
-                                //       rezultati.push({
-                                //         analit:'KET',
-                                //         analit_rez:KET,
-                                //         analit_jedinica:"mmol/L",
-                                //         analit_status:"",
-                                //       }) 
+                              
 
                                 //       // Askorbinska kiselina
 
@@ -399,147 +604,13 @@ module.exports = {
                                 //         analit_status:"",
                                 //       })     
 
-                                //       // Eritrociti (HGB)
-
-                                //       var BLO = ""
-                                //       BLO = result[1].split(',')[28].trim()
-
-                                //           if (result[1].split(',')[28].trim().includes("Neg")) {
-
-                                //             BLO = "negativan"
-                                            
-                                //         }else if (result[1].split(',')[28].trim().includes("10")) {
-    
-                                //           BLO = "10"
-                                            
-                                //         }else if (result[1].split(',')[28].trim().includes("25")) {
-    
-                                //           BLO = "25"
-                                            
-                                //         }else if (result[1].split(',')[28].trim().includes("80")) {
-    
-                                //           BLO = "80"
-                                            
-                                //         }else if (result[1].split(',')[28].trim().includes("200")) {
-    
-                                //           BLO = "200"
-                                            
-                                //         }else {
-    
-                                //           BLO = "Error"
-    
-                                //         }
-
-                                //       rezultati.push({
-                                //         analit:'BLO', // BLD
-                                //         analit_rez:BLO,
-                                //         analit_jedinica:"Erc/µL",
-                                //         analit_status:"",
-                                //       })  
+                                
                                       
-                                //       // Leukociti (HGB)
+                          
 
-                                //       var LEU = ""
-                                //       LEU = result[1].split(',')[13].trim()
+                               
 
-                                //           if (result[1].split(',')[13].trim().includes("Neg")) {
-
-                                //             LEU = "negativan"
-                                            
-                                //         }else if (result[1].split(',')[13].trim().includes("15")) {
-    
-                                //           LEU = "15"
-                                            
-                                //         }else if (result[1].split(',')[13].trim().includes("70")) {
-    
-                                //           LEU = "70"
-                                            
-                                //         }else if (result[1].split(',')[13].trim().includes("125")) {
-    
-                                //           LEU = "125"
-                                            
-                                //         }else if (result[1].split(',')[13].trim().includes("500")) {
-    
-                                //           LEU = "500"
-                                            
-                                //         }else {
-    
-                                //           LEU = "Error"
-    
-                                //         }
-
-
-
-                                //       rezultati.push({
-                                //         analit:'LEU',
-                                //         analit_rez:LEU,
-                                //         analit_jedinica:"Leu/µL",
-                                //         analit_status:"",
-                                //       }) 
-
-                                //       // Nitriti
-
-                                //       var NIT = ""
-                                //       NIT = result[1].split(',')[16].trim()
-
-                                //       if (result[1].split(',')[16].trim().includes("Neg")) {
-
-                                //         NIT = "negativan"
-                                        
-                                //     }else if (result[1].split(',')[16].trim().includes("Pos")) {
-
-                                //       NIT = "pozitivan"
-                                        
-                                //     }else {
-
-                                //       NIT = "Error"
-
-                                //     }
-
-                                //       rezultati.push({
-                                //         analit:'NIT',
-                                //         analit_rez:NIT,
-                                //         analit_jedinica:"",
-                                //         analit_status:"",
-                                //       })    
-
-                                //       // Urobilinogen
-
-                                //       var URO = ""
-                                //       URO = result[1].split(',')[19].trim()
-
-                                //       if (result[1].split(',')[19].trim().includes("3.5")) {
-
-                                //         URO = "3.5"
-                                        
-                                //     }else if (result[1].split(',')[19].trim().includes("17")) {
-
-                                //         URO = "17"
-                                        
-                                //     }else if (result[1].split(',')[19].trim().includes("35")) {
-
-                                //         URO = "35"
-                                        
-                                //     }else if (result[1].split(',')[19].trim().includes("70")) {
-
-                                //         URO = "70"
-                                        
-                                //     }else if (result[1].split(',')[19].trim().includes("140")) {
-
-                                //         URO = "140"
-                                        
-                                //     }else {
-
-                                //         URO = "Error"
-
-                                //     }
-                                    
-                                //       rezultati.push({
-                                //         analit:'URO', // UBG         
-                                //         analit_rez:URO,
-                                //         analit_jedinica:"µmol/L",
-                                //         analit_status:"",
-                                //       })  
+                               
                                       
 
                                       
