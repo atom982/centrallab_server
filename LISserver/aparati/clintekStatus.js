@@ -698,7 +698,7 @@ module.exports = {
                                             });
 
                                             console.log(k + " / " + rezultati.length)
-                                            if(k === rezultati.length){
+                                            if(k === rezultati.length - 1){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
                                               //console.log(rezultat.multi)
