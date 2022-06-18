@@ -239,7 +239,7 @@ module.exports = {
                                       var KET = ""
                                           KET = result[19]
 
-                                          if (result[19]("Negative")) {
+                                          if (result[19].includes("Negative")) {
 
                                             KET = "negativan"
                                             
