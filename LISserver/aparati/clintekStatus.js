@@ -55,506 +55,507 @@ module.exports = {
                                     console.log("rezultat");
                                     //'R|5|5^^^Glu|norm|mg/dl||||||autologin|20190208112929|20190208113034',
                                     //O|1|K001M90208|^^^^SAMPLE||R||||||X|||20190209055710'
-                                    var result = element.split("|")
+                                    var result = element.split("|")[3].split(",")
 
+                                    console.log(result)
                                     console.log(result[1])
                                     //vrijeme_prijenosa = Date.now()
                                     //vrijeme_rezultata= result[12]
                                     //sid = result[1].split(',')[0].trim()
                                     //sid ="U001I20312"
-                                    var tmpsid = sid.replace(/^0+/, '')
-                                    switch (tmpsid.length) {
-                                        case 1:
-                                            tmpsid = "00" + tmpsid
-                                            break;
-                                        case 2:
-                                            tmpsid = "0" + tmpsid
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    var tmpdate = result[1].split(',')[1].trim()
-                                    sid = "U"+tmpsid+"I"+ tmpdate.substring(tmpdate.length-1,tmpdate.length)+tmpdate.substring(0,2)+tmpdate.substring(3,5)
+                                //     var tmpsid = sid.replace(/^0+/, '')
+                                //     switch (tmpsid.length) {
+                                //         case 1:
+                                //             tmpsid = "00" + tmpsid
+                                //             break;
+                                //         case 2:
+                                //             tmpsid = "0" + tmpsid
+                                //             break;
+                                //         default:
+                                //             break;
+                                //     }
+                                //     var tmpdate = result[1].split(',')[1].trim()
+                                //     sid = "U"+tmpsid+"I"+ tmpdate.substring(tmpdate.length-1,tmpdate.length)+tmpdate.substring(0,2)+tmpdate.substring(3,5)
 
-                                    console.log(sid)
-                                    console.log(result[1].split(',')[1].trim())
+                                //     console.log(sid)
+                                //     console.log(result[1].split(',')[1].trim())
                                     
-                                    console.log('Col: '+result[1].split(',')[10].trim())
-                                    console.log("Cla: "+result[1].split(',')[11].trim())
-                                    console.log("LEU: "+result[1].split(',')[13].trim())
-                                    console.log("NIT: "+result[1].split(',')[16].trim())
-                                    console.log("UBG: "+result[1].split(',')[19].trim())
-                                    console.log("PRO: "+result[1].split(',')[22].trim())
-                                    console.log("pH: "+result[1].split(',')[25].trim())
-                                    console.log("BLD: "+result[1].split(',')[28].trim())
-                                    console.log("SG: "+result[1].split(',')[31].trim())
-                                    console.log("KET: "+result[1].split(',')[34].trim())
-                                    console.log("BIL: "+result[1].split(',')[37].trim())
-                                    console.log("GLU: "+result[1].split(',')[40].trim())
-                                    console.log("VC: "+result[1].split(',')[43].trim())
+                                //     console.log('Col: '+result[1].split(',')[10].trim())
+                                //     console.log("Cla: "+result[1].split(',')[11].trim())
+                                //     console.log("LEU: "+result[1].split(',')[13].trim())
+                                //     console.log("NIT: "+result[1].split(',')[16].trim())
+                                //     console.log("UBG: "+result[1].split(',')[19].trim())
+                                //     console.log("PRO: "+result[1].split(',')[22].trim())
+                                //     console.log("pH: "+result[1].split(',')[25].trim())
+                                //     console.log("BLD: "+result[1].split(',')[28].trim())
+                                //     console.log("SG: "+result[1].split(',')[31].trim())
+                                //     console.log("KET: "+result[1].split(',')[34].trim())
+                                //     console.log("BIL: "+result[1].split(',')[37].trim())
+                                //     console.log("GLU: "+result[1].split(',')[40].trim())
+                                //     console.log("VC: "+result[1].split(',')[43].trim())
 
 
-                                    // Opšti pregled urina - fizikalno hemijski pregled
-                                    // LabAssay ObjectId("5f76fc20c5294a1764bd7134")
+                                //     // Opšti pregled urina - fizikalno hemijski pregled
+                                //     // LabAssay ObjectId("5f76fc20c5294a1764bd7134")
 
-                                    // Izgled
-                                    var Cla = ""
-                                          Cla = result[1].split(',')[11].trim()
+                                //     // Izgled
+                                //     var Cla = ""
+                                //           Cla = result[1].split(',')[11].trim()
 
-                                          if (result[1].split(',')[11].trim().includes("Clear")) {
+                                //           if (result[1].split(',')[11].trim().includes("Clear")) {
 
-                                            Cla = "bistar"
+                                //             Cla = "bistar"
                                             
-                                        }else {
+                                //         }else {
     
-                                          Cla = result[1].split(',')[11].trim()
+                                //           Cla = result[1].split(',')[11].trim()
     
-                                        }
+                                //         }
 
-                                      rezultati.push({
-                                        analit:'Cla',
-                                        analit_rez:Cla,
-                                        analit_jedinica:'',
-                                        analit_status:"",
-                                      })   
+                                //       rezultati.push({
+                                //         analit:'Cla',
+                                //         analit_rez:Cla,
+                                //         analit_jedinica:'',
+                                //         analit_status:"",
+                                //       })   
 
-                                    // Boja
-                                    var Col = ""
-                                        Col = result[1].split(',')[10].trim()
+                                //     // Boja
+                                //     var Col = ""
+                                //         Col = result[1].split(',')[10].trim()
 
-                                        if (result[1].split(',')[10].trim().includes("Yellow")) {
+                                //         if (result[1].split(',')[10].trim().includes("Yellow")) {
 
-                                          Col = "žut"
+                                //           Col = "žut"
                                           
-                                      }else {
+                                //       }else {
   
-                                        Col = result[1].split(',')[10].trim()
+                                //         Col = result[1].split(',')[10].trim()
   
-                                      }
+                                //       }
 
-                                    rezultati.push({
-                                        analit:'Col',
-                                        analit_rez:Col,
-                                        analit_jedinica:"",
-                                        analit_status:"",
-                                      })   
+                                //     rezultati.push({
+                                //         analit:'Col',
+                                //         analit_rez:Col,
+                                //         analit_jedinica:"",
+                                //         analit_status:"",
+                                //       })   
 
-                                    // pH urina
-                                    var pH = ""
-                                        pH = result[1].split(',')[25].trim()
+                                //     // pH urina
+                                //     var pH = ""
+                                //         pH = result[1].split(',')[25].trim()
 
-                                        if (result[1].split(',')[25].trim().includes("5.0")) {
+                                //         if (result[1].split(',')[25].trim().includes("5.0")) {
 
-                                          pH = "5.0"
+                                //           pH = "5.0"
                                           
-                                      }else if (result[1].split(',')[25].trim().includes("5.5")) {
+                                //       }else if (result[1].split(',')[25].trim().includes("5.5")) {
   
-                                        pH = "5.5"
+                                //         pH = "5.5"
                                           
-                                      }else if (result[1].split(',')[25].trim().includes("6.0")) {
+                                //       }else if (result[1].split(',')[25].trim().includes("6.0")) {
 
-                                        pH = "6.0"
+                                //         pH = "6.0"
                                         
-                                    }else if (result[1].split(',')[25].trim().includes("6.5")) {
+                                //     }else if (result[1].split(',')[25].trim().includes("6.5")) {
 
-                                      pH = "6.5"
+                                //       pH = "6.5"
                                         
-                                    }else if (result[1].split(',')[25].trim().includes("7.0")) {
+                                //     }else if (result[1].split(',')[25].trim().includes("7.0")) {
 
-                                      pH = "7.0"
+                                //       pH = "7.0"
                                       
-                                  }else if (result[1].split(',')[25].trim().includes("7.5")) {
+                                //   }else if (result[1].split(',')[25].trim().includes("7.5")) {
 
-                                    pH = "7.5"
+                                //     pH = "7.5"
                                       
-                                  }else if (result[1].split(',')[25].trim().includes("8.0")) {
+                                //   }else if (result[1].split(',')[25].trim().includes("8.0")) {
   
-                                        pH = "8.0"
+                                //         pH = "8.0"
                                           
-                                      }else if (result[1].split(',')[25].trim().includes("8.5")) {
+                                //       }else if (result[1].split(',')[25].trim().includes("8.5")) {
   
-                                        pH = "8.5"
+                                //         pH = "8.5"
                                           
-                                      }else if (result[1].split(',')[25].trim().includes("9.0")) {
+                                //       }else if (result[1].split(',')[25].trim().includes("9.0")) {
   
-                                        pH = "9.0"
+                                //         pH = "9.0"
                                           
-                                      }else {
+                                //       }else {
   
-                                        pH = "Error"
+                                //         pH = "Error"
   
-                                      }
+                                //       }
 
-                                    rezultati.push({
-                                      analit:'pH',
-                                      analit_rez:pH,
-                                      analit_jedinica:"",
-                                      analit_status:"",
-                                    })  
+                                //     rezultati.push({
+                                //       analit:'pH',
+                                //       analit_rez:pH,
+                                //       analit_jedinica:"",
+                                //       analit_status:"",
+                                //     })  
 
-                                    // Specifična težina
-                                    var SG = ""
-                                        SG = result[1].split(',')[31].trim()
+                                //     // Specifična težina
+                                //     var SG = ""
+                                //         SG = result[1].split(',')[31].trim()
 
-                                        if (result[1].split(',')[31].trim().includes("1.000")) {
+                                //         if (result[1].split(',')[31].trim().includes("1.000")) {
 
-                                          SG = "1.000"
+                                //           SG = "1.000"
                                           
-                                      }else if (result[1].split(',')[31].trim().includes("1.005")) {
+                                //       }else if (result[1].split(',')[31].trim().includes("1.005")) {
   
-                                        SG = "1.005"
+                                //         SG = "1.005"
                                           
-                                      }else if (result[1].split(',')[31].trim().includes("1.010")) {
+                                //       }else if (result[1].split(',')[31].trim().includes("1.010")) {
 
-                                        SG = "1.010"
+                                //         SG = "1.010"
                                         
-                                    }else if (result[1].split(',')[31].trim().includes("1.015")) {
+                                //     }else if (result[1].split(',')[31].trim().includes("1.015")) {
 
-                                      SG = "1.015"
+                                //       SG = "1.015"
                                         
-                                    }else if (result[1].split(',')[31].trim().includes("1.020")) {
+                                //     }else if (result[1].split(',')[31].trim().includes("1.020")) {
 
-                                      SG = "1.020"
+                                //       SG = "1.020"
                                       
-                                  }else if (result[1].split(',')[31].trim().includes("1.025")) {
+                                //   }else if (result[1].split(',')[31].trim().includes("1.025")) {
 
-                                    SG = "1.025"
+                                //     SG = "1.025"
                                       
-                                  }else if (result[1].split(',')[31].trim().includes("1.030")) {
+                                //   }else if (result[1].split(',')[31].trim().includes("1.030")) {
   
-                                    SG = "1.030"
+                                //     SG = "1.030"
                                           
-                                      }else {
+                                //       }else {
   
-                                        SG = "Error"
+                                //         SG = "Error"
   
-                                      }
+                                //       }
 
-                                        rezultati.push({
-                                          analit:'SG',
-                                          analit_rez:SG,
-                                          analit_jedinica:"",
-                                          analit_status:"",
-                                        })
+                                //         rezultati.push({
+                                //           analit:'SG',
+                                //           analit_rez:SG,
+                                //           analit_jedinica:"",
+                                //           analit_status:"",
+                                //         })
                                         
-                                    // Proteini
-                                    var PRO = ""
-                                        PRO = result[1].split(',')[22].trim()
+                                //     // Proteini
+                                //     var PRO = ""
+                                //         PRO = result[1].split(',')[22].trim()
 
-                                        if (result[1].split(',')[22].trim().includes("Neg")) {
+                                //         if (result[1].split(',')[22].trim().includes("Neg")) {
 
-                                          PRO = "negativan"
+                                //           PRO = "negativan"
                                           
-                                      }else if (result[1].split(',')[22].trim().includes("0.15")) {
+                                //       }else if (result[1].split(',')[22].trim().includes("0.15")) {
   
-                                          PRO = "0.15"
+                                //           PRO = "0.15"
                                           
-                                      }else if (result[1].split(',')[22].trim().includes("0.3")) {
+                                //       }else if (result[1].split(',')[22].trim().includes("0.3")) {
   
-                                          PRO = "0.3"
+                                //           PRO = "0.3"
                                           
-                                      }else if (result[1].split(',')[22].trim().includes("1.0")) {
+                                //       }else if (result[1].split(',')[22].trim().includes("1.0")) {
   
-                                          PRO = "1.0"
+                                //           PRO = "1.0"
                                           
-                                      }else if (result[1].split(',')[22].trim().includes("3.0")) {
+                                //       }else if (result[1].split(',')[22].trim().includes("3.0")) {
   
-                                          PRO = "3.0"
+                                //           PRO = "3.0"
                                           
-                                      }else {
+                                //       }else {
   
-                                          PRO = "Error"
+                                //           PRO = "Error"
   
-                                      }
+                                //       }
   
-                                        rezultati.push({
-                                          analit:'PRO',
-                                          analit_rez:PRO,
-                                          analit_jedinica:"g/L",
-                                          analit_status:"",
-                                        })  
+                                //         rezultati.push({
+                                //           analit:'PRO',
+                                //           analit_rez:PRO,
+                                //           analit_jedinica:"g/L",
+                                //           analit_status:"",
+                                //         })  
 
 
-                                      // Glukoza
+                                //       // Glukoza
 
-                                      var GLU = ""
-                                          GLU = result[1].split(',')[40].trim()
+                                //       var GLU = ""
+                                //           GLU = result[1].split(',')[40].trim()
 
-                                        if (result[1].split(',')[40].trim().includes("Neg")) {
+                                //         if (result[1].split(',')[40].trim().includes("Neg")) {
 
-                                          GLU = "negativan"
+                                //           GLU = "negativan"
                                           
-                                      }else if (result[1].split(',')[40].trim().includes("15")) {
+                                //       }else if (result[1].split(',')[40].trim().includes("15")) {
   
-                                        GLU = "15"
+                                //         GLU = "15"
                                           
-                                      }else if (result[1].split(',')[40].trim().includes("5")) {
+                                //       }else if (result[1].split(',')[40].trim().includes("5")) {
   
-                                        GLU = "5"
+                                //         GLU = "5"
                                           
-                                      }else if (result[1].split(',')[40].trim().includes("30")) {
+                                //       }else if (result[1].split(',')[40].trim().includes("30")) {
   
-                                        GLU = "30"
+                                //         GLU = "30"
                                           
-                                      }else if (result[1].split(',')[40].trim().includes("60")) {
+                                //       }else if (result[1].split(',')[40].trim().includes("60")) {
   
-                                        GLU = "60"
+                                //         GLU = "60"
                                           
-                                      }else {
+                                //       }else {
   
-                                        GLU = "Error"
+                                //         GLU = "Error"
   
-                                      }
+                                //       }
 
 
-                                      rezultati.push({
-                                        analit:'GLU',
-                                        analit_rez:GLU,
-                                        analit_jedinica:"mmol/L",
-                                        analit_status:"",
-                                      })  
+                                //       rezultati.push({
+                                //         analit:'GLU',
+                                //         analit_rez:GLU,
+                                //         analit_jedinica:"mmol/L",
+                                //         analit_status:"",
+                                //       })  
 
-                                      // Ketoni
+                                //       // Ketoni
 
-                                      var KET = ""
-                                          KET = result[1].split(',')[34].trim()
+                                //       var KET = ""
+                                //           KET = result[1].split(',')[34].trim()
 
-                                          if (result[1].split(',')[34].trim().includes("Neg")) {
+                                //           if (result[1].split(',')[34].trim().includes("Neg")) {
 
-                                            KET = "negativan"
+                                //             KET = "negativan"
                                             
-                                        }else if (result[1].split(',')[34].trim().includes("0.5")) {
+                                //         }else if (result[1].split(',')[34].trim().includes("0.5")) {
     
-                                          KET = "0.5"
+                                //           KET = "0.5"
                                             
-                                        }else if (result[1].split(',')[34].trim().includes("1.5")) {
+                                //         }else if (result[1].split(',')[34].trim().includes("1.5")) {
     
-                                          KET = "1.5"
+                                //           KET = "1.5"
                                             
-                                        }else if (result[1].split(',')[34].trim().includes("4.0")) {
+                                //         }else if (result[1].split(',')[34].trim().includes("4.0")) {
     
-                                          KET = "4.0"
+                                //           KET = "4.0"
                                             
-                                        }else if (result[1].split(',')[34].trim().includes("8.0")) {
+                                //         }else if (result[1].split(',')[34].trim().includes("8.0")) {
     
-                                          KET = "8.0"
+                                //           KET = "8.0"
                                             
-                                        }else {
+                                //         }else {
     
-                                          KET = "Error"
+                                //           KET = "Error"
     
-                                        }
+                                //         }
 
-                                      rezultati.push({
-                                        analit:'KET',
-                                        analit_rez:KET,
-                                        analit_jedinica:"mmol/L",
-                                        analit_status:"",
-                                      }) 
+                                //       rezultati.push({
+                                //         analit:'KET',
+                                //         analit_rez:KET,
+                                //         analit_jedinica:"mmol/L",
+                                //         analit_status:"",
+                                //       }) 
 
-                                      // Askorbinska kiselina
+                                //       // Askorbinska kiselina
 
-                                      var ASC = ""
-                                      ASC = result[1].split(',')[43].trim()
+                                //       var ASC = ""
+                                //       ASC = result[1].split(',')[43].trim()
 
 
-                                    if (result[1].split(',')[43].trim().includes("Neg")) {
+                                //     if (result[1].split(',')[43].trim().includes("Neg")) {
 
-                                      ASC = "negativan"
+                                //       ASC = "negativan"
                                       
-                                  }else if (result[1].split(',')[43].trim().includes("0.56")) {
+                                //   }else if (result[1].split(',')[43].trim().includes("0.56")) {
 
-                                    ASC = "0.56"
+                                //     ASC = "0.56"
                                       
-                                  }else if (result[1].split(',')[43].trim().includes("1.14")) {
+                                //   }else if (result[1].split(',')[43].trim().includes("1.14")) {
 
-                                    ASC = "1.14"
+                                //     ASC = "1.14"
                                       
-                                  }else if (result[1].split(',')[43].trim().includes("2.28")) {
+                                //   }else if (result[1].split(',')[43].trim().includes("2.28")) {
 
-                                    ASC = "2.28"
+                                //     ASC = "2.28"
                                       
-                                  }else {
+                                //   }else {
 
-                                    ASC = "Error"
+                                //     ASC = "Error"
 
-                                  }
+                                //   }
 
-                                      rezultati.push({
-                                        analit:'ASC', // VC
-                                        analit_rez:ASC,
-                                        analit_jedinica:"mmol/L",
-                                        analit_status:"",
-                                      })     
+                                //       rezultati.push({
+                                //         analit:'ASC', // VC
+                                //         analit_rez:ASC,
+                                //         analit_jedinica:"mmol/L",
+                                //         analit_status:"",
+                                //       })     
 
-                                      // Eritrociti (HGB)
+                                //       // Eritrociti (HGB)
 
-                                      var BLO = ""
-                                      BLO = result[1].split(',')[28].trim()
+                                //       var BLO = ""
+                                //       BLO = result[1].split(',')[28].trim()
 
-                                          if (result[1].split(',')[28].trim().includes("Neg")) {
+                                //           if (result[1].split(',')[28].trim().includes("Neg")) {
 
-                                            BLO = "negativan"
+                                //             BLO = "negativan"
                                             
-                                        }else if (result[1].split(',')[28].trim().includes("10")) {
+                                //         }else if (result[1].split(',')[28].trim().includes("10")) {
     
-                                          BLO = "10"
+                                //           BLO = "10"
                                             
-                                        }else if (result[1].split(',')[28].trim().includes("25")) {
+                                //         }else if (result[1].split(',')[28].trim().includes("25")) {
     
-                                          BLO = "25"
+                                //           BLO = "25"
                                             
-                                        }else if (result[1].split(',')[28].trim().includes("80")) {
+                                //         }else if (result[1].split(',')[28].trim().includes("80")) {
     
-                                          BLO = "80"
+                                //           BLO = "80"
                                             
-                                        }else if (result[1].split(',')[28].trim().includes("200")) {
+                                //         }else if (result[1].split(',')[28].trim().includes("200")) {
     
-                                          BLO = "200"
+                                //           BLO = "200"
                                             
-                                        }else {
+                                //         }else {
     
-                                          BLO = "Error"
+                                //           BLO = "Error"
     
-                                        }
+                                //         }
 
-                                      rezultati.push({
-                                        analit:'BLO', // BLD
-                                        analit_rez:BLO,
-                                        analit_jedinica:"Erc/µL",
-                                        analit_status:"",
-                                      })  
+                                //       rezultati.push({
+                                //         analit:'BLO', // BLD
+                                //         analit_rez:BLO,
+                                //         analit_jedinica:"Erc/µL",
+                                //         analit_status:"",
+                                //       })  
                                       
-                                      // Leukociti (HGB)
+                                //       // Leukociti (HGB)
 
-                                      var LEU = ""
-                                      LEU = result[1].split(',')[13].trim()
+                                //       var LEU = ""
+                                //       LEU = result[1].split(',')[13].trim()
 
-                                          if (result[1].split(',')[13].trim().includes("Neg")) {
+                                //           if (result[1].split(',')[13].trim().includes("Neg")) {
 
-                                            LEU = "negativan"
+                                //             LEU = "negativan"
                                             
-                                        }else if (result[1].split(',')[13].trim().includes("15")) {
+                                //         }else if (result[1].split(',')[13].trim().includes("15")) {
     
-                                          LEU = "15"
+                                //           LEU = "15"
                                             
-                                        }else if (result[1].split(',')[13].trim().includes("70")) {
+                                //         }else if (result[1].split(',')[13].trim().includes("70")) {
     
-                                          LEU = "70"
+                                //           LEU = "70"
                                             
-                                        }else if (result[1].split(',')[13].trim().includes("125")) {
+                                //         }else if (result[1].split(',')[13].trim().includes("125")) {
     
-                                          LEU = "125"
+                                //           LEU = "125"
                                             
-                                        }else if (result[1].split(',')[13].trim().includes("500")) {
+                                //         }else if (result[1].split(',')[13].trim().includes("500")) {
     
-                                          LEU = "500"
+                                //           LEU = "500"
                                             
-                                        }else {
+                                //         }else {
     
-                                          LEU = "Error"
+                                //           LEU = "Error"
     
-                                        }
+                                //         }
 
 
 
-                                      rezultati.push({
-                                        analit:'LEU',
-                                        analit_rez:LEU,
-                                        analit_jedinica:"Leu/µL",
-                                        analit_status:"",
-                                      }) 
+                                //       rezultati.push({
+                                //         analit:'LEU',
+                                //         analit_rez:LEU,
+                                //         analit_jedinica:"Leu/µL",
+                                //         analit_status:"",
+                                //       }) 
 
-                                      // Nitriti
+                                //       // Nitriti
 
-                                      var NIT = ""
-                                      NIT = result[1].split(',')[16].trim()
+                                //       var NIT = ""
+                                //       NIT = result[1].split(',')[16].trim()
 
-                                      if (result[1].split(',')[16].trim().includes("Neg")) {
+                                //       if (result[1].split(',')[16].trim().includes("Neg")) {
 
-                                        NIT = "negativan"
+                                //         NIT = "negativan"
                                         
-                                    }else if (result[1].split(',')[16].trim().includes("Pos")) {
+                                //     }else if (result[1].split(',')[16].trim().includes("Pos")) {
 
-                                      NIT = "pozitivan"
+                                //       NIT = "pozitivan"
                                         
-                                    }else {
+                                //     }else {
 
-                                      NIT = "Error"
+                                //       NIT = "Error"
 
-                                    }
+                                //     }
 
-                                      rezultati.push({
-                                        analit:'NIT',
-                                        analit_rez:NIT,
-                                        analit_jedinica:"",
-                                        analit_status:"",
-                                      })    
+                                //       rezultati.push({
+                                //         analit:'NIT',
+                                //         analit_rez:NIT,
+                                //         analit_jedinica:"",
+                                //         analit_status:"",
+                                //       })    
 
-                                      // Urobilinogen
+                                //       // Urobilinogen
 
-                                      var URO = ""
-                                      URO = result[1].split(',')[19].trim()
+                                //       var URO = ""
+                                //       URO = result[1].split(',')[19].trim()
 
-                                      if (result[1].split(',')[19].trim().includes("3.5")) {
+                                //       if (result[1].split(',')[19].trim().includes("3.5")) {
 
-                                        URO = "3.5"
+                                //         URO = "3.5"
                                         
-                                    }else if (result[1].split(',')[19].trim().includes("17")) {
+                                //     }else if (result[1].split(',')[19].trim().includes("17")) {
 
-                                        URO = "17"
+                                //         URO = "17"
                                         
-                                    }else if (result[1].split(',')[19].trim().includes("35")) {
+                                //     }else if (result[1].split(',')[19].trim().includes("35")) {
 
-                                        URO = "35"
+                                //         URO = "35"
                                         
-                                    }else if (result[1].split(',')[19].trim().includes("70")) {
+                                //     }else if (result[1].split(',')[19].trim().includes("70")) {
 
-                                        URO = "70"
+                                //         URO = "70"
                                         
-                                    }else if (result[1].split(',')[19].trim().includes("140")) {
+                                //     }else if (result[1].split(',')[19].trim().includes("140")) {
 
-                                        URO = "140"
+                                //         URO = "140"
                                         
-                                    }else {
+                                //     }else {
 
-                                        URO = "Error"
+                                //         URO = "Error"
 
-                                    }
+                                //     }
                                     
-                                      rezultati.push({
-                                        analit:'URO', // UBG         
-                                        analit_rez:URO,
-                                        analit_jedinica:"µmol/L",
-                                        analit_status:"",
-                                      })  
+                                //       rezultati.push({
+                                //         analit:'URO', // UBG         
+                                //         analit_rez:URO,
+                                //         analit_jedinica:"µmol/L",
+                                //         analit_status:"",
+                                //       })  
                                       
-                                      // Bilirubin
+                                //       // Bilirubin
 
-                                      var BIL = ""
-                                      BIL = result[1].split(',')[37].trim()
+                                //       var BIL = ""
+                                //       BIL = result[1].split(',')[37].trim()
 
-                                      if (result[1].split(',')[37].trim().includes("Neg")) {
+                                //       if (result[1].split(',')[37].trim().includes("Neg")) {
 
-                                        BIL = "negativan"
+                                //         BIL = "negativan"
                                         
-                                    }else if (result[1].split(',')[37].trim().includes("17")) {
+                                //     }else if (result[1].split(',')[37].trim().includes("17")) {
 
-                                      BIL = "17"
+                                //       BIL = "17"
                                         
-                                    }else if (result[1].split(',')[37].trim().includes("35")) {
+                                //     }else if (result[1].split(',')[37].trim().includes("35")) {
 
-                                      BIL = "35"
+                                //       BIL = "35"
                                         
-                                    }else if (result[1].split(',')[37].trim().includes("70")) {
+                                //     }else if (result[1].split(',')[37].trim().includes("70")) {
 
-                                      BIL = "70"
+                                //       BIL = "70"
                                         
-                                    }else {
+                                //     }else {
 
-                                      BIL = "Error"
+                                //       BIL = "Error"
 
-                                    }
+                                //     }
 
 
                                         
@@ -562,23 +563,23 @@ module.exports = {
                                      
                                       
                                       
-                                      rezultati.push({
-                                        analit:'BIL',
-                                        analit_rez:BIL,
-                                        analit_jedinica:"µmol/L",
-                                        analit_status:"",
-                                      })  
+                                //       rezultati.push({
+                                //         analit:'BIL',
+                                //         analit_rez:BIL,
+                                //         analit_jedinica:"µmol/L",
+                                //         analit_status:"",
+                                //       })  
                                       
                                                                  
-                                    // for (let index = 6; index < result.length; index++) {
-                                    //     rezultati.push({
-                                    //         analit:result[index].split(' ')[0],
-                                    //         analit_rez:result[index].split(' ')[1],
-                                    //         analit_jedinica:result[4],
-                                    //         analit_status:result[5],
-                                    //       })   
+                                //     // for (let index = 6; index < result.length; index++) {
+                                //     //     rezultati.push({
+                                //     //         analit:result[index].split(' ')[0],
+                                //     //         analit_rez:result[index].split(' ')[1],
+                                //     //         analit_jedinica:result[4],
+                                //     //         analit_status:result[5],
+                                //     //       })   
                                         
-                                    // }
+                                //     // }
  
                                     
                                     break;
