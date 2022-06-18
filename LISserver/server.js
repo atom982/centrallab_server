@@ -85,6 +85,7 @@ class lisServer {
       var incom_frame_nr = '';
       var emerald = ''
       var eliteframe = ''
+      var clintekStatus = ''
       //--------------------------------------------CLIENT
   //     var retrying = false;
 
@@ -230,6 +231,19 @@ class lisServer {
     emerald = ''
   }
 //------------- End of Mythic 18 blok
+
+//------------- End of ClintekStatus blok
+if (JSON.stringify(data).includes('6721')) {
+  clintekStatus += data
+
+  if(JSON.stringify(clintekStatus).includes('\r')){
+    console.log('ClintekStatus blok')
+    console.log(clintekStatus)
+    clintekStatus = ''
+   
+  }
+}
+//------------- End of ClintekStatus blok
 
         if (data.charCodeAt(data.length - 1) !== 10) { //podaci od aparata
           frame += data; //dodaj u buffer \u001a
