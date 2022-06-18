@@ -56,9 +56,9 @@ module.exports = {
                                     var datumT = new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substring(0, 10)
                                     //D1U202206180000000000000004000000001291048000130003780078820271203440026100131201060076310017000141009810391001370009400083001380
 
-                                    sid = 'K'+element.substring(24,27)+'C'+ datumT.substring(3, 4) + datumT.substring(5, 7) + datumT.substring(8, 10)
+                                    sid = 'K'+element.substring(24,28)+'C'+ datumT.substring(3, 4) + datumT.substring(5, 7) + datumT.substring(8, 10)
                                     console.log('novi sid')
-                                    console.log(element.substring(19,22))
+                                    console.log(element.substring(24,28))
                                     var datum = element.substring(4,12)
                                     var vrijeme = Date.now()
                                     vrijeme_rezultata=datum
