@@ -149,7 +149,7 @@ module.exports = {
                                                     rez.rezultat[0].rezultat_i = niz.analit_status
                                                     k++                                                   
                                                   }else{
-                                                      if(rez.rezultat[0].module_sn === niz.analit){
+                                                      if(rez.rezultat[0].module_sn === niz.analit && temp.rezultat_f ==="" ){
                                                         console.log('CHECKPOINT NEXT')
                                                         temp = {}
                                                         temp.anaassay = rez.labassay
