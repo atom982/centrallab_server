@@ -58,9 +58,9 @@ module.exports = {
                                     var result = element.split("|")[3].split(",")
 
                                     console.log(result)
-                                    console.log(result[1])
+                                    
                                     sid = result[5]
-     
+                                    console.log(sid)
 
                                     
                                 console.log('Col: '+result[8])
@@ -81,26 +81,7 @@ module.exports = {
                                     // Opšti pregled urina - fizikalno hemijski pregled
                                     // LabAssay ObjectId("5f76fc20c5294a1764bd7134")
 
-                                    // Izgled
-                                    var Cla = ""
-                                          Cla = result[9]
 
-                                          if (result[9].includes("Clear")) {
-
-                                            Cla = "bistar"
-                                            
-                                        }else {
-    
-                                          Cla = result[9]
-    
-                                        }
-
-                                      rezultati.push({
-                                        analit:'Cla',
-                                        analit_rez:Cla,
-                                        analit_jedinica:'',
-                                        analit_status:"",
-                                      })   
 
                                     // Boja
                                     var Col = ""
@@ -121,7 +102,28 @@ module.exports = {
                                         analit_rez:Col,
                                         analit_jedinica:"",
                                         analit_status:"",
-                                      })   
+                                      })  
+                                      
+                                // Izgled
+                                    var Cla = ""
+                                    Cla = result[9]
+
+                                    if (result[9].includes("Clear")) {
+
+                                      Cla = "bistar"
+                                      
+                                  }else {
+
+                                    Cla = result[9]
+
+                                  }
+
+                                rezultati.push({
+                                  analit:'Cla',
+                                  analit_rez:Cla,
+                                  analit_jedinica:'',
+                                  analit_status:"",
+                                })   
 
                                 //     // pH urina
                                 //     var pH = ""
