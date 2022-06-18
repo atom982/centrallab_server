@@ -125,7 +125,7 @@ module.exports = {
                                             analit_status:''
                                           })  
                                     }     
-                                    console.log(rezultati)
+                                    //console.log(rezultati)
                                     break;
                           case 'C':
                                     console.log("komentar");
@@ -135,7 +135,7 @@ module.exports = {
                                     console.log(sid)
                                     var k = 1
                                     var j = 1
-                                    //console.log(rezultati)  
+                                    console.log(rezultati)  
                                     Results.findOne({id:sid}).populate('aparat').exec(function (err, rezultat) {
                                       if (err) {
                                         console.log("Greška:", err);
