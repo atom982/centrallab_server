@@ -59,29 +59,12 @@ module.exports = {
 
                                     console.log(result)
                                     console.log(result[1])
-                                    //vrijeme_prijenosa = Date.now()
-                                    //vrijeme_rezultata= result[12]
-                                    //sid = result[1].split(',')[0].trim()
-                                    //sid ="U001I20312"
-                                //     var tmpsid = sid.replace(/^0+/, '')
-                                //     switch (tmpsid.length) {
-                                //         case 1:
-                                //             tmpsid = "00" + tmpsid
-                                //             break;
-                                //         case 2:
-                                //             tmpsid = "0" + tmpsid
-                                //             break;
-                                //         default:
-                                //             break;
-                                //     }
-                                //     var tmpdate = result[1].split(',')[1].trim()
-                                //     sid = "U"+tmpsid+"I"+ tmpdate.substring(tmpdate.length-1,tmpdate.length)+tmpdate.substring(0,2)+tmpdate.substring(3,5)
+                                    sid = result[5]
+     
 
-                                //     console.log(sid)
-                                //     console.log(result[1].split(',')[1].trim())
                                     
-                                //     console.log('Col: '+result[1].split(',')[10].trim())
-                                //     console.log("Cla: "+result[1].split(',')[11].trim())
+                                console.log('Col: '+result[8])
+                                console.log("Cla: "+result[9])
                                 //     console.log("LEU: "+result[1].split(',')[13].trim())
                                 //     console.log("NIT: "+result[1].split(',')[16].trim())
                                 //     console.log("UBG: "+result[1].split(',')[19].trim())
@@ -95,50 +78,50 @@ module.exports = {
                                 //     console.log("VC: "+result[1].split(',')[43].trim())
 
 
-                                //     // Opšti pregled urina - fizikalno hemijski pregled
-                                //     // LabAssay ObjectId("5f76fc20c5294a1764bd7134")
+                                    // Opšti pregled urina - fizikalno hemijski pregled
+                                    // LabAssay ObjectId("5f76fc20c5294a1764bd7134")
 
-                                //     // Izgled
-                                //     var Cla = ""
-                                //           Cla = result[1].split(',')[11].trim()
+                                    // Izgled
+                                    var Cla = ""
+                                          Cla = result[9]
 
-                                //           if (result[1].split(',')[11].trim().includes("Clear")) {
+                                          if (result[9].includes("Clear")) {
 
-                                //             Cla = "bistar"
+                                            Cla = "bistar"
                                             
-                                //         }else {
+                                        }else {
     
-                                //           Cla = result[1].split(',')[11].trim()
+                                          Cla = result[9]
     
-                                //         }
+                                        }
 
-                                //       rezultati.push({
-                                //         analit:'Cla',
-                                //         analit_rez:Cla,
-                                //         analit_jedinica:'',
-                                //         analit_status:"",
-                                //       })   
+                                      rezultati.push({
+                                        analit:'Cla',
+                                        analit_rez:Cla,
+                                        analit_jedinica:'',
+                                        analit_status:"",
+                                      })   
 
-                                //     // Boja
-                                //     var Col = ""
-                                //         Col = result[1].split(',')[10].trim()
+                                    // Boja
+                                    var Col = ""
+                                        Col = result[8]
 
-                                //         if (result[1].split(',')[10].trim().includes("Yellow")) {
+                                        if (result[8].includes("Yellow")) {
 
-                                //           Col = "žut"
+                                          Col = "žut"
                                           
-                                //       }else {
+                                      }else {
   
-                                //         Col = result[1].split(',')[10].trim()
+                                        Col = result[8]
   
-                                //       }
+                                      }
 
-                                //     rezultati.push({
-                                //         analit:'Col',
-                                //         analit_rez:Col,
-                                //         analit_jedinica:"",
-                                //         analit_status:"",
-                                //       })   
+                                    rezultati.push({
+                                        analit:'Col',
+                                        analit_rez:Col,
+                                        analit_jedinica:"",
+                                        analit_status:"",
+                                      })   
 
                                 //     // pH urina
                                 //     var pH = ""
