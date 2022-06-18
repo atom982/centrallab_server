@@ -176,6 +176,8 @@ module.exports = {
                                                 });
                                               });
                                             });
+                                            console.log(k)
+                                            console.log(rezultati.length)
                                             if(k === rezultati.length+1){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
