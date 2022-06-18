@@ -83,17 +83,14 @@ module.exports = {
                                             break;  
                                             case 'LYM':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = temprez.replace(/^0+|0+$/g, "")
                                             temprez = (parseFloat(temprez)/100).toFixed(3).toString()
                                             break;
                                             case 'MIX':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = temprez.replace(/^0+|0+$/g, "")
                                             temprez = (parseFloat(temprez)/100).toFixed(3).toString()
                                             break;
                                             case 'NEU':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = temprez.replace(/^0+|0+$/g, "")
                                             temprez = (parseFloat(temprez)/100).toFixed(3).toString()
                                             break;
                                             case 'MIX#':                                                    
@@ -110,7 +107,7 @@ module.exports = {
                                             break;
                                             case 'P-LCR':                                                    
                                             temprez =  parseInt(temprez.substring(0,1)).toString()+'.'+temprez.substring(1,5)
-                                            temprez = (parseFloat(temprez).toFixed(3))*100
+                                            temprez = (parseFloat(temprez)*100).toFixed(3).toString()
                                             break;
                                             default:
                                                     temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)  
@@ -151,7 +148,7 @@ module.exports = {
                                                 rez.retest = false
                                                 rezultati.forEach(niz => {
                                                   j=1
-                                                  console.log('PROVJERAVAM:='+niz.analit+ "="+rez.rezultat[0].module_sn+"=")
+                                                  //console.log('PROVJERAVAM:='+niz.analit+ "="+rez.rezultat[0].module_sn+"=")
                                                   if(rez.rezultat[0].rezultat_f ==="" && rez.rezultat[0].module_sn ===niz.analit){
                                                     console.log('CHECKPOINT FIRST')
                                                     rez.rezultat[0].vrijeme_prijenosa = Date.now()
