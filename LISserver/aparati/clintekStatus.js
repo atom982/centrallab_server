@@ -65,6 +65,8 @@ module.exports = {
                                     
                                 console.log('Col: '+result[10])
                                 console.log("Cla: "+result[11])
+                                console.log("GLU: "+result[13])
+                                console.log("BIL: "+result[16])
                                 //     console.log("LEU: "+result[1].split(',')[13].trim())
                                 //     console.log("NIT: "+result[1].split(',')[16].trim())
                                 //     console.log("UBG: "+result[1].split(',')[19].trim())
@@ -73,8 +75,8 @@ module.exports = {
                                 //     console.log("BLD: "+result[1].split(',')[28].trim())
                                 //     console.log("SG: "+result[1].split(',')[31].trim())
                                 //     console.log("KET: "+result[1].split(',')[34].trim())
-                                //     console.log("BIL: "+result[1].split(',')[37].trim())
-                                //     console.log("GLU: "+result[1].split(',')[40].trim())
+                               
+                                
                                 //     console.log("VC: "+result[1].split(',')[43].trim())
 
 
@@ -116,6 +118,76 @@ module.exports = {
                                   analit_jedinica:'',
                                   analit_status:"",
                                 })   
+                                              // Glukoza
+
+                                      var GLU = ""
+                                          GLU = result[13]
+
+                                      if (result[13].includes("Negative")) {
+
+                                          GLU = "negativan"
+                                          
+                                      }else if (result[13].includes("1+")) {
+  
+                                        GLU = "pozitivan 1+"
+                                          
+                                      }else if (result[13].includes("2+")) {
+  
+                                        GLU = "pozitivan 2+"
+                                          
+                                      }else if (result[13].includes("3+")) {
+  
+                                        GLU = "pozitivan 3+"
+                                          
+                                      }else if (result[13].includes("4+")) {
+  
+                                        GLU = "pozitivan 4+"
+                                          
+                                      }else {
+  
+                                        GLU = "Greška"
+  
+                                      }
+
+
+                                      rezultati.push({
+                                        analit:'GLU',
+                                        analit_rez:GLU,
+                                        analit_jedinica:"",
+                                        analit_status:"",
+                                      })  
+                                      // Bilirubin
+
+                                      var BIL = result[16]
+                                    
+
+                                      if (result[16].includes("Negative")) {
+
+                                        BIL = "negativan"
+                                        
+                                        }else if (result[16].includes("1+")) {
+
+                                        BIL = "pozitivan 1+"
+                                            
+                                        }else if (result[16].includes("2+")) {
+
+                                        BIL = "pozitivan 2+"
+                                            
+                                        }else if (result[16].includes("3+")) {
+
+                                        BIL = "pozitivan 3+"
+                                            
+                                        }else {
+
+                                        BIL = "Greška"
+
+                                        }   
+                                      rezultati.push({
+                                        analit:'BIL',
+                                        analit_rez:BIL,
+                                        analit_jedinica:"",
+                                        analit_status:"",
+                                      })  
 
                                 //     // pH urina
                                 //     var pH = ""
@@ -253,45 +325,7 @@ module.exports = {
                                 //         })  
 
 
-                                //       // Glukoza
-
-                                //       var GLU = ""
-                                //           GLU = result[1].split(',')[40].trim()
-
-                                //         if (result[1].split(',')[40].trim().includes("Neg")) {
-
-                                //           GLU = "negativan"
-                                          
-                                //       }else if (result[1].split(',')[40].trim().includes("15")) {
-  
-                                //         GLU = "15"
-                                          
-                                //       }else if (result[1].split(',')[40].trim().includes("5")) {
-  
-                                //         GLU = "5"
-                                          
-                                //       }else if (result[1].split(',')[40].trim().includes("30")) {
-  
-                                //         GLU = "30"
-                                          
-                                //       }else if (result[1].split(',')[40].trim().includes("60")) {
-  
-                                //         GLU = "60"
-                                          
-                                //       }else {
-  
-                                //         GLU = "Error"
-  
-                                //       }
-
-
-                                //       rezultati.push({
-                                //         analit:'GLU',
-                                //         analit_rez:GLU,
-                                //         analit_jedinica:"mmol/L",
-                                //         analit_status:"",
-                                //       })  
-
+                        
                                 //       // Ketoni
 
                                 //       var KET = ""
@@ -507,45 +541,7 @@ module.exports = {
                                 //         analit_status:"",
                                 //       })  
                                       
-                                //       // Bilirubin
 
-                                //       var BIL = ""
-                                //       BIL = result[1].split(',')[37].trim()
-
-                                //       if (result[1].split(',')[37].trim().includes("Neg")) {
-
-                                //         BIL = "negativan"
-                                        
-                                //     }else if (result[1].split(',')[37].trim().includes("17")) {
-
-                                //       BIL = "17"
-                                        
-                                //     }else if (result[1].split(',')[37].trim().includes("35")) {
-
-                                //       BIL = "35"
-                                        
-                                //     }else if (result[1].split(',')[37].trim().includes("70")) {
-
-                                //       BIL = "70"
-                                        
-                                //     }else {
-
-                                //       BIL = "Error"
-
-                                //     }
-
-
-                                        
-                                      
-                                     
-                                      
-                                      
-                                //       rezultati.push({
-                                //         analit:'BIL',
-                                //         analit_rez:BIL,
-                                //         analit_jedinica:"µmol/L",
-                                //         analit_status:"",
-                                //       })  
                                       
                                                                  
                                 //     // for (let index = 6; index < result.length; index++) {
