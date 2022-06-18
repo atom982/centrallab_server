@@ -235,7 +235,7 @@ class lisServer {
 //------------- End of ClintekStatus blok
 if (JSON.stringify(data).includes('6721')) {
   clintekStatus += data
-
+  console.log(data)
   if(JSON.stringify(clintekStatus).includes('\r')){
     console.log('ClintekStatus blok')
     console.log(clintekStatus)
