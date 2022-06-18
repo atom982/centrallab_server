@@ -61,9 +61,9 @@ var loggerserver= new loggerServer();
 // Starting our server
 
 lisserver.start(io,5081,"Central Lab (Gradačac): Sysmex KX21");
-//  lisserver.start(io,5082,"Central Lab (Gradačac): Analizator B");
-//  lisserver.start(io,5083,"Central Lab (Gradačac): Analizator C");
-//  lisserver.start(io,5084,"Central Lab (Gradačac): Analizator D");
+lisserver.start(io,5082,"Central Lab (Gradačac): ClintekStatus");
+lisserver.start(io,5083,"Central Lab (Gradačac): Hitachi 902");
+lisserver.start(io,5084,"Central Lab (Gradačac): Immulite 1000");
 
 //lisserver.start(io,50020,"Alinity Receiver Channel");//Alinity receiverr
 
