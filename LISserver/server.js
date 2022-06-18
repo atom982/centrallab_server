@@ -235,7 +235,6 @@ class lisServer {
 //------------- End of ClintekStatus blok
 if (JSON.stringify(data).includes('6721') || JSON.stringify(clintekStatus).includes('6721') ) {
   clintekStatus += data
-  console.log(data)
   if(JSON.stringify(clintekStatus).includes('\\r')){
     var temp_rec = []
     temp_rec.push("H|\\^&|||clintekStatus^1.00^6721^H1R1L1|||||||P|1|")

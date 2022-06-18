@@ -241,6 +241,7 @@ console.log(sn)
       break; 
       case "6721":
       console.log("ClintekStatus ");
+      console.log(record);
       var serijski = '600408e5f5e7ce7d39d4c203'
       clintekStatus.parsaj_rezultat(record, io,serijski);
       break;

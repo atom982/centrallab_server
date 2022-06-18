@@ -58,9 +58,9 @@ module.exports = {
                                     var result = element.split("|")
 
                                     console.log(result[1])
-                                    vrijeme_prijenosa = Date.now()
-                                    vrijeme_rezultata= result[12]
-                                    sid = result[1].split(',')[0].trim()
+                                    //vrijeme_prijenosa = Date.now()
+                                    //vrijeme_rezultata= result[12]
+                                    //sid = result[1].split(',')[0].trim()
                                     //sid ="U001I20312"
                                     var tmpsid = sid.replace(/^0+/, '')
                                     switch (tmpsid.length) {
