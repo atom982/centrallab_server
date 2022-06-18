@@ -83,15 +83,15 @@ module.exports = {
                                             break;  
                                             case 'LYM':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseFloat(temprez).toFixed(3))/100
+                                            temprez = (parseFloat(temprez).toFixed(3)/100).toString()
                                             break;
                                             case 'MIX':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseFloat(temprez).toFixed(3))/100
+                                            temprez = (parseFloat(temprez).toFixed(3)/100).toString()
                                             break;
                                             case 'NEU':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseFloat(temprez).toFixed(3))/100
+                                            temprez = (parseFloat(temprez).toFixed(3)/100).toString()
                                             break;
                                             case 'MIX#':                                                    
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
