@@ -233,7 +233,7 @@ class lisServer {
 //------------- End of Mythic 18 blok
 
 //------------- End of ClintekStatus blok
-if (JSON.stringify(data).includes('6721')) {
+if (JSON.stringify(data).includes('6721') || JSON.stringify(clintekStatus).includes('6721') ) {
   clintekStatus += data
   console.log(data)
   if(JSON.stringify(clintekStatus).includes('\\r')){
