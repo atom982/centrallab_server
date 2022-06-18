@@ -135,7 +135,7 @@ module.exports = {
                                                 rez.retest = false
                                                 rezultati.forEach(niz => {
                                                   j=1
-                                                  console.log('PROVJERAVAM: '+niz.analit)
+                                                  console.log('PROVJERAVAM:='+niz.analit+ "="+rez.rezultat[0].module_sn+"=")
                                                   if(rez.rezultat[0].rezultat_f ==="" && rez.rezultat[0].module_sn ===niz.analit){
                                                     console.log('CHECKPOINT FIRST')
                                                     rez.rezultat[0].vrijeme_prijenosa = Date.now()
