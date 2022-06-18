@@ -63,8 +63,8 @@ module.exports = {
                                     console.log(sid)
 
                                     
-                                console.log('Col: '+result[8])
-                                console.log("Cla: "+result[9])
+                                console.log('Col: '+result[10])
+                                console.log("Cla: "+result[11])
                                 //     console.log("LEU: "+result[1].split(',')[13].trim())
                                 //     console.log("NIT: "+result[1].split(',')[16].trim())
                                 //     console.log("UBG: "+result[1].split(',')[19].trim())
@@ -85,17 +85,13 @@ module.exports = {
 
                                     // Boja
                                     var Col = ""
-                                        Col = result[8]
+                                        Col = result[10]
 
-                                        if (result[8].includes("Yellow")) {
+                                        if (result[10].includes("Yellow")) {
 
-                                          Col = "žut"
+                                           Col = "žuta"
                                           
-                                      }else {
-  
-                                        Col = result[8]
-  
-                                      }
+                                        }
 
                                     rezultati.push({
                                         analit:'Col',
@@ -106,16 +102,12 @@ module.exports = {
                                       
                                 // Izgled
                                     var Cla = ""
-                                    Cla = result[9]
+                                    Cla = result[11]
 
-                                    if (result[9].includes("Clear")) {
+                                    if (result[11].includes("Clear")) {
 
                                       Cla = "bistar"
                                       
-                                  }else {
-
-                                    Cla = result[9]
-
                                   }
 
                                 rezultati.push({
