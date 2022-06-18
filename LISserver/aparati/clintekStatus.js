@@ -322,42 +322,42 @@ module.exports = {
 
                                               // Eritrociti (HGB)
 
-                                      var BLO = ""
-                                      BLO = result[25]
+                                      var BLD = ""
+                                      BLD = result[25]
 
                                           if (result[25].includes("Negative")) {
 
-                                            BLO = "negativan"
+                                            BLD = "negativan"
                                             
                                         }else if (result[25].includes("+/- Intact")) {
     
-                                          BLO = "+/- Intact"
+                                          BLD = "+/- Intact"
                                             
                                         }else if (result[25].includes("+/-")) {
     
-                                          BLO = "+/-"
+                                          BLD = "+/-"
                                             
                                         }else if (result[25].includes("1+")) {
     
-                                          BLO = "pozitivan 1+"
+                                          BLD = "pozitivan 1+"
                                             
                                         }else if (result[25].includes("2+")) {
     
-                                          BLO = "pozitivan 2+"
+                                          BLD = "pozitivan 2+"
                                             
                                         }else if (result[25].includes("3+")) {
     
-                                          BLO = "pozitivan 3+"
+                                          BLD = "pozitivan 3+"
                                             
                                         }else {
     
-                                          BLO = "Greška"
+                                          BLD = "Greška"
     
                                         }
 
                                       rezultati.push({
-                                        analit:'BLO', // BLD
-                                        analit_rez:BLO,
+                                        analit:'BLD', // BLD
+                                        analit_rez:BLD,
                                         analit_jedinica:"",
                                         analit_status:"",
                                       })  
