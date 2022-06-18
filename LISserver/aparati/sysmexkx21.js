@@ -77,7 +77,7 @@ module.exports = {
                                             case 'PLT':                                                    
                                             temprez = temprez.substring(1,4)
                                             break;  
-                                            case 'MXD#':                                                    
+                                            case 'MIX#':                                                    
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
                                             break;
                                             case 'MCHC':                                                    
@@ -86,7 +86,7 @@ module.exports = {
                                             case 'MCV':                                                    
                                             temprez = parseInt(temprez.substring(0,3)).toString()+'.'+temprez.substring(3,5)
                                             break;
-                                            case 'RDW-CV':                                                    
+                                            case 'RDW_CV':                                                    
                                             temprez =  parseInt(temprez.substring(0,1)).toString()+'.'+temprez.substring(1,5)
                                             break;
                                             case 'P-LCR':                                                    
