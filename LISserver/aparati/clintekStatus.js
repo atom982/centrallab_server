@@ -561,7 +561,7 @@ module.exports = {
                                       rezultati.push({
                                         analit:'LEU',
                                         analit_rez:LEU,
-                                        analit_jedinica:"Leu/µL",
+                                        analit_jedinica:"",
                                         analit_status:"",
                                       }) 
 
@@ -696,6 +696,8 @@ module.exports = {
                                                 });
                                               });
                                             });
+
+                                            console.log(k + " / " + rezultati.length)
                                             if(k === rezultati.length+1){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
