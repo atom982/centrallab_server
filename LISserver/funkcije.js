@@ -207,7 +207,7 @@ parsaj_rezultat: function (record, io) {
   var dxh500 = require("./aparati/dxh500");
   var au400 = require('./aparati/au480');
   var kx21 = require('./aparati/sysmexkx21');
-  var bs480 = require('./aparati/bs480');
+  var clintekStatus = require('./aparati/clintekStatus');
   var cl900i= require('./aparati/cl900i');
   var bs380 = require('./aparati/bs380');
 
@@ -227,8 +227,8 @@ parsaj_rezultat: function (record, io) {
   if (record[0].includes("KX21")) {
     sn = "A5303"; // Access 2ACCESS^572794
   }
-  if (record[0].includes("Mindray")) {
-    sn = "BB1-96000515"; // Access 2ACCESS^572794
+  if (record[0].includes("clintekStatus")) {
+    sn = "6721"; // Access 2ACCESS^572794
   }
   if (record[0].includes("BS-380")) {
     sn = "WS-68002729"; // Access 2ACCESS^572794
@@ -239,10 +239,10 @@ console.log(sn)
       console.log('parsaj BC3200')
       bc3200.parsaj_rezultat(record,io);
       break; 
-      case "BB1-96000515":
-      console.log("mindray CL-900i");
+      case "6721":
+      console.log("ClintekStatus ");
       var serijski = '600408e5f5e7ce7d39d4c203'
-      cl900i.parsaj_rezultat(record, io,serijski);
+      clintekStatus.parsaj_rezultat(record, io,serijski);
       break;
       case 'A5303': // ATRIJUM BS 480
       console.log("sysmex kx 21");

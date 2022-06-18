@@ -237,6 +237,11 @@ if (JSON.stringify(data).includes('6721') || JSON.stringify(clintekStatus).inclu
   clintekStatus += data
   console.log(data)
   if(JSON.stringify(clintekStatus).includes('\\r')){
+    var temp_rec = []
+    temp_rec.push("H|\\^&|||clintekStatus^1.00^6721^H1R1L1|||||||P|1|")
+    temp_rec.push("R|1|^^^Urin|"+clintekStatus+"||^DEFAULT|H|N|F||||")
+    temp_rec.push("L|1|N")
+    funkcija.parsaj_rezultat(temp_rec, io);
     console.log('ClintekStatus blok')
     console.log(clintekStatus)
     clintekStatus = ''
