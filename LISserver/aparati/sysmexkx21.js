@@ -54,11 +54,9 @@ module.exports = {
                                     console.log("rezultat kx 21");
                                     sifra_p='KKS3'
                                     var datumT = new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().substring(0, 10)
-                                    //D1U2019042100000-001-9004211600000005400569101741055010967003060031600294003100*0000*000000170*0000*00000508001290012400102002740
-                                    //RD1U2019042100000-001-9004211600000005400569101741
-                                    //RD1U20190421000000-002-90421160000001801049200150005021102000
+                                    //D1U202206180000000000000004000000001291048000130003780078820271203440026100131201060076310017000141009810391001370009400083001380
 
-                                    sid = 'K'+element.substring(19,22)+'C'+ datumT.substring(3, 4) + datumT.substring(5, 7) + datumT.substring(8, 10)
+                                    sid = 'K'+element.substring(24,27)+'C'+ datumT.substring(3, 4) + datumT.substring(5, 7) + datumT.substring(8, 10)
                                     console.log('novi sid')
                                     console.log(element.substring(19,22))
                                     var datum = element.substring(4,12)
