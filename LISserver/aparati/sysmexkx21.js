@@ -178,7 +178,7 @@ module.exports = {
                                             });
                                             console.log(k)
                                             console.log(rezultati.length)
-                                            if(k === rezultati.length+1){
+                                            if(k === rezultati.length){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
                                               //console.log(rezultat.multi)
