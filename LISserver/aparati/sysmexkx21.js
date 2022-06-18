@@ -135,7 +135,7 @@ module.exports = {
                                                 rez.retest = false
                                                 rezultati.forEach(niz => {
                                                   j=1
-                                                 
+                                                  console.log('PROVJERAVAM:T'+niz.analit)
                                                   if(rez.rezultat[0].rezultat_f ==="" && rez.rezultat[0].module_sn ===niz.analit){
                                                     console.log('CHECKPOINT FIRST')
                                                     rez.rezultat[0].vrijeme_prijenosa = Date.now()
@@ -150,7 +150,7 @@ module.exports = {
                                                     rez.rezultat[0].rezultat_i = niz.analit_status
                                                     k++                                                   
                                                   }else{
-                                                      if(rez.rezultat[0].module_sn === niz.analit && temp.rezultat_f ==="" ){
+                                                      if(rez.rezultat[0].module_sn === niz.analit ){
                                                         console.log('CHECKPOINT NEXT')
                                                         temp = {}
                                                         temp.anaassay = rez.labassay
