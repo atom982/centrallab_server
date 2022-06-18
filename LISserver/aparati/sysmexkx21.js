@@ -198,9 +198,9 @@ module.exports = {
                                               });
                                             });
                                             
-                                            console.log(rezultati.length)
-                                            console.log(k)
-                                            if(k === rezultati.length+1){
+                                            console.log(rezultati.length) // 19
+                                            console.log(k) // 21
+                                            if(k === rezultati.length+1 || k === rezultati.length+2){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
                                               //console.log(rezultat.multi)
