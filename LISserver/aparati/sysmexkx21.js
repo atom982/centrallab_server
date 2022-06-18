@@ -73,16 +73,28 @@ module.exports = {
                                                 break;
                                             case 'HGB':                                                    
                                                     temprez = temprez.substring(1,4)
-                                            break;                                       
+                                            break;   
+                                            case 'HCT':                                                    
+                                            temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseFloat(temprez).toFixed(3)/100).toString()
+                                            break;                                    
                                             case 'PLT':                                                    
                                             temprez = temprez.substring(1,4)
                                             break;  
+                                            case 'LYM':                                                    
+                                            temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseFloat(temprez).toFixed(3))/100
+                                            break;
+                                            case 'MIX':                                                    
+                                            temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseFloat(temprez).toFixed(3))/100
+                                            break;
+                                            case 'NEU':                                                    
+                                            temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseFloat(temprez).toFixed(3))/100
+                                            break;
                                             case 'MIX#':                                                    
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
-                                            break;
-                                            case 'HCT':                                                    
-                                            temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseInt(temprez)/100).toString()
                                             break;
                                             case 'MCHC':                                                    
                                             temprez = temprez.substring(1,4)
@@ -95,6 +107,7 @@ module.exports = {
                                             break;
                                             case 'P-LCR':                                                    
                                             temprez =  parseInt(temprez.substring(0,1)).toString()+'.'+temprez.substring(1,5)
+                                            temprez = (parseFloat(temprez).toFixed(3))*100
                                             break;
                                             default:
                                                     temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)  
