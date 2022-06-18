@@ -299,7 +299,15 @@ class lisServer {
                 funkcija.parsaj_rezultat(lisserver.poruka, io);
                 lisserver.poruka = []  
                 // AU400 END
-              }
+              }else if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")+1).includes('D1U')){
+                lisserver.poruka.unshift("H|\\^&|||KX21^1.00^3012321^H1R1L1|||||||P|1|");
+                lisserver.poruka.push('R'+frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
+                lisserver.poruka.push('L|1');
+                frame = ''
+                funkcija.parsaj_rezultat(lisserver.poruka, io);
+                
+                lisserver.poruka = [] 
+            }
             }
             
           }

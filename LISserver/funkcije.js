@@ -206,7 +206,7 @@ parsaj_rezultat: function (record, io) {
   var ecl105 = require("./aparati/ecl105");
   var dxh500 = require("./aparati/dxh500");
   var au400 = require('./aparati/au480');
-  var bc3200 = require('./aparati/bc3200');
+  var kx21 = require('./aparati/sysmexkx21');
   var bs480 = require('./aparati/bs480');
   var cl900i= require('./aparati/cl900i');
   var bs380 = require('./aparati/bs380');
@@ -224,8 +224,8 @@ parsaj_rezultat: function (record, io) {
     sn = sender[2]; // Mythic
   }
 
-  if (record[0].includes("Mindry")) {
-    sn = "YM-94001518"; // Access 2ACCESS^572794
+  if (record[0].includes("KX21")) {
+    sn = "A5303"; // Access 2ACCESS^572794
   }
   if (record[0].includes("Mindray")) {
     sn = "BB1-96000515"; // Access 2ACCESS^572794
@@ -244,10 +244,10 @@ console.log(sn)
       var serijski = '600408e5f5e7ce7d39d4c203'
       cl900i.parsaj_rezultat(record, io,serijski);
       break;
-      case 'YM-94001518': // ATRIJUM BS 480
-      console.log("mindray BS-480");
+      case 'A5303': // ATRIJUM BS 480
+      console.log("sysmex kx 21");
       serijski = '600408ddf5e7ce7d39d4c1f3' // - done
-      bs480.parsaj_rezultat(record,io,serijski);
+      kx21.parsaj_rezultat(record,io,serijski);
       break;
       case 'WS-68002729': // ATRIJUM GORAZDE BS 380
       console.log("mindray BS-380");
