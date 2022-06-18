@@ -60,7 +60,7 @@ var loggerserver= new loggerServer();
 
 // Starting our server
 
-//  lisserver.start(io,5081 A,"Central Lab (Gradačac): Analizator A");
+lisserver.start(io,5081 A,"Central Lab (Gradačac): Sysmex KX21");
 //  lisserver.start(io,5082 B,"Central Lab (Gradačac): Analizator B");
 //  lisserver.start(io,5083 C,"Central Lab (Gradačac): Analizator C");
 //  lisserver.start(io,5084 D,"Central Lab (Gradačac): Analizator D");
