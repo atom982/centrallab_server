@@ -209,7 +209,7 @@ parsaj_rezultat: function (record, io) {
   var kx21 = require('./aparati/sysmexkx21');
   var clintekStatus = require('./aparati/clintekStatus');
   var immulite= require('./aparati/immulite1000');
-  var bs380 = require('./aparati/bs380');
+  var hitachi = require('./aparati/hitachi902');
 
   console.log("Parsanje rezultata...");
   //console.log(record)
@@ -233,12 +233,15 @@ parsaj_rezultat: function (record, io) {
   if (record[0].includes("GRADACAC")) {
     sn = "GRADACAC"; // Immulite
   }
+  if (record[0].includes("hitachi")) {
+    sn = "hitachi"; // Hitachi
+  }
 console.log(sn)
   switch (sn) {
-      case 'RM-02101641':  // Hitachi 902
+      case 'hitachi':  // Hitachi 902
       console.log('Hitachi 902 ')
       var serijski = '62a6122c77e5656ca8b10d03'
-      bc3200.parsaj_rezultat(record,io);
+      hitachi.parsaj_rezultat(record,io);
       break; 
       case "6721":
       console.log("ClintekStatus ");
@@ -278,7 +281,7 @@ parsaj_query: function (record, callback) {
   var Urilyzer100Pro = require("./aparati/urilyzer100pro");
   var ErbaECL105 = require("./aparati/ecl105");
   var Access2 = require("./aparati/access2");
-  var au400 = require('./aparati/au480');
+  var hitachi = require('./aparati/hitachi902');
   var bs480 = require('./aparati/bs480');
   var immulite= require('./aparati/immulite1000');
   //console.log(record)
@@ -295,8 +298,8 @@ parsaj_query: function (record, callback) {
   if (record[0].includes("GRADACAC")) {
     sn = "GRADACAC"; // Immulite 1000
   }
-  if (record[0].includes("ACCESS")) {
-    sn = "572794"; // Access 2ACCESS^572794
+  if (record[0].includes("hitachi")) {
+    sn = "hitachi"; // Hitachi
   }
   if (record[0].includes("Mindry")) {
     sn = "YM-94001518"; // Access 2ACCESS^572794
@@ -306,7 +309,7 @@ parsaj_query: function (record, callback) {
   }
   //Mindry
   switch (sn) {
-    case "GRADACAC": // Mindray bs 480
+    case "GRADACAC": // Immulite
       console.log("Query Parsing: immulite 1000");
       var serijski = '62a612d777e5656ca8b10d24'
       immulite.parsaj_query(record,serijski, function (poruka) {
@@ -314,10 +317,10 @@ parsaj_query: function (record, callback) {
         callback(poruka);
       });
       break;
-      case "YM-94001518": // Mindray bs 480
-      console.log("Query Parsing: Mindray bs 480");
-      var serijski = '600408ddf5e7ce7d39d4c1f3'
-      bs480.parsaj_query(record,serijski, function (poruka) {
+      case "hitachi": // hitachi
+      console.log("Query Parsing: Hitachi");
+      var serijski = '62a6122c77e5656ca8b10d03'
+      hitachi.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
