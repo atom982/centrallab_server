@@ -292,7 +292,7 @@ parsaj_query: function (record, callback) {
   } else {
     sn = sender[2];
   }
-  if (record[0].includes("E 1394-97")) {
+  if (record[0].includes("GRADACAC")) {
     sn = "GRADACAC"; // Immulite 1000
   }
   if (record[0].includes("ACCESS")) {
