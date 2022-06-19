@@ -198,9 +198,9 @@ module.exports = {
                                               });
                                             });
                                             
-                                            console.log(rezultati.length)
-                                            console.log(k)
-                                            if(k === rezultati.length+1){
+                                            console.log(rezultati.length) // 19
+                                            console.log(k) // 21
+                                            if(k === rezultati.length+1 || k === rezultati.length+2){
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
                                               //console.log(rezultat.multi)
@@ -244,8 +244,8 @@ module.exports = {
                                                                         novirez.status = uzorak.status
                                                                       }
                                                                       novirez.rezultati.forEach(rezu => {
-                                                                        if(rezu.labassay.equals(test.labassay._id)){
-                                                                          rezu.status = "NIJE ODOBREN"
+                                                                        if(JSON.stringify(rezu.labassay).includes("62a8648258a31ae2ccd23c3f")){
+                                                                          console.log("USLOV")
                                                                           rezu.rezultat[0].rezultat_f = '0' // !!!
                                                                         }
                                                                       });
