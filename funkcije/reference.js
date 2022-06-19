@@ -114,7 +114,7 @@ module.exports = {
         return [test, rezultat, interpretacija.Bistar(rezultat, dref, gref)[0], jedinica, "bistar", interpretacija.Bistar(rezultat, dref, gref)[1], extend];
         break;
       case "boja":
-        return [test, rezultat, interpretacija.Boja(rezultat, dref, gref)[0], jedinica, "žut", interpretacija.Boja(rezultat, dref, gref)[1], extend];
+        return [test, rezultat, interpretacija.Boja(rezultat, dref, gref)[0], jedinica, "žuta", interpretacija.Boja(rezultat, dref, gref)[1], extend];
         break;  
       case "bojasp":
           return [test, rezultat, interpretacija.BojaSpermiogram(rezultat, dref, gref)[0], jedinica, "blijedo žut", interpretacija.BojaSpermiogram(rezultat, dref, gref)[1], extend];
@@ -146,6 +146,21 @@ module.exports = {
       case "spec":      
         return [test, rezultat, interpretacija.Specific(rezultat, dref, gref)[0], jedinica, spec, interpretacija.Specific(rezultat, dref, gref)[1], extend];
         break; 
+
+        case "pH":      
+        return [test, rezultat, interpretacija.pH(rezultat, dref, gref)[0], jedinica, dref + " - " + gref, interpretacija.pH(rezultat, dref, gref)[1], extend];
+        
+        break;
+
+        case "SG":   
+        return [test, rezultat, interpretacija.SG(rezultat, dref, gref)[0], jedinica, dref + " - " + gref, interpretacija.SG(rezultat, dref, gref)[1], extend];   
+        
+        break;
+
+        case "URO":      
+        return [test, rezultat, interpretacija.URO(rezultat, dref, gref)[0], jedinica, " < " + gref, interpretacija.URO(rezultat, dref, gref)[1], extend];   
+        
+        break;
 
       // Spermiogram
 

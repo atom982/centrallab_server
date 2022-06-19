@@ -1358,7 +1358,7 @@ odobravanjeController.Calculate = function (req, res) {
   var formula = [];
   var final = "";
 
-  if (req.body.ime.includes("OGTT -") || req.body.ime.includes("Insulin -")) {
+  if (req.body.ime.includes("OGTT -") || req.body.ime.includes("INS -")) {
     // console.log(req.body.ime);
     query = req.params.id;
   }

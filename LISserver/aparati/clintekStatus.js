@@ -331,7 +331,7 @@ module.exports = {
                                             
                                         }else if (result[25].includes("+/- Intact")) {
     
-                                          BLD = "+/- Intact"
+                                          BLD = "+/- netaknut"
                                             
                                         }else if (result[25].includes("+/-")) {
     

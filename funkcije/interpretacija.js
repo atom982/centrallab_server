@@ -159,31 +159,27 @@ module.exports = {
   },
 
   Antigen: function (result, dref, gref) {
-
     var rezultat = result
       .replace(/,/g, ".")
       .replace(/</g, "")
       .replace(/>/g, "");
-      
+
     // (Interpretacija: "antigen")
 
     if (rezultat === "") {
       return [" ", "No Class", "negativan"];
-
     } else if (rezultat == "pozitivan") {
       return ["H", "Red", "negativan"];
     } else if (rezultat == "positive") {
       return ["H", "Red", "negative"];
     } else if (rezultat == "Positiv") {
-        return ["H", "Red", "Negativ"];
-
+      return ["H", "Red", "Negativ"];
     } else if (rezultat == "negativan") {
       return [" ", "Green", "negativan"];
     } else if (rezultat == "negative") {
       return [" ", "Green", "negative"];
     } else if (rezultat == "Negativ") {
       return [" ", "Green", "Negativ"];
-
     } else if (rezultat == "graničan") {
       return [" ", "Yellow", "negativan"];
     } else {
@@ -579,10 +575,89 @@ module.exports = {
     // (Interpretacija: "boja")
     if (rezultat === "") {
       return [" ", "No Class"];
-    } else if (rezultat === "svijetlo žut" || rezultat === "žut") {
+    } else if (
+      rezultat === "svijetlo žut" ||
+      rezultat === "žut" ||
+      rezultat === "žuta"
+    ) {
       return [" ", "Green"];
     } else {
       return ["H", "Red"];
+    }
+  },
+
+  pH: function (result, dref, gref) {
+    if (result === ">=9.0" || result.includes(">=")) {
+      return ["H", "Red"];
+    } else {
+      var rezultat = result
+        .replace(/,/g, ".")
+        .replace(/</g, "")
+        .replace(/>/g, "");
+      if (isNaN(rezultat) || rezultat === "" || (dref == "0" && gref == "0")) {
+        return [" ", "No Class"];
+      } else if (Number(rezultat) < Number(Math.abs(dref))) {
+        return ["L", "Red"];
+      } else if (Number(rezultat) > Number(Math.abs(gref))) {
+        return ["H", "Red"];
+      } else if (
+        Number(rezultat) === Number(Math.abs(dref)) ||
+        Number(rezultat) === Number(Math.abs(gref))
+      ) {
+        return [" ", "Yellow"];
+      } else {
+        return [" ", "Green"];
+      }
+    }
+  },
+
+  SG: function (result, dref, gref) {
+    if (result === ">=1.030" || result.includes(">=")) {
+      return ["H", "Red"];
+    } else if (result === "<=1.005" || result.includes("<=")) {
+      return ["L", "Red"];
+    } else {
+      var rezultat = result
+        .replace(/,/g, ".")
+        .replace(/</g, "")
+        .replace(/>/g, "");
+      if (isNaN(rezultat) || rezultat === "" || (dref == "0" && gref == "0")) {
+        return [" ", "No Class"];
+      } else if (Number(rezultat) < Number(Math.abs(dref))) {
+        return ["L", "Red"];
+      } else if (Number(rezultat) > Number(Math.abs(gref))) {
+        return ["H", "Red"];
+      } else if (
+        Number(rezultat) === Number(Math.abs(dref)) ||
+        Number(rezultat) === Number(Math.abs(gref))
+      ) {
+        return [" ", "Yellow"];
+      } else {
+        return [" ", "Green"];
+      }
+    }
+  },
+
+  URO: function (result, dref, gref) {
+    if (result === ">=131" || result.includes(">=")) {
+      return ["H", "Red"];
+    } else {
+      var rezultat = result
+        .replace(/,/g, ".")
+        .replace(/</g, "")
+        .replace(/>/g, "");
+      // (Interpretacija: "less")
+      if (rezultat.includes("pozitivan") || rezultat.includes("pos")) {
+        return ["H", "Red"];
+      } else if (isNaN(rezultat) || rezultat === "") {
+        return [" ", "No Class"];
+      } else if (Number(rezultat) >= Number(Math.abs(gref))) {
+        return ["H", "Red"];
+      } else if (rezultat.includes("pozitivan") || rezultat.includes("pos")) {
+        return ["H", "Red"];
+      } else {
+        return [" ", "Green"];
+      }
     }
   },
 
@@ -609,10 +684,7 @@ module.exports = {
     // (Interpretacija: "nesto")
     if (rezultat === "") {
       return [" ", "No Class"];
-    } else if (
-      rezultat.includes("masa") ||
-      rezultat.includes("dosta")
-    ) {
+    } else if (rezultat.includes("masa") || rezultat.includes("dosta")) {
       return ["H", "Red"];
     } else {
       return [" ", "Green"];
@@ -803,67 +875,93 @@ module.exports = {
 
   // Pregled sedimenta urina - mikroskopski pregled
 
-  EpitelneStanice: function (result, dref, gref) {    
-    var rezultat = result.replace(/,/g, ".").replace(/</g, "").replace(/>/g, "") 
-    var referenca = ""
+  EpitelneStanice: function (result, dref, gref) {
+    var rezultat = result
+      .replace(/,/g, ".")
+      .replace(/</g, "")
+      .replace(/>/g, "");
+    var referenca = "";
     // console.log(rezultat)
     // (Interpretacija: "s01")
 
     if (rezultat === "") {
       return [" ", "No Class", referenca];
     } else {
-      if(rezultat.includes("tranzicijsk")){
-        return ["H", "Red", referenca];  
-      }else{
-        referenca = "rijedak"
-        if (rezultat.includes("masa") || rezultat.includes("dosta") || rezultat.includes("nešto") || rezultat.includes("malo")) {
+      if (rezultat.includes("tranzicijsk")) {
+        return ["H", "Red", referenca];
+      } else {
+        referenca = "rijedak";
+        if (
+          rezultat.includes("masa") ||
+          rezultat.includes("dosta") ||
+          rezultat.includes("nešto") ||
+          rezultat.includes("malo")
+        ) {
           return ["H", "Red", referenca];
         } else {
           return [" ", "Green", referenca];
         }
-      }          
-    }    
+      }
+    }
   },
 
   Kristali: function (result, dref, gref) {
-    var rezultat = result.replace(/,/g, ".").replace(/</g, "").replace(/>/g, "") 
-    var referenca = ""
+    var rezultat = result
+      .replace(/,/g, ".")
+      .replace(/</g, "")
+      .replace(/>/g, "");
+    var referenca = "";
     // console.log(rezultat)
     // (Interpretacija: "s02")
 
     if (rezultat === "") {
       return [" ", "No Class", referenca];
     } else {
-      if(rezultat === "rijedak Ca oxalat" || rezultat === "negativan"){
-        referenca = "rijedak"
-        return [" ", "Green", referenca]; 
-      } else if(rezultat === "malo Ca oxalata" || rezultat === "nešto Ca oxalata" || rezultat === "dosta Ca oxalata"){
-        referenca = "rijedak"
+      if (rezultat === "rijedak Ca oxalat" || rezultat === "negativan") {
+        referenca = "rijedak";
+        return [" ", "Green", referenca];
+      } else if (
+        rezultat === "malo Ca oxalata" ||
+        rezultat === "nešto Ca oxalata" ||
+        rezultat === "dosta Ca oxalata"
+      ) {
+        referenca = "rijedak";
         return ["H", "Red", referenca];
-      } else {        
+      } else {
         return ["H", "Red", referenca];
-      }          
-    }    
+      }
+    }
   },
 
   Soli: function (result, dref, gref) {
-    var rezultat = result.replace(/,/g, ".").replace(/</g, "").replace(/>/g, "") 
+    var rezultat = result
+      .replace(/,/g, ".")
+      .replace(/</g, "")
+      .replace(/>/g, "");
     // console.log(rezultat)
     // (Interpretacija: "s02")
 
     if (rezultat === "") {
       return [" ", "No Class"];
     } else {
-      if (rezultat.includes("masa") || rezultat.includes("dosta") || rezultat.includes("nešto") || rezultat.includes("malo")) {
+      if (
+        rezultat.includes("masa") ||
+        rezultat.includes("dosta") ||
+        rezultat.includes("nešto") ||
+        rezultat.includes("malo")
+      ) {
         return ["H", "Red"];
       } else {
         return [" ", "Green"];
-      }       
-    }    
+      }
+    }
   },
 
   Bakterije: function (result, dref, gref) {
-    var rezultat = result.replace(/,/g, ".").replace(/</g, "").replace(/>/g, "")
+    var rezultat = result
+      .replace(/,/g, ".")
+      .replace(/</g, "")
+      .replace(/>/g, "");
     // console.log(rezultat)
     // (Interpretacija: "u06")
 
@@ -871,7 +969,7 @@ module.exports = {
       return [" ", "No Class"];
     } else if (
       rezultat.includes("masa") ||
-      rezultat.includes("dosta") || 
+      rezultat.includes("dosta") ||
       rezultat.includes("nešto")
     ) {
       return ["H", "Red"];
