@@ -111,7 +111,7 @@ module.exports = {
                                                       }else{
                                                       uzorak.tests.forEach(elementu => {   
                                                                                                        
-        if((elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_t === "U OBRADI") || (elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_r)){//elementu.status_r)){
+        if((elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_t === "ZAPRIMLJEN") || (elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_r)){//elementu.status_r)){
                                                           console.log('match pronadjen')
                                                           //console.log(elementu)
                                                           elementu.status_t = "REALIZOVAN"
