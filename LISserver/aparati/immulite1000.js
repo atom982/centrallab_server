@@ -98,7 +98,7 @@ module.exports = {
                                                          }
                                                 jedinice_f = result[4];
                                                 vrijeme_rezultata=result[12];
-                                                module_sn='251025';
+                                                module_sn='GRADACAC';
                                               AnaAssays.findOne({kod:sifra_p}).populate('test').lean().exec(function (err, test) {
                                                 if (err) {
                                                   console.log("Greška:", err);
@@ -163,7 +163,7 @@ module.exports = {
                                                                     element.status = "NIJE ODOBREN"                                                             
                                                                     uzorak.save()
                                                                     var received = elementu.labassay.naziv
-                                                                    console.log(':: Dosao test sa Erba XL 200: ' + elementu.labassay.naziv)
+                                                                    console.log(':: Dosao test sa Immulite 1000: ' + elementu.labassay.naziv)
      
                                                                     result.save(function(err,novi) {
                                                                       if(err) {
