@@ -208,7 +208,7 @@ parsaj_rezultat: function (record, io) {
   var au400 = require('./aparati/au480');
   var kx21 = require('./aparati/sysmexkx21');
   var clintekStatus = require('./aparati/clintekStatus');
-  var cl900i= require('./aparati/cl900i');
+  var immulite= require('./aparati/immulite1000');
   var bs380 = require('./aparati/bs380');
 
   console.log("Parsanje rezultata...");
@@ -225,18 +225,19 @@ parsaj_rezultat: function (record, io) {
   }
 
   if (record[0].includes("KX21")) {
-    sn = "A5303"; // Access 2ACCESS^572794
+    sn = "A5303"; // Kx21
   }
   if (record[0].includes("clintekStatus")) {
-    sn = "6721"; // Access 2ACCESS^572794
+    sn = "6721"; // CintekStatus
   }
-  if (record[0].includes("BS-380")) {
-    sn = "WS-68002729"; // Access 2ACCESS^572794
+  if (record[0].includes("GRADACAC")) {
+    sn = "GRADACAC"; // Immulite
   }
 console.log(sn)
   switch (sn) {
-      case 'RM-02101641':  // ATRIJUM BC3200
-      console.log('parsaj BC3200')
+      case 'RM-02101641':  // Hitachi 902
+      console.log('Hitachi 902 ')
+      var serijski = '62a6122c77e5656ca8b10d03'
       bc3200.parsaj_rezultat(record,io);
       break; 
       case "6721":
@@ -245,15 +246,15 @@ console.log(sn)
       var serijski = '600408e5f5e7ce7d39d4c203'
       clintekStatus.parsaj_rezultat(record, io,serijski);
       break;
-      case 'A5303': // ATRIJUM BS 480
+      case 'A5303': //sysmex kx 21
       console.log("sysmex kx 21");
-      serijski = '600408ddf5e7ce7d39d4c1f3' // - done
+      serijski = '62a611a477e5656ca8b10ce9' // - done
       kx21.parsaj_rezultat(record,io,serijski);
       break;
-      case 'WS-68002729': // ATRIJUM GORAZDE BS 380
-      console.log("mindray BS-380");
-      serijski = '61a14d0941f211dbeae32dbb' // - done
-      bs380.parsaj_rezultat(record,io,serijski);
+      case 'GRADACAC': // Immulite 1000
+      console.log("Immulite 1000");
+      serijski = '62a612d777e5656ca8b10d24' // - done
+      immulite.parsaj_rezultat(record,io,serijski);
       break;
     default:
       console.log("Nije definisan aparat sa serijskim brojem: " + sn);
