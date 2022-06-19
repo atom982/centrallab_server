@@ -280,7 +280,7 @@ parsaj_query: function (record, callback) {
   var Access2 = require("./aparati/access2");
   var au400 = require('./aparati/au480');
   var bs480 = require('./aparati/bs480');
-  var cl900i= require('./aparati/cl900i');
+  var immulite= require('./aparati/immulite1000');
   //console.log(record)
 
   var header = record[0].split("|");
@@ -293,7 +293,7 @@ parsaj_query: function (record, callback) {
     sn = sender[2];
   }
   if (record[0].includes("E 1394-97")) {
-    sn = "251025"; // Erba XL 200
+    sn = "GRADACAC"; // Immulite 1000
   }
   if (record[0].includes("ACCESS")) {
     sn = "572794"; // Access 2ACCESS^572794
@@ -306,10 +306,10 @@ parsaj_query: function (record, callback) {
   }
   //Mindry
   switch (sn) {
-    case "BB1-96000515": // Mindray bs 480
-      console.log("Query Parsing: mindray cl900i");
-      var serijski = '600408e5f5e7ce7d39d4c203'
-      cl900i.parsaj_query(record,serijski, function (poruka) {
+    case "GRADACAC": // Mindray bs 480
+      console.log("Query Parsing: immulite 1000");
+      var serijski = '62a612d777e5656ca8b10d24'
+      immulite.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
