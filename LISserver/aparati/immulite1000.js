@@ -1,6 +1,6 @@
 module.exports = {
 
-    parsaj_rezultat: function(record,io){
+    parsaj_rezultat: function(record,io,callback){
   
       var mongoose = require("mongoose");
       
@@ -300,7 +300,7 @@ module.exports = {
           });
     },
   
-    parsaj_query: function(record,callback){
+    parsaj_query: function(record,serijski,callback){
       var mongoose = require("mongoose");
   
       var Samples = require("../../models/Postavke");
