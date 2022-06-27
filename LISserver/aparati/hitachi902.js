@@ -117,11 +117,11 @@ module.exports = {
                                                       //---------------------------------------
                                                       //console.log(test)
                                                       if(test===null){
-                                                        console.log('U LIS-u ne postoji definisan test sa sifrom:'+sifra_p+' ni na jednom aparatu'+sn);
+                                                        console.log('U LIS-u ne postoji definisan test sa sifrom:'+instance.kod+' ni na jednom aparatu'+sn);
                                                       }else{
                                                       uzorak.tests.forEach(elementu => {   
                                                                                                        
-        if((elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_t === "U OBRADI") || (elementu.labassay.sifra.trim() === test.test.sifra.trim()) && (test.status_r === true)){
+        if((elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_t === "ZAPRIMLJEN") || (elementu.labassay.sifra.trim() === test.test.sifra.trim()) && (test.status_r === true)){
                                                           console.log('match pronadjen')
                                                           //console.log(elementu)
                                                           elementu.status_t = "REALIZOVAN"
