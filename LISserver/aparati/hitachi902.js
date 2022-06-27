@@ -177,7 +177,7 @@ module.exports = {
                                                                     element.status = "NIJE ODOBREN"                                                             
                                                                     uzorak.save()
                                                                     var received = elementu.labassay.naziv
-                                                                    console.log(':: Dosao test sa BT 1500: ' + elementu.labassay.naziv)
+                                                                    console.log(':: Dosao test sa HITACHI 902: ' + elementu.labassay.naziv)
      
                                                                     result.save(function(err,novi) {
                                                                       if(err) {
