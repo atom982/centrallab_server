@@ -341,6 +341,7 @@ module.exports = {
                                   json.petnaest="               "
                                   json.sidr="   "+json.sid
                                   console.log('query za sid:'+json.sid);
+                                  console.log("="+json.position+"=")
                                   break;
                         case  'L':
                                   console.log("terminator");
