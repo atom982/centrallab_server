@@ -1,7 +1,6 @@
 module.exports = {
 
-    parsaj_rezultat: function(record,io,callback){
-  
+    parsaj_rezultat: function(record,serijski,io,callback){
       var mongoose = require("mongoose");
       
       var Samples = require("../../models/Postavke");
@@ -12,8 +11,8 @@ module.exports = {
   
       var Results = require("../../models/Postavke");
       var Results = mongoose.model("Results");
- 
   
+
   
       var calculated = require("../../funkcije/calculated/calculated");
       
@@ -40,41 +39,55 @@ module.exports = {
      
       var result = [];
       var chunks=[];
+      var rezultati = []
 
-  
+      console.log('Result Parser: ');
+    console.log(record);
           record.forEach(function(element) {
               record_type =element.charAt(0);
               switch (record_type) {
                           case 'H':
                                     console.log("header");
-                                    var header= element.split("|");
-                                    var sender=header[4].split("^");
-                                    sn='251025';
-                                    vrijeme_prijenosa=header[13];
-                                    console.log(vrijeme_prijenosa);
-                                    break;
-                          case 'P':
-                                    console.log("patient");
-                                    var patient= element.split("|");
-                                    gender=patient[8];
-                                    console.log("gender:"+gender);
-                                    break;
-                          case 'O':
-                                    console.log("order");
-                                    var order = element.split("|");
-                                    var pomSID = order[2].split("^");
-                                    sid = pomSID[0];
-                                    if(sid ==='uibc test117'){
-                                        sid = 'S001M81021'
-                                    }
-                                    if(order[11] ==='Q'){
-                                      qc = true
-                                      console.log('kontrolni uzorak')
-                                    }
-                                    console.log("sid:"+sid);
                                     break;
                           case 'R':
                                     console.log("rezultat");
+                                    var result_arr = element.split("|");
+                                    var rstring  = result_arr[1]
+                                    
+                                    sid = rstring.substring(15,26).trim()
+                                    
+                                    console.log('sid')
+                                    console.log(sid)
+                                    
+                                    var nrReps =rstring.substring(41,44)
+                                    var temp = []
+                                    console.log(nrReps)
+                                    //sid = "S002S90309" //izbrisati
+                                    
+                                    for (let index = 0; index < parseInt(nrReps); index++) {
+                                      temp.push('R|'+sid+"|"+element.substring(44+index*10,44+index*10+10))+"|"  
+                                    }
+                                    var priv = []
+                                    var tmpkod = ''
+                                    var tmprez = ''
+                                    var sign = ''
+                                    console.log(temp)
+                                    temp.forEach(element => {//R|S003C90417| HOL5.10000
+                                      priv = element.split('|')
+                                      tmpkod = priv[2].substring(0,4).trim()
+                                      tmprez = priv[2].substring(4,13).trim()
+                                      sign = priv[1].substring(0,1)
+                                      if(tmpkod ==='AUR'){
+                                        tmpkod ='AUR'+sign
+                                      }
+                                      rezultati.push({kod:tmpkod,rezultat:tmprez})
+                                    });
+                                    console.log(temp)
+                                    console.log(rezultati)
+                                    break;
+
+                          case 'L':        
+                                    
 
                                     Samples.findOne({id: sid}).populate('patient tests.labassay').exec(function (err, uzorak) {
                                         if (err) {
@@ -84,22 +97,26 @@ module.exports = {
                                               //-----------------------
                                               if(uzorak===null){
                                                   console.log('U LIS-u ne postoji unesen order za uzorak broj:'+sid);
+                                                  io.emit('kompletiran', sid, undefined, undefined, undefined, undefined)  
                                               }else{
                                               var sekc = uzorak.tests[0].labassay.sekcija
                                               console.log(" Uzorak pronadjen");
                                               if (uzorak.status != "OBRAĐEN"){
-                                                result = element.split("|");
-                                                chunks=result[2].split("^");
-                                                sifra_p=chunks[3];
-                                                if(!isNaN(result[3])){
-                                                       var rezultat_f = parseFloat(result[3]).toFixed(2);
-                                                    }else{
-                                                         var rezultat_f = result[3]
-                                                         }
-                                                jedinice_f = result[4];
-                                                vrijeme_rezultata=result[12];
-                                                module_sn='GRADACAC';
-                                              AnaAssays.findOne({kod:sifra_p}).populate('test').lean().exec(function (err, test) {
+                                                result = element.split("|");                                           
+                                                sifra_p=result[2].substring(0,4).trim();
+                                                var rezultat_f = result[2].substring(4,12).replace(/0+$/,'')
+
+                                                // Salko, 16.04.2019
+
+                                                if (!isNaN(rezultat_f)) {
+                                                  rezultat_f = parseFloat(rezultat_f).toFixed(2);
+                                                } else {
+                                                  rezultat_f = rezultat_f
+                                                }
+                                               rezultati.forEach(instance => {
+                                                 
+                                               
+                                              AnaAssays.findOne({kod:instance.kod}).populate('test').lean().exec(function (err, test) {
                                                 if (err) {
                                                   console.log("Greška:", err);
                                                 }
@@ -111,7 +128,7 @@ module.exports = {
                                                       }else{
                                                       uzorak.tests.forEach(elementu => {   
                                                                                                        
-        if((elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_t === "ZAPRIMLJEN") || (elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_r)){//elementu.status_r)){
+        if((elementu.labassay.sifra.trim() === test.test.sifra.trim() && elementu.status_t === "U OBRADI") || (elementu.labassay.sifra.trim() === test.test.sifra.trim()) && (test.status_r === true)){
                                                           console.log('match pronadjen')
                                                           //console.log(elementu)
                                                           elementu.status_t = "REALIZOVAN"
@@ -125,8 +142,12 @@ module.exports = {
                                                           rezultat.module_sn=module_sn
                                                           rezultat.reagens_lot='reagens_lot'
                                                           rezultat.reagens_sn='reagens_sn'
-                                                          rezultat.rezultat_f=rezultat_f
-                                                          rezultat.jedinice_f=jedinice_f
+                                                          if (!isNaN(instance.rezultat)) {
+                                                            rezultat.rezultat_f= parseFloat(instance.rezultat).toFixed(2);
+                                                          } else {
+                                                            rezultat.rezultat_f= instance.rezultat
+                                                          }
+                                                          rezultat.jedinice_f=test.test.jedinica
                                                           rezultat.rezultat_p='rezultat_p'
                                                           rezultat.jedinice_p='jedinice_p'
                                                           rezultat.rezultat_i='rezultat_i'
@@ -163,7 +184,7 @@ module.exports = {
                                                                     element.status = "NIJE ODOBREN"                                                             
                                                                     uzorak.save()
                                                                     var received = elementu.labassay.naziv
-                                                                    console.log(':: Dosao test sa Immulite 1000: ' + elementu.labassay.naziv)
+                                                                    console.log(':: Dosao test sa BT 1500: ' + elementu.labassay.naziv)
      
                                                                     result.save(function(err,novi) {
                                                                       if(err) {
@@ -201,7 +222,7 @@ module.exports = {
                                                                                        // arr.forEach((o, i, a) => a[i] = myNewVal) 
                                                                                           formula.forEach((clan,i,array) => {
                                                                                             if(clan.length > 10){
-                                                                                              if (rez.labassay.equals(mongoose.Types.ObjectId(clan))) {                                                                                                
+                                                                                              if (rez.labassay.equals(mongoose.Types.ObjectId(clan))) {                                                                                               
                                                                                                 array[i] = rez.rezultat[rez.rezultat.length - 1].rezultat_f
                                                                                               }
                                                                                            }
@@ -239,7 +260,7 @@ module.exports = {
                                                                                                 element.rezultat.push({
                                                                                                   anaassay:testap._id,
                                                                                                   // rezultat_f:eval(final).toFixed(2),
-                                                                                                  rezultat_f: calculated.rezultat(final, spol, jmbg, tocalculate, tpsa, fe, uzorak.id, 'Erba XL 200'),
+                                                                                                  rezultat_f: calculated.rezultat(final, spol, jmbg, tocalculate, tpsa, fe, uzorak.id, 'BT 1500'),
                                                                                                   jedinice_f:element.labassay.jedinica,
                                                                                                   vrijeme_prijenosa:Date.now(),
                                                                                                   vrijeme_rezultata:Date.now(),
@@ -266,7 +287,7 @@ module.exports = {
                                                                           }
                                                                         });
                                                                         if(komplet){
-                                                                          io.emit('kompletiran', novi.id, uzorak.site, sekc)                                                                       
+                                                                          io.emit('kompletiran', novi.id, uzorak.site, sekc, result, novi)                                                                       
                                                                         }
                                                                       }
                                                                    })
@@ -280,24 +301,22 @@ module.exports = {
                                                     }
                                                 }
                                               });
+                                            });   // for each rezultati
                                             }
                                           }
                                         }
                                       });    
 
   
-                                    break;
-                          case 'C':
-                                    console.log("komentar");
-                                    break;
-                          case 'L':
+
                                     console.log("terminator");
                              
                                     break;
                           default:
                                     console.log("Nepozanat tip frame-a..");
                             }
-          });
+          }); 
+ 
     },
   
     parsaj_query: function(record,serijski,callback){

@@ -241,7 +241,7 @@ console.log(sn)
       case 'hitachi':  // Hitachi 902
       console.log('Hitachi 902 ')
       var serijski = '62a6122c77e5656ca8b10d03'
-      hitachi.parsaj_rezultat(record,io);
+      hitachi.parsaj_rezultat(record,serijski,io);
       break; 
       case "6721":
       console.log("ClintekStatus ");
