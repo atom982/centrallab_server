@@ -450,15 +450,15 @@ module.exports = {
                                                       console.log(ime)
                                                       header +='P|1|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+ime+'\r';
                                                       //recordret.push(patient);
-                                                      switch (tests.length) {
+                                                      switch (testovi.length) {
                                                         case 1:
-                                                              json.testcount="  "+tests.length
+                                                              json.testcount="  "+testovi.length
                                                           break;
                                                         case 2:
-                                                              json.testcount=" "+tests.length
+                                                              json.testcount=" "+testovi.length
                                                         break;
                                                         case 3:
-                                                              json.testcount=tests.length
+                                                              json.testcount=testovi.length
                                                       break;                                                     
                                                         default:
                                                           break;
