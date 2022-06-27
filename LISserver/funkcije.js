@@ -233,7 +233,7 @@ parsaj_rezultat: function (record, io) {
   if (record[0].includes("GRADACAC")) {
     sn = "GRADACAC"; // Immulite
   }
-  if (record[0].includes("hitachi")) {
+  if (record[0].includes("HITACHI902")) {
     sn = "hitachi"; // Hitachi
   }
 console.log(sn)
@@ -298,7 +298,7 @@ parsaj_query: function (record, callback) {
   if (record[0].includes("GRADACAC")) {
     sn = "GRADACAC"; // Immulite 1000
   }
-  if (record[0].includes("hitachi")) {
+  if (record[0].includes("HITACHI902")) {
     sn = "hitachi"; // Hitachi
   }
   if (record[0].includes("Mindry")) {
