@@ -70,19 +70,12 @@ module.exports = {
                                     var priv = []
                                     var tmpkod = ''
                                     var tmprez = ''
-                                    var sign = ''
-                                    console.log(temp)
                                     temp.forEach(element => {//R|S003C90417| HOL5.10000
                                       priv = element.split('|')
                                       tmpkod = priv[2].substring(0,4).trim()
-                                      tmprez = priv[2].substring(4,13).trim()
-                                      sign = priv[1].substring(0,1)
-                                      if(tmpkod ==='AUR'){
-                                        tmpkod ='AUR'+sign
-                                      }
+                                      tmprez = priv[2].substring(4,11).trim()
                                       rezultati.push({kod:tmpkod,rezultat:tmprez})
                                     });
-                                    console.log(temp)
                                     console.log(rezultati)
                                     break;
 
