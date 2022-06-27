@@ -333,10 +333,8 @@ module.exports = {
                                   break;
                         case  'Q':     
                                   var query_arr = element.split("|");
-                                  json.sequence= query_arr[1];
-                                  var sample_arr=query_arr[2].split("^");
-                                  json.sid = sample_arr[1];
-                                  json.request_type = query_arr[12];
+                                  var ostring=query_arr[1]
+                                  json.sid=ostring.substring(15,26)
                                   console.log('query za sid:'+json.sid);
                                   break;
                         case  'L':
