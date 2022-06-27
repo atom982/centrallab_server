@@ -352,6 +352,7 @@ module.exports = {
                                           }else{
                                                 var tests = '';
                                                 var counter =0;
+                                                var step = 10
                                                 var uzoraklength=uzorak.tests.length;
                                                 
                                                 AnaAssays.find({aparat: mongoose.Types.ObjectId(serijski)}).populate('aparat test').lean().exec(function (err, anaassays) {
@@ -370,9 +371,30 @@ module.exports = {
                                                   testovi.forEach(element => {
                                                       counter++;
                                                       if(counter<testovi.length){
-                                                              tests+= '^^^'+element+'`';
+                                                              switch (element.length) {
+                                                                case 1:
+                                                                  tests+= ''+element+'000000000';
+                                                                break;
+                                                                case 2:
+                                                                  tests+= ''+element+'00000000';
+                                                                break;                                                             
+                                                                default:
+                                                                  tests+= ''+element+'0000000';
+                                                                  break;
+                                                              }
+                                                              
                                                         }else{
-                                                              tests+= '^^^'+element;                                                              
+                                                          switch (element.length) {
+                                                            case 1:
+                                                              tests+= ''+element+'000000000';
+                                                            break;
+                                                            case 2:
+                                                              tests+= ''+element+'00000000';
+                                                            break;                                                             
+                                                            default:
+                                                              tests+= ''+element+'0000000';
+                                                              break;
+                                                          }                                                             
                                                         }
                                                   });
                                                   Results.findOne({'id':uzorak.id}).populate('patient rezultati.labassay').exec(function (err, rezultat) { 
@@ -423,25 +445,7 @@ module.exports = {
                                                       console.log(ime)
                                                       header +='P|1|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+ime+'\r';
                                                       //recordret.push(patient);
-                                                      stype = json.sid.substring(0,1)
-                                                      console.log(stype)
-                                                      switch (stype) {
-                                                        case 'K':
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||BLOOD'+'\r';
-                                                                console.log('WHOLE BLOOD')
-                                                          break;
-                                                        case 'U':
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||URINE'+'\r';
-                                                          break; 
-                                                        case 'P':
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||PLASMA'+'\r';
-                                                          break;                                                    
-                                                        default:
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||SERUM'+'\r';
-                                                                console.log('DEFAULT SERUM')
-                                                          break;
-                                                      }
-
+                                                      header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||BLOOD'+'\r';
                                                       header += 'L|1|N';
                                                       recordret.push(header);
                                                       header = ''
