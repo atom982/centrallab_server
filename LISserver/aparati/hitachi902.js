@@ -335,6 +335,11 @@ module.exports = {
                                   var query_arr = element.split("|");
                                   var ostring=query_arr[1]
                                   json.sid=ostring.substring(15,26).trim()
+                                  json.position=ostring.substring(10,13)
+                                  json.start=";A"+" "
+                                  json.sampnr="     "+" "
+                                  json.petnaest="               "
+                                  json.sidr="   "+json.sid
                                   console.log('query za sid:'+json.sid);
                                   break;
                         case  'L':
@@ -445,7 +450,21 @@ module.exports = {
                                                       console.log(ime)
                                                       header +='P|1|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+ime+'\r';
                                                       //recordret.push(patient);
-                                                      header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||BLOOD'+'\r';
+                                                      switch (tests.length) {
+                                                        case 1:
+                                                              json.testcount="  "+tests.length
+                                                          break;
+                                                        case 2:
+                                                              json.testcount=" "+tests.length
+                                                        break;
+                                                        case 3:
+                                                              json.testcount=tests.length
+                                                      break;                                                     
+                                                        default:
+                                                          break;
+                                                      }
+                                                      json.comment="00000"
+                                                      header += 'O|1|'+json.sid+'^01||'+json.start+json.sampnr+json.position+json.sidr+json.petnaest+json.testcount+tests+json.comment+'|R||||||N||||BLOOD'+'\r';
                                                       header += 'L|1|N';
                                                       recordret.push(header);
                                                       header = ''
