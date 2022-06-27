@@ -450,18 +450,10 @@ module.exports = {
                                                       console.log(ime)
                                                       header +='P|1|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+ime+'\r';
                                                       //recordret.push(patient);
-                                                      switch (testovi.length) {
-                                                        case 1:
-                                                              json.testcount="  "+testovi.length
-                                                          break;
-                                                        case 2:
-                                                              json.testcount=" "+testovi.length
-                                                        break;
-                                                        case 3:
-                                                              json.testcount=testovi.length
-                                                      break;                                                     
-                                                        default:
-                                                          break;
+                                                      if(testovi.length>9){
+                                                        json.testcount=" "+testovi.length
+                                                      }else{
+                                                        json.testcount="  "+testovi.length
                                                       }
                                                       json.comment="00000"
                                                       header += 'O|1|'+json.sid+'^01||'+json.start+json.sampnr+json.position+json.sidr+json.petnaest+json.testcount+tests+json.comment+'|R||||||N||||BLOOD'+'\r';
