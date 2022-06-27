@@ -334,7 +334,7 @@ module.exports = {
                         case  'Q':     
                                   var query_arr = element.split("|");
                                   var ostring=query_arr[1]
-                                  json.sid=ostring.substring(15,26)
+                                  json.sid=ostring.substring(15,26).trim()
                                   console.log('query za sid:'+json.sid);
                                   break;
                         case  'L':
@@ -354,7 +354,7 @@ module.exports = {
                                                 var counter =0;
                                                 var uzoraklength=uzorak.tests.length;
                                                 
-                                                AnaAssays.find({}).populate('aparat test').lean().exec(function (err, anaassays) {
+                                                AnaAssays.find({aparat: mongoose.Types.ObjectId(serijski)}).populate('aparat test').lean().exec(function (err, anaassays) {
                                                   uzorak.tests.forEach(function(test) {
                                                     anaassays.forEach(function(anaassay) { 
                                                       if((anaassay.aparat.sn === json.sn) && (anaassay.test.sifra === test.labassay.sifra)  && (anaassay.test.calculated)){
