@@ -65,7 +65,7 @@ module.exports = {
                                     //sid = "S002S90309" //izbrisati
                                     
                                     for (let index = 0; index < parseInt(nrReps); index++) {
-                                      temp.push('R|'+sid+"|"+element.substring(44+index*10,44+index*10+10))+"|"  
+                                      temp.push('R|'+sid+"|"+element.substring(45+index*10,45+index*10+10))+"|"  
                                     }
                                     var priv = []
                                     var tmpkod = ''
