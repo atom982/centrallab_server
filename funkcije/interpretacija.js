@@ -578,7 +578,7 @@ module.exports = {
     } else if (
       rezultat === "svijetlo žut" ||
       rezultat === "žut" ||
-      rezultat === "žuta"
+      rezultat === "žuta" || rezultat === "svijetlo žuta"
     ) {
       return [" ", "Green"];
     } else {
