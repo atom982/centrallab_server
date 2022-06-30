@@ -392,8 +392,8 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|`^&|||atom-lis'+'\r';
-                                                      //recordret.push(header);replaced = str.replace(/ /g, '+');
+                                                      header='H|`^&|||atom-lis'+'\u000D';
+                                                      recordret.push(header);replaced = str.replace(/ /g, '+');
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
                                                       if(prezime.length > 20){
@@ -414,29 +414,30 @@ module.exports = {
                                                       ime = ime.replace(/đ/g,'d')
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
-                                                      header +='P|1|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+rezultat.patient.jmbg+'|'+ime+'\r';
-                                                      //recordret.push(patient);
+                                                      var patient ='P|1|'+'|'+'|'+'|'+ime+'\u000D';
+                                                      recordret.push(patient);
                                                       stype = json.sid.substring(0,1)
                                                       console.log(stype)
+                                                      var order =''
                                                       switch (stype) {
                                                         case 'K':
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||BLOOD'+'\r';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||BLOOD'+'\u000D';
                                                                 console.log('WHOLE BLOOD')
                                                           break;
                                                         case 'U':
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||URINE'+'\r';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||URINE'+'\u000D';
                                                           break; 
                                                         case 'P':
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||PLASMA'+'\r';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||PLASMA'+'\u000D';
                                                           break;                                                    
                                                         default:
-                                                                header += 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||SERUM'+'\r';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||SERUM'+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
-
-                                                      header += 'L|1|N';
-                                                      recordret.push(header);
+                                                      recordret.push(order);
+                                                      var terminator = 'L|1|N'+'\u000D';
+                                                      recordret.push(terminator);
                                                       header = ''
                                                       callback(recordret); 
                                                     }
