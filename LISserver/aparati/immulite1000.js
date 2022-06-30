@@ -372,7 +372,7 @@ module.exports = {
   
                                                     if(testovi.length < 1){
                                                       console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
-                                                      header='H|`^&|||atom-lis'+'|||||GRADACAC'+'\u000D';
+                                                      header='H|\\^&|||atom-lis'+'|||||GRADACAC'+'\u000D';
                                                       recordret.push(header);
                                                       var query = 'Q|1|^'+json.sid+'||^^^ALL||||||||X'+'\u000D'
                                                       recordret.push(query);
@@ -392,7 +392,7 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|`^&|||atom-lis'+'|||||GRADACAC'+'\u000D';
+                                                      header='H|\\^&|||atom-lis'+'|||||GRADACAC'+'\u000D';//\\^&
                                                       recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
