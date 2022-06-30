@@ -59,23 +59,23 @@ module.exports = {
 
                                     console.log(result)
                                     
-                                    sid = result[5]
+                                    sid = result[2]
                                     console.log(sid)
 
                                     
-                                console.log('Col: '+result[10])
-                                console.log("Cla: "+result[11])
-                                console.log("GLU: "+result[13])
-                                console.log("BIL: "+result[16])
-                                console.log("KET: "+result[19])
-                                console.log("SG: "+result[22])
-                                console.log("BLD: "+result[25])
-                                console.log("pH: "+result[28])
-                                console.log("PRO: "+result[31])
-                                console.log("UBG: "+result[34])
+                                console.log('Col: '+result[6])
+                                console.log("Cla: "+result[7])
+                                console.log("GLU: "+result[9])
+                                console.log("BIL: "+result[12])
+                                console.log("KET: "+result[15])
+                                console.log("SG: "+result[18])
+                                console.log("BLD: "+result[21])
+                                console.log("pH: "+result[24])
+                                console.log("PRO: "+result[27])
+                                console.log("UBG: "+result[30])
                                 //     
-                                console.log("NIT: "+result[37])
-                                console.log("LEU: "+result[40])
+                                console.log("NIT: "+result[33])
+                                console.log("LEU: "+result[36])
                                 
     
                                
