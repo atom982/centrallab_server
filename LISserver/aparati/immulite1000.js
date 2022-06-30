@@ -57,20 +57,11 @@ module.exports = {
                                     console.log("patient");
                                     var patient= element.split("|");
                                     gender=patient[8];
+                                    sid = patient[2];
                                     console.log("gender:"+gender);
                                     break;
                           case 'O':
                                     console.log("order");
-                                    var order = element.split("|");
-                                    var pomSID = order[2].split("^");
-                                    sid = pomSID[0];
-                                    if(sid ==='uibc test117'){
-                                        sid = 'S001M81021'
-                                    }
-                                    if(order[11] ==='Q'){
-                                      qc = true
-                                      console.log('kontrolni uzorak')
-                                    }
                                     console.log("sid:"+sid);
                                     break;
                           case 'R':
