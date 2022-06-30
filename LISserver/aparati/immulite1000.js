@@ -57,12 +57,13 @@ module.exports = {
                                     console.log("patient");
                                     var patient= element.split("|");
                                     gender=patient[8];
-                                    sid = patient[2];
+                                    //sid = patient[2];
                                     console.log("gender:"+gender);
                                     break;
                           case 'O':
-                                    console.log("order");
-                                    console.log("sid:"+sid);
+                            var order = element.split("|");
+                            sid = order[3];
+                            console.log("SID: " + sid);
                                     break;
                           case 'R':
                                     console.log("rezultat");
@@ -403,7 +404,7 @@ module.exports = {
                                                       if(rime.length > 20){
                                                         rime = rezultat.patient.ime.substring(0,19)
                                                       }
-                                                      ime = prezime+'^'+rime+'^'
+                                                      ime = prezime+'^'+rime//+'^'
                                                       ime = ime.replace(/Ć/g,'C')
                                                       ime = ime.replace(/Č/g,'C')
                                                       ime = ime.replace(/Š/g,'S')
