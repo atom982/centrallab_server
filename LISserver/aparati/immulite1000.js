@@ -363,7 +363,7 @@ module.exports = {
                                                   testovi.forEach(element => {
                                                       counter++;
                                                       if(counter<testovi.length){
-                                                              tests+= '^^^'+element+'`';
+                                                              tests+= '^^^'+element+'\\';
                                                         }else{
                                                               tests+= '^^^'+element;                                                              
                                                         }
