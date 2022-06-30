@@ -415,7 +415,7 @@ module.exports = {
                                                       ime = ime.replace(/đ/g,'d')
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
-                                                      var patient ='P|1|'+'|'+'|'+'|'+ime//+'\u000D';
+                                                      var patient ='P|1|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
                                                       stype = json.sid.substring(0,1)
                                                       console.log(stype)
