@@ -392,7 +392,8 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|\\^&|||'+'|||||GRADACAC'+'\u000D';//\\^&
+                                                      header='H|\\^&|||'+'|||||GRADACAC'//+'\u000D';//\\^&
+                                                      // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
                                                       recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
@@ -414,29 +415,29 @@ module.exports = {
                                                       ime = ime.replace(/đ/g,'d')
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
-                                                      var patient ='P|1|'+'|'+'|'+'|'+ime+'\u000D';
+                                                      var patient ='P|1|'+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
                                                       stype = json.sid.substring(0,1)
                                                       console.log(stype)
                                                       var order =''
                                                       switch (stype) {
                                                         case 'K':
-                                                          order = 'O|1|'+json.sid+'^01||'+tests+''+'\u000D';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests//+'\u000D';
                                                                 console.log('WHOLE BLOOD')
                                                           break;
                                                         case 'U':
-                                                          order = 'O|1|'+json.sid+'||'+tests+''+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                           break; 
                                                         case 'P':
-                                                          order = 'O|1|'+json.sid+'||'+tests+''+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                           break;                                                    
                                                         default:
-                                                          order = 'O|1|'+json.sid+'||'+tests+''+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
                                                       recordret.push(order);
-                                                      var terminator = 'L|1|N'+'\u000D';
+                                                      var terminator = 'L|1|N'//'\u000D';
                                                       recordret.push(terminator);
                                                       header = ''
                                                       callback(recordret); 
