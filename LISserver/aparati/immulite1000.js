@@ -372,7 +372,7 @@ module.exports = {
   
                                                     if(testovi.length < 1){
                                                       console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
-                                                      header='H|`^&|||atom-lis'+'|||||GRADACAC|||'+'\u000D';
+                                                      header='H|`^&|||atom-lis'+'|||||GRADACAC'+'\u000D';
                                                       recordret.push(header);
                                                       var query = 'Q|1|^'+json.sid+'||^^^ALL||||||||X'+'\u000D'
                                                       recordret.push(query);
@@ -392,7 +392,7 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|`^&|||atom-lis'+'|||||GRADACAC|||'+'\u000D';
+                                                      header='H|`^&|||atom-lis'+'|||||GRADACAC'+'\u000D';
                                                       recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
@@ -421,17 +421,17 @@ module.exports = {
                                                       var order =''
                                                       switch (stype) {
                                                         case 'K':
-                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||BLOOD'+'\u000D';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests+''+'\u000D';
                                                                 console.log('WHOLE BLOOD')
                                                           break;
                                                         case 'U':
-                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||URINE'+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests+''+'\u000D';
                                                           break; 
                                                         case 'P':
-                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||PLASMA'+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests+''+'\u000D';
                                                           break;                                                    
                                                         default:
-                                                          order = 'O|1|'+json.sid+'^01||'+tests+'|R||||||N||||SERUM'+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests+''+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
