@@ -393,7 +393,7 @@ module.exports = {
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
                                                       header='H|`^&|||atom-lis'+'\u000D';
-                                                      recordret.push(header);replaced = str.replace(/ /g, '+');
+                                                      recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
                                                       if(prezime.length > 20){
