@@ -62,7 +62,7 @@ module.exports = {
                                     break;
                           case 'O':
                             var order = element.split("|");
-                            sid = order[3];
+                            sid = order[2];
                             console.log("SID: " + sid);
                                     break;
                           case 'R':
