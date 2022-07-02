@@ -216,7 +216,7 @@ module.exports = {
 
         doc.registerFont("PTSansRegular", config.nalaz_ptsansregular);
         doc.registerFont("PTSansBold", config.nalaz_ptsansbold);
-        doc.image(config.nalaz_logo + code + ".jpg", logoX, logoY - 3, {
+        doc.image(config.nalaz_logo + code + ".jpg", logoX, logoY - 6, {
           width: 280,
           keepAspectRatio: true,
         });
