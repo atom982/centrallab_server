@@ -1807,7 +1807,8 @@ module.exports = {
               { width: 120, keepAspectRatio: true }
             ); */
 
-            doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("       Voditelj laboratorija");
+            // doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("       Voditelj laboratorija");
+            doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("         Nalaz verifikovao");
 
           }
         }
