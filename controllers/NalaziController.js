@@ -76,6 +76,9 @@ nalazController.Mail = function (req, res) {
             });
           } else {
             var height = nalaz.height;
+            var heightStamp = (Number(nalaz.height) + 20).toString();
+						console.log(heightStamp)
+
             let pageStr = [];
 
             for (i = 0; i < page; i++) {
@@ -96,26 +99,26 @@ nalazController.Mail = function (req, res) {
                 pdfDoc
                   .editPage(str)
                   // .image(config.nalaz_logo + nalaz.site.sifra + ".jpg", logo_x, logo_y, { width: logo_w, keepAspectRatio: true })
-                  .image(
-                  	config.nalaz_signature +
-                  		nalaz.site.sifra +
-                  		'-' +
-                  		"Stamp" +
-                  		'.png',
-                  	140,
-                  	height + 300,
-                  	{ width: 120, keepAspectRatio: true }
-                  )
-                  // .image(
-                  // 	config.nalaz_signature +
-                  // 		nalaz.site.sifra +
-                  // 		'-' +
-                  // 		req.body.decoded.user +
-                  // 		'.png',
-                  // 	372,
-                  // 	height,
-                  // 	{ width: 150, keepAspectRatio: true }
-                  // )
+                 .image(
+										config.nalaz_signature +
+											nalaz.site.sifra +
+											'-' +
+											"Stamp" +
+											'.png',
+										72,
+										heightStamp,
+										{ width: 120, keepAspectRatio: true }
+									)
+									.image(
+										config.nalaz_signature +
+											nalaz.site.sifra +
+											'-' +
+											"centrallab" +
+											'.png',
+										372,
+										height,
+										{ width: 150, keepAspectRatio: true }
+									)
                   // .image(config.nalaz_footer + nalaz.site.sifra + eddress + ".jpg", 0, 745, { width: 615, keepAspectRatio: true })
                   // .text("Stranica " + str + " od " + page, 300, 790, { fontSize: 8, align: "center center" })
                   .endPage();
