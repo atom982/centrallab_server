@@ -102,7 +102,7 @@ nalazController.Mail = function (req, res) {
                   		'-' +
                   		"Stamp" +
                   		'.png',
-                  	190,
+                  	140,
                   	height + 200,
                   	{ width: 200, keepAspectRatio: true }
                   )
