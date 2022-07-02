@@ -88,10 +88,14 @@ module.exports = {
       "<br>" +
       adresa +
       "<br>" +
-      "e-mail: " +
-      email +
-      ", tel: " +
-      telefon + ", mob: " + mob +
+      "E-mail: clgradacac@gmail.com i biohemija@bih.net.ba" +
+      // email +
+      "<br>" +
+      "Tel: +387 35 81 63 17" +
+      "<br>" +
+      // telefon + 
+      "Mob: +387 62 73 73 03 i +387 61 23 47 05" + 
+      //mob +
       "<br>" +
       "Facebook: " +
       web +

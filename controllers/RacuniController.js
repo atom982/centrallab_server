@@ -480,7 +480,7 @@ racuniController.Get = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
+              .text("Ul. Josipa Šibera 3, 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
@@ -1109,7 +1109,7 @@ racuniController.Popust = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
+              .text("Ul. Josipa Šibera 3, 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
@@ -1767,7 +1767,7 @@ racuniController.Cijena = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
+              .text("Ul. Josipa Šibera 3, 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
