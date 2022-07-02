@@ -104,7 +104,7 @@ nalazController.Mail = function (req, res) {
                   		'.png',
                   	140,
                   	height + 200,
-                  	{ width: 200, keepAspectRatio: true }
+                  	{ width: 120, keepAspectRatio: true }
                   )
                   // .image(
                   // 	config.nalaz_signature +
