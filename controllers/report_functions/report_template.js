@@ -1808,6 +1808,7 @@ module.exports = {
             ); */
 
             // doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("       Voditelj laboratorija");
+            doc.moveDown(0.5);
             doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("         Nalaz verifikovao");
 
           }
