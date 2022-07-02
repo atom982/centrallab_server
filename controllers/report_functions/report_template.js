@@ -247,13 +247,13 @@ module.exports = {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("biohemija@bih.net.ba", 340, 70 - 3 - 12.5)
+              .text("              biohemija@bih.net.ba", 340, 70 - 3 - 12.5)
             
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Facebook: www.facebook.com/CentralLabGradacac", 340, 70 - 3); // Facebook
+              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); // Facebook
             // .fillColor("#0000EE")
             // .text("facebook.com/CentralLabGradacac", 414, 70);
 
