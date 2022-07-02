@@ -242,7 +242,7 @@ module.exports = {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("     +387 (0) 62 73 73 03 (+viber+WhatsApp)", 388, 57.5 - 3 - 12.5);
+              .text("     +387 (0) 61 23 47 05 (+viber+WhatsApp)", 388, 57.5 - 3 - 12.5);
             
             doc
               .font("PTSansRegular")
