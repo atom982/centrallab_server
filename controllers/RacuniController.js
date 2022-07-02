@@ -469,7 +469,7 @@ racuniController.Get = function (req, res) {
 
           var code = samples[0].site.sifra;
 
-          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 3, {
+          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 9, {
             width: 280,
             keepAspectRatio: true,
           });
@@ -1098,7 +1098,7 @@ racuniController.Popust = function (req, res) {
 
           var code = samples[0].site.sifra;
 
-          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 3, {
+          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 9, {
             width: 280,
             keepAspectRatio: true,
           });
@@ -1756,7 +1756,7 @@ racuniController.Cijena = function (req, res) {
 
           var code = samples[0].site.sifra;
 
-          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 3, {
+          doc.image(config.nalaz_logo + code + ".jpg", 50, 13 - 9, {
             width: 280,
             keepAspectRatio: true,
           });
