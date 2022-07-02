@@ -1797,14 +1797,22 @@ module.exports = {
 
             doc.moveDown(2);
 
+           /*  doc.image(
+              config.nalaz_signature + code + "-" + "centrallab" + ".png",
+              372,
+              doc.y - 40,
+              { width: 150, keepAspectRatio: true }
+            );
+
+            doc.image(
+              config.nalaz_signature + code + "-" + "Stamp" + ".png",
+              190,
+              doc.y - 20,
+              { width: 120, keepAspectRatio: true }
+            ); */
+
             doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("       Voditelj laboratorija");
 
-            // doc.image(
-            //   config.nalaz_signature + code + "-" + "centrallab" + ".png",
-            //   372,
-            //   doc.y - 10,
-            //   { width: 150, keepAspectRatio: true }
-            // );
           }
         }
 
