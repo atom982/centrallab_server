@@ -227,18 +227,17 @@ module.exports = {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Josipa Šibera 3", 388, 20 - 3);
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac", 360, 20 - 3);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
+              .text("Tel: +387 (0) 35 81 63 17", 360, 32.5 - 3);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Telefon:", 388, 45 - 3)
-              .text("+387 (0)35 816-317", 427.6, 45 - 3);
+              .text("Mob: +387 (0) 62 73 73 03", 360, 45 - 3)
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
