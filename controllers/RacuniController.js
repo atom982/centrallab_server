@@ -480,22 +480,22 @@ racuniController.Get = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 340, 20 - 3 - 12.5);
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Tel: +387 35 81 63 17", 340, 32.5 - 3 - 12.5);
+              .text("Tel: +387 35 81 63 17", 345, 32.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 340, 45 - 3 - 12.5)
+              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 345, 45 - 3 - 12.5)
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("E-mail: clgradacac@gmail.com i", 340, 57.5 - 3 - 12.5);
+              .text("E-mail: clgradacac@gmail.com i", 345, 57.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
@@ -506,7 +506,7 @@ racuniController.Get = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
+              .text("Facebook: facebook.com/CentralLabGradacac", 345, 70 - 3); 
 
             break;
 
@@ -1109,22 +1109,22 @@ racuniController.Popust = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 340, 20 - 3 - 12.5);
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Tel: +387 35 81 63 17", 340, 32.5 - 3 - 12.5);
+              .text("Tel: +387 35 81 63 17", 345, 32.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 340, 45 - 3 - 12.5)
+              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 345, 45 - 3 - 12.5)
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("E-mail: clgradacac@gmail.com i", 340, 57.5 - 3 - 12.5);
+              .text("E-mail: clgradacac@gmail.com i", 345, 57.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
@@ -1135,7 +1135,7 @@ racuniController.Popust = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
+              .text("Facebook: facebook.com/CentralLabGradacac", 345, 70 - 3); 
 
             break;
 
@@ -1767,22 +1767,22 @@ racuniController.Cijena = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 340, 20 - 3 - 12.5);
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 345, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Tel: +387 35 81 63 17", 340, 32.5 - 3 - 12.5);
+              .text("Tel: +387 35 81 63 17", 345, 32.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 340, 45 - 3 - 12.5)
+              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 345, 45 - 3 - 12.5)
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("E-mail: clgradacac@gmail.com i", 340, 57.5 - 3 - 12.5);
+              .text("E-mail: clgradacac@gmail.com i", 345, 57.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
@@ -1793,7 +1793,7 @@ racuniController.Cijena = function (req, res) {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
+              .text("Facebook: facebook.com/CentralLabGradacac", 345, 70 - 3); 
 
             break;
 
