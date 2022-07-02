@@ -475,44 +475,40 @@ racuniController.Get = function (req, res) {
           });
 
           switch (code) {
-            case "B": // Skenderija
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Josipa Šibera 3", 388, 20 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45 - 3)
-                .text("+387 (0)35 816-317", 427.6, 45 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
-              // doc
-              //   .font("PTSansRegular")
-              //   .fontSize(10.5)
-              //   .fillColor("black")
-              //   .text("Web:", 388, 70)
-              //   .fillColor("#0000EE")
-              //   .text("facebook.com/CentralLabGradacac", 414, 70);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("facebook.com/CentralLabGradacac", 388, 70 - 3); // Facebook
-              // .fillColor("#0000EE")
-              // .text("facebook.com/CentralLabGradacac", 414, 70);
+            case "B": // CENTRAL LAB Gradačac
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 340, 20 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Tel: +387 35 81 63 17", 340, 32.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 340, 45 - 3 - 12.5)
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("E-mail: clgradacac@gmail.com i", 340, 57.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("            biohemija@bih.net.ba", 341, 70 - 3 - 12.5)
+            
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
 
-              break;
+            break;
 
             default:
               break;
@@ -1108,44 +1104,40 @@ racuniController.Popust = function (req, res) {
           });
 
           switch (code) {
-            case "B": // Skenderija
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Josipa Šibera 3", 388, 20 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45 - 3)
-                .text("+387 (0)35 816-317", 427.6, 45 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
-              // doc
-              //   .font("PTSansRegular")
-              //   .fontSize(10.5)
-              //   .fillColor("black")
-              //   .text("Web:", 388, 70)
-              //   .fillColor("#0000EE")
-              //   .text("facebook.com/CentralLabGradacac", 414, 70);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("facebook.com/CentralLabGradacac", 388, 70 - 3); // Facebook
-              // .fillColor("#0000EE")
-              // .text("facebook.com/CentralLabGradacac", 414, 70);
+            case "B": // CENTRAL LAB Gradačac
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 340, 20 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Tel: +387 35 81 63 17", 340, 32.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 340, 45 - 3 - 12.5)
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("E-mail: clgradacac@gmail.com i", 340, 57.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("            biohemija@bih.net.ba", 341, 70 - 3 - 12.5)
+            
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
 
-              break;
+            break;
 
             default:
               break;
@@ -1770,44 +1762,40 @@ racuniController.Cijena = function (req, res) {
           });
 
           switch (code) {
-            case "B": // Skenderija
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Josipa Šibera 3", 388, 20 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("76250 Gradačac, Bosna i Hercegovina", 388, 32.5 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Telefon:", 388, 45 - 3)
-                .text("+387 (0)35 816-317", 427.6, 45 - 3);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
-              // doc
-              //   .font("PTSansRegular")
-              //   .fontSize(10.5)
-              //   .fillColor("black")
-              //   .text("Web:", 388, 70)
-              //   .fillColor("#0000EE")
-              //   .text("facebook.com/CentralLabGradacac", 414, 70);
-              doc
-                .font("PTSansRegular")
-                .fontSize(10.5)
-                .fillColor("black")
-                .text("facebook.com/CentralLabGradacac", 388, 70 - 3); // Facebook
-              // .fillColor("#0000EE")
-              // .text("facebook.com/CentralLabGradacac", 414, 70);
+            case "B": // CENTRAL LAB Gradačac
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac, BiH", 340, 20 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Tel: +387 35 81 63 17", 340, 32.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Mob: +387 62 73 73 03 i +387 61 23 47 05", 340, 45 - 3 - 12.5)
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("E-mail: clgradacac@gmail.com i", 340, 57.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("            biohemija@bih.net.ba", 341, 70 - 3 - 12.5)
+            
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
 
-              break;
+            break;
 
             default:
               break;

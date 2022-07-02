@@ -222,7 +222,7 @@ module.exports = {
         });
 
         switch (code) {
-          case "B": // Skenderija
+          case "B": // CENTRAL LAB Gradačac
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
@@ -253,9 +253,7 @@ module.exports = {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); // Facebook
-            // .fillColor("#0000EE")
-            // .text("facebook.com/CentralLabGradacac", 414, 70);
+              .text("Facebook: facebook.com/CentralLabGradacac", 340, 70 - 3); 
 
             break;
 
