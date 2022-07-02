@@ -247,7 +247,7 @@ module.exports = {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("            biohemija@bih.net.ba", 341, 70 - 3 - 12.5)
+              .text("            biohemija@bih.net.ba", 341 + 5, 70 - 3 - 12.5)
             
             doc
               .font("PTSansRegular")
