@@ -227,29 +227,23 @@ module.exports = {
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Ul. Josipa Šibera 3. 76250 Gradačac", 360, 20 - 3);
+              .text("Ul. Josipa Šibera 3. 76250 Gradačac", 360, 20 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Tel: +387 (0) 35 81 63 17", 360, 32.5 - 3);
+              .text("Tel: +387 (0) 35 81 63 17", 360, 32.5 - 3 - 12.5);
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Mob: +387 (0) 62 73 73 03", 360, 45 - 3)
+              .text("Mob: +387 (0) 62 73 73 03 (+viber+WhatsApp)", 360, 45 - 3 - 12.5)
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
               .fillColor("black")
-              .text("Mobitel: +387 (0)62 737-303", 388, 57.5 - 3);
-            // doc
-            //   .font("PTSansRegular")
-            //   .fontSize(10.5)
-            //   .fillColor("black")
-            //   .text("Web:", 388, 70)
-            //   .fillColor("#0000EE")
-            //   .text("facebook.com/CentralLabGradacac", 414, 70);
+              .text("     +387 (0) 62 73 73 03 (+viber+WhatsApp)", 388, 57.5 - 3 - 12.5);
+            
             doc
               .font("PTSansRegular")
               .fontSize(10.5)
