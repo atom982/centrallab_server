@@ -76,7 +76,7 @@ nalazController.Mail = function (req, res) {
             });
           } else {
             var height = nalaz.height;
-            var heightStamp = (Number(nalaz.height) + 280).toString();
+            var heightStamp = (Number(nalaz.height) + 20).toString();
 						console.log(heightStamp)
 
             let pageStr = [];
