@@ -96,16 +96,16 @@ nalazController.Mail = function (req, res) {
                 pdfDoc
                   .editPage(str)
                   // .image(config.nalaz_logo + nalaz.site.sifra + ".jpg", logo_x, logo_y, { width: logo_w, keepAspectRatio: true })
-                  // .image(
-                  // 	config.nalaz_signature +
-                  // 		nalaz.site.sifra +
-                  // 		'-' +
-                  // 		"Stamp" +
-                  // 		'.png',
-                  // 	140,
-                  // 	height + 200,
-                  // 	{ width: 200, keepAspectRatio: true }
-                  // )
+                  .image(
+                  	config.nalaz_signature +
+                  		nalaz.site.sifra +
+                  		'-' +
+                  		"Stamp" +
+                  		'.png',
+                  	190,
+                  	height + 200,
+                  	{ width: 200, keepAspectRatio: true }
+                  )
                   // .image(
                   // 	config.nalaz_signature +
                   // 		nalaz.site.sifra +
