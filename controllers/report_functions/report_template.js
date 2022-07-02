@@ -243,6 +243,11 @@ module.exports = {
               .fontSize(10.5)
               .fillColor("black")
               .text("\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0+387 (0) 61 23 47 05 (+viber+WhatsApp)", 345, 57.5 - 3 - 12.5);
+            doc
+              .font("PTSansRegular")
+              .fontSize(10.5)
+              .fillColor("black")
+              .text("E-mail: clgradacac@gmail.com / biohemija@bih.net.ba", 345, 70 - 3 - 12.5)
             
             doc
               .font("PTSansRegular")
