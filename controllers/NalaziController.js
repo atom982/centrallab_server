@@ -116,7 +116,7 @@ nalazController.Mail = function (req, res) {
 											"centrallab" +
 											'.png',
 										372,
-										height,
+										heightStamp - 20,
 										{ width: 150, keepAspectRatio: true }
 									)
                   // .image(config.nalaz_footer + nalaz.site.sifra + eddress + ".jpg", 0, 745, { width: 615, keepAspectRatio: true })
