@@ -636,7 +636,7 @@ racuniController.Get = function (req, res) {
 
           testovi.forEach((element) => {
             niz = [];
-            niz.push(element.test);
+            niz.push(element.test.replace(";", "").replace(";", ""));
             niz.push(element.cijena);
             rows.push(niz);
           });
@@ -1265,7 +1265,7 @@ racuniController.Popust = function (req, res) {
 
           testovi.forEach((element) => {
             niz = [];
-            niz.push(element.test);
+            niz.push(element.test.replace(";", "").replace(";", ""));
             niz.push(element.cijena);
             rows.push(niz);
           });
@@ -1923,7 +1923,7 @@ racuniController.Cijena = function (req, res) {
 
           testovi.forEach((element) => {
             niz = [];
-            niz.push(element.test);
+            niz.push(element.test.replace(";", "").replace(";", ""));
             niz.push(element.cijena);
             rows.push(niz);
           });
