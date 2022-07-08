@@ -165,25 +165,25 @@ module.exports = {
                                               // Glukoza
 
                                       var GLU = ""
-                                          GLU = result[13]
+                                          GLU = result[10]
 
-                                      if (result[13].includes("Negative")) {
+                                      if (result[10].includes("Negative")) {
 
                                           GLU = "negativan"
                                           
-                                      }else if (result[13].includes("1+")) {
+                                      }else if (result[10].includes("1+")) {
   
                                         GLU = "pozitivan 1+"
                                           
-                                      }else if (result[13].includes("2+")) {
+                                      }else if (result[10].includes("2+")) {
   
                                         GLU = "pozitivan 2+"
                                           
-                                      }else if (result[13].includes("3+")) {
+                                      }else if (result[10].includes("3+")) {
   
                                         GLU = "pozitivan 3+"
                                           
-                                      }else if (result[13].includes("4+")) {
+                                      }else if (result[10].includes("4+")) {
   
                                         GLU = "pozitivan 4+"
                                           
