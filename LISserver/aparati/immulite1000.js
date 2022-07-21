@@ -85,8 +85,18 @@ module.exports = {
                                                 sifra_p=chunks[3];
                                                 if(!isNaN(result[3])){
                                                        var rezultat_f = parseFloat(result[3]).toFixed(2);
+
+                                                      //  if(result[6] == "<"){
+                                                      //   rezultat_f = "<" + parseFloat(result[3]).toFixed(2)
+                                                      //  }
+
                                                     }else{
                                                          var rezultat_f = result[3]
+
+                                                        //  if(result[6] == "<"){
+                                                        //   rezultat_f = "<" + result[3]
+                                                        //  }
+
                                                          }
                                                 jedinice_f = result[4];
                                                 vrijeme_rezultata=result[12];

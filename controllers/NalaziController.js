@@ -1428,9 +1428,9 @@ nalazController.Nalaz = function (req, res) {
 
                 // obj.languages = ["BA"]
 
-                // obj.created_at = new Date(
-                //  new Date().getTime() - new Date().getTimezoneOffset() * 60000
-                // );
+                obj.created_at = new Date(
+                 new Date().getTime() - new Date().getTimezoneOffset() * 60000
+                );
 
                 obj.updated_at = new Date(
                   new Date().getTime() - new Date().getTimezoneOffset() * 60000
