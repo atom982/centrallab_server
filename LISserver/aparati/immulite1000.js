@@ -87,14 +87,14 @@ module.exports = {
                                                        var rezultat_f = parseFloat(result[3]).toFixed(2);
 
                                                        if(result[6] == "<"){
-                                                        rezultat_f = "<" + parseFloat(result[3]).toFixed(2)
+                                                        rezultat_f = "< " + parseFloat(result[3]).toFixed(2)
                                                        }
 
                                                     }else{
                                                          var rezultat_f = result[3]
 
                                                          if(result[6] == "<"){
-                                                          rezultat_f = "<" + result[3]
+                                                          rezultat_f = "< " + result[3]
                                                          }
 
                                                          }
