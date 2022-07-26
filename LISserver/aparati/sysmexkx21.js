@@ -69,17 +69,19 @@ module.exports = {
 
                                         switch (analiti[index]) {
                                             case 'RBC':                                                    
-                                                    temprez = temprez.substring(1,2)+'.'+temprez.substring(2,4)
+                                              temprez = temprez.substring(1,2)+'.'+temprez.substring(2,4)
                                                 break;
                                             case 'HGB':                                                    
-                                                    temprez = temprez.substring(1,4)
+                                              temprez = temprez.substring(1,4)
+                                              temprez = (parseFloat(temprez)).toFixed(0).toString();
                                             break;   
                                             case 'HCT':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
                                             temprez = (parseFloat(temprez)/100).toFixed(3).toString()
                                             break;                                    
                                             case 'PLT':                                                    
-                                            temprez = temprez.substring(1,4)
+                                              temprez = temprez.substring(1,4)
+                                              temprez = (parseFloat(temprez)).toFixed(0).toString();
                                             break;  
                                             case 'LYM':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
@@ -98,7 +100,8 @@ module.exports = {
                                             temprez = (parseFloat(temprez)).toFixed(1).toString()
                                             break;
                                             case 'MCHC':                                                    
-                                            temprez = temprez.substring(1,4)
+                                              temprez = temprez.substring(1,4)
+                                              temprez = (parseFloat(temprez)).toFixed(0).toString();
                                             break;
                                             case 'MCV':                                                    
                                             temprez = parseInt(temprez.substring(0,3)).toString()+'.'+temprez.substring(3,5)
