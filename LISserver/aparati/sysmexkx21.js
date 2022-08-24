@@ -85,15 +85,15 @@ module.exports = {
                                             break;  
                                             case 'LYM':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseFloat(temprez)/100).toFixed(3).toString()
+                                            temprez = (parseFloat(temprez)).toFixed(1).toString()
                                             break;
                                             case 'MIX':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseFloat(temprez)/100).toFixed(3).toString()
+                                            temprez = (parseFloat(temprez)).toFixed(1).toString()
                                             break;
                                             case 'NEU':                                                    
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
-                                            temprez = (parseFloat(temprez)/100).toFixed(3).toString()
+                                            temprez = (parseFloat(temprez)).toFixed(1).toString()
                                             break;
                                             case 'MIX#':                                                    
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
@@ -109,11 +109,11 @@ module.exports = {
                                             break;
                                             case 'RDW_CV':                                                    
                                             temprez =  parseInt(temprez.substring(0,1)).toString()+'.'+temprez.substring(1,5)
-                                            temprez = (parseFloat(temprez)).toFixed(3).toString()
+                                            temprez = (parseFloat(temprez)*100).toFixed(1).toString()
                                             break;
                                             case 'P-LCR':                                                    
                                             temprez =  parseInt(temprez.substring(0,1)).toString()+'.'+temprez.substring(1,5)
-                                            temprez = (parseFloat(temprez)).toFixed(3).toString()
+                                            temprez = (parseFloat(temprez)*100).toFixed(1).toString()
                                             break;
                                             default:
                                                     temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)  
