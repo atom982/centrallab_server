@@ -1472,7 +1472,7 @@ module.exports = {
         }
 
         doc.moveDown(0.3);
-    doc.font("PTSansBold").fontSize(12).text("Laboratorij pod nadzorom supervizora Butković Dr. Nusreta spec. medicinske biohemije");
+    doc.font("PTSansBold").fontSize(11.9).text("Laboratorij pod nadzorom supervizora Butković dr.Nusreta, specijaliste medicinske biohemije");
 
 
         if (hormoni) {
