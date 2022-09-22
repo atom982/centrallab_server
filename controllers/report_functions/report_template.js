@@ -1477,13 +1477,13 @@ module.exports = {
 
         if (hormoni) {
           // console.log("Spolni hormoni")
-
+          doc.addPage();
           doc.image(config.nalaz_references + "Hormones.png", 50, doc.y + 15, {
             width: 510,
             keepAspectRatio: true,
             lineBreak: false,
           });
-          doc.addPage();
+          
         }
 
         if (enap === true) {
