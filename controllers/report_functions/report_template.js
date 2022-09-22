@@ -1451,9 +1451,9 @@ module.exports = {
           var roma = false;
 
           specificni.forEach((element) => {
-            // if (element.extend.includes("Hormones")) {
-            //   hormoni = true;
-            // }
+            if (element.extend.includes("Hormones")) {
+              hormoni = true;
+            }
 
             // if (element.extend.includes("ROMAindex")) {
             //   roma = true;
