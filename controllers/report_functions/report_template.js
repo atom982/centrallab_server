@@ -1475,16 +1475,16 @@ module.exports = {
     doc.font("PTSansBold").fontSize(12).text("Laboratorij pod nadzorom supervizora Butković dr.Nusreta, specijaliste medicinske biohemije");
 
 
-        if (hormoni) {
-          // console.log("Spolni hormoni")
-          doc.addPage();
-          doc.image(config.nalaz_references + "Hormones.png", 50, doc.y + 15, {
-            width: 510,
-            keepAspectRatio: true,
-            lineBreak: false,
-          });
+        // if (hormoni) {
+        //   // console.log("Spolni hormoni")
+        //   doc.addPage();
+        //   doc.image(config.nalaz_references + "Hormones.png", 50, doc.y + 15, {
+        //     width: 510,
+        //     keepAspectRatio: true,
+        //     lineBreak: false,
+        //   });
           
-        }
+        // }
 
         if (enap === true) {
           // console.log("ENA Profil")
