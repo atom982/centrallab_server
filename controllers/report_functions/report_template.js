@@ -1481,7 +1481,7 @@ module.exports = {
           doc.image(config.nalaz_references + "Hormones.png", 50, doc.y + 15, {
             width: 510,
             keepAspectRatio: true,
-            lineBreak: true,
+            lineBreak: false,
           });
           
         }
@@ -1814,6 +1814,17 @@ module.exports = {
             // doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("       Voditelj laboratorija");
             doc.moveDown(0.5);
             doc.font("PTSansRegular").fontSize(10).text("_______________________________", 390).text("         Nalaz verifikovao");
+
+            if (hormoni) {
+              // console.log("Spolni hormoni")
+              doc.addPage();
+              doc.image(config.nalaz_references + "Hormones.png", 50, doc.y + 15, {
+                width: 510,
+                keepAspectRatio: true,
+                lineBreak: false,
+              });
+              
+            }
 
           }
         }
