@@ -1459,9 +1459,9 @@ module.exports = {
             //   roma = true;
             // }
 
-            ref = element.extend;
+            // ref = element.extend;
             // console.log(element.fussnote)
-            doc.fontSize(7).text(element.fussnote + " " + ref, 50);
+            // doc.fontSize(7).text(element.fussnote + " " + ref, 50);
           });
         }
 
@@ -1481,7 +1481,7 @@ module.exports = {
           doc.image(config.nalaz_references + "Hormones.png", 50, doc.y + 15, {
             width: 510,
             keepAspectRatio: true,
-            lineBreak: false,
+            lineBreak: true,
           });
           
         }

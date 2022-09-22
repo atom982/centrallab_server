@@ -1053,7 +1053,7 @@ nalazController.Nalaz = function (req, res) {
 
                         // console.log(j)
 
-                        refSpecificni = j + '*';
+                        refSpecificni = '*'; // j + '*';
 
                         // refSpecificni = "*";
 
