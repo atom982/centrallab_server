@@ -1483,7 +1483,7 @@ module.exports = {
             keepAspectRatio: true,
             lineBreak: false,
           });
-          doc.moveDown(10);
+          doc.addPage();
         }
 
         if (enap === true) {
