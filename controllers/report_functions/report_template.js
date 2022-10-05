@@ -766,6 +766,7 @@ module.exports = {
         var SARS = "";
         var Influenza = "";
         var nazofarings = false;
+        var ANA = "";
 
         var enap = false;
 
@@ -912,6 +913,11 @@ module.exports = {
                       cov2IgG = "";
                       break;
                   }
+                }
+
+                if (test.rezultat[0].includes("ANTINUKLEARNA At (ANA)")) {
+                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: ds DNA, ss DNA, SSA, SSB, RNP/Sm, SCL70, Jo-1, centromerni protein B, polinukleozomi, mononukleozomi, histoni, PmSCL100"
+                  
                 }
 
                 if (test.rezultat[0].includes("IgG spike")) {
@@ -1690,6 +1696,27 @@ module.exports = {
             }
           }
         } else {
+
+          if(ANA.trim() != ""){
+
+            doc.moveDown(0.5);
+            doc.fontSize(12).text("Napomena:", 50);
+
+            doc.font("PTSansRegular");
+            eachLineComment = ANA.split("\n");
+
+            for (var i = 0, l = eachLineComment.length; i < l; i++) {
+              doc.text(eachLineComment[i], {
+                width: 465,
+                align: "justify",
+              });
+              if (eachLineComment[i].length === 0) {
+                // doc.moveDown(1);
+              }
+            }
+            
+          }
+          
           if (comment.trim().length) {
             doc.moveDown(0.5);
             doc.fontSize(12).text("Komentar:", 50);
