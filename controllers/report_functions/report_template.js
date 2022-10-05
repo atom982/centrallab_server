@@ -916,7 +916,7 @@ module.exports = {
                 }
 
                 if (test.rezultat[0].includes("ANTINUKLEARNA At (ANA)")) {
-                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: ds DNA, ss DNA, SSA, SSB, RNP/Sm, SCL70, Jo-1, centromerni protein B, polinukleozomi, mononukleozomi, histoni, PmSCL100"
+                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: ds DNA, ss DNA, SSA, SSB,\nRNP/Sm, SCL70, Jo-1, centromerni protein B, polinukleozomi, mononukleozomi, histoni, PmSCL100"
                   
                 }
 
