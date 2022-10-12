@@ -120,7 +120,7 @@ module.exports = {
           return [test, rezultat, interpretacija.BojaSpermiogram(rezultat, dref, gref)[0], jedinica, "blijedo žut", interpretacija.BojaSpermiogram(rezultat, dref, gref)[1], extend];
           break;      
       case "nesto":
-        return [test, rezultat, interpretacija.Nesto(rezultat, dref, gref)[0], jedinica, "nešto", interpretacija.Nesto(rezultat, dref, gref)[1], extend];
+        return [test, rezultat, interpretacija.Nesto(rezultat, dref, gref)[0], jedinica, "malo", interpretacija.Nesto(rezultat, dref, gref)[1], extend];
         break;
       case "exists":
         return [test, rezultat, interpretacija.Exists(rezultat, dref, gref)[0], jedinica, " ", interpretacija.Exists(rezultat, dref, gref)[1], extend];
