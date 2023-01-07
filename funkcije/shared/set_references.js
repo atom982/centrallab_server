@@ -516,7 +516,7 @@ module.exports = {
 
       // IGF-I,	Somatomedin-C ---
       else if (
-        nazivTesta === "IGF-I" &&
+        nazivTesta === "IGF-I=disabled" &&
         elspol === rbspol &&
         jmbgObj.years.toString() === dDob.toString() &&
         jmbgObj.years.toString() === gDob.toString() &&
