@@ -138,11 +138,11 @@ module.exports = {
                                       
                                   }else if (result[8].includes("Slight")){
 
-                                    Cla = "blago opalescentan"
+                                    Cla = "blago zamućen"
 
                                   }else if (result[8].includes("Turb")){
 
-                                    Cla = "hemoragičan"
+                                    Cla = "veoma mutan"
                                     
                                   }else if (result[8].includes("Cloudy")){
 
