@@ -767,6 +767,7 @@ module.exports = {
         var Influenza = "";
         var nazofarings = false;
         var ANA = "";
+        var HRGA = "";
 
         var enap = false;
 
@@ -917,6 +918,13 @@ module.exports = {
 
                 if (test.rezultat[0].includes("ANTINUKLEARNA At (ANA)")) {
                   ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: ds DNA, ss DNA, SSA, SSB,\nRNP/Sm, SCL70, Jo-1, centromerni protein B, polinukleozomi, mononukleozomi, histoni, PmSCL100"
+                  
+                }
+
+                // Hromogranin A
+
+                if (test.rezultat[0].includes("Hromogranin A")) {
+                  HRGA = "Hromogranin A:\nKortikosteroidi i lijekovi iz grupe inhibitora protonske pumpe (Omeprol, Controloc, Sabax, Nolpaza...) mogu uticati na rezultat u smislu dobijanja povišenih vrijednosti."
                   
                 }
 
@@ -1704,6 +1712,26 @@ module.exports = {
 
             doc.font("PTSansRegular");
             eachLineComment = ANA.split("\n");
+
+            for (var i = 0, l = eachLineComment.length; i < l; i++) {
+              doc.text(eachLineComment[i], {
+                width: 465,
+                align: "justify",
+              });
+              if (eachLineComment[i].length === 0) {
+                // doc.moveDown(1);
+              }
+            }
+            
+          }
+
+          if(HRGA.trim() != ""){
+
+            doc.moveDown(0.5);
+            doc.fontSize(12).text("Napomena:", 50);
+
+            doc.font("PTSansRegular");
+            eachLineComment = HRGA.split("\n");
 
             for (var i = 0, l = eachLineComment.length; i < l; i++) {
               doc.text(eachLineComment[i], {
