@@ -536,7 +536,7 @@ module.exports = {
 
       // Default ---
       else if (
-        nazivTesta != "IGF-I" &&
+        nazivTesta != "IGF-I=disabled" &&
         starost >= parseFloat(dDob) &&
         parseFloat(gDob) >= starost &&
         elspol === rbspol
