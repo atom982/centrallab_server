@@ -515,25 +515,24 @@ module.exports = {
       } // End of OGTT-180 ---
 
       // IGF-I,	Somatomedin-C ---
-      // else if (
-      //   nazivTesta === "IGF-I" &&
-      //   elspol === rbspol &&
-      //   jmbgObj.years.toString() === dDob.toString() &&
-      //   jmbgObj.years.toString() === gDob.toString() &&
-      //   elspol === rbspol
-      // ) {
+      else if (
+        nazivTesta === "IGF-I" &&
+        elspol === rbspol &&
+        jmbgObj.years.toString() === dDob.toString() &&
+        jmbgObj.years.toString() === gDob.toString() &&
+        elspol === rbspol
+      ) {
         // console.log('JMBG: ' + jmbg);
         // console.log(jmbgObj.years);
 
-        // obj.grupa = elgrupa;
-        // obj.interp = interp;
-        // obj.extend = extend;
-        // obj.refd = refd;
-        // obj.refg = refg;
+        obj.grupa = elgrupa;
+        obj.interp = interp;
+        obj.extend = extend;
+        obj.refd = refd;
+        obj.refg = refg;
 
         // console.log(obj);
-      // } 
-      // End of IGF-I,	Somatomedin-C ---
+      } // End of IGF-I,	Somatomedin-C ---
 
       // Default ---
       else if (
