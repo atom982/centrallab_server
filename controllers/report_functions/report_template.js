@@ -932,7 +932,7 @@ module.exports = {
                 // Troponin I - hitni
 
                 if (test.rezultat[0].includes("Troponin I - hitni")) {
-                  troponin = "Troponin I - hitni:\nREZULTATI VEĆI OD 0,01 ZNAK SU DA JE APARAT DETEKTOVAO ODREĐENI NIVO TROPONINA.\nPREPORUČUJE SE ODREĐIVANJE HIGH SENSITIVE-TROPONINA ZBOG POSTOJANJA ŠANSE DA JE TROPONIN I VIŠI!"
+                  troponin = "Troponin I - hitni:\nREZULTATI VEĆI OD 0,01 ZNAK SU DA JE APARAT DETEKTOVAO ODREĐENI NIVO TROPONINA. PREPORUČUJE SE ODREĐIVANJE HIGH SENSITIVE-TROPONINA ZBOG POSTOJANJA ŠANSE DA JE TROPONIN I VIŠI!"
                   
                 }
 
