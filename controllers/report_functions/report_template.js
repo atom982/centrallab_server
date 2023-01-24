@@ -768,6 +768,7 @@ module.exports = {
         var nazofarings = false;
         var ANA = "";
         var HRGA = "";
+        var troponin = "";
 
         var enap = false;
 
@@ -925,6 +926,13 @@ module.exports = {
 
                 if (test.rezultat[0].includes("Hromogranin A")) {
                   HRGA = "Hromogranin A:\nKortikosteroidi i lijekovi iz grupe inhibitora protonske pumpe (Omeprol, Controloc, Sabax, Nolpaza...) mogu uticati na rezultat u smislu dobijanja povišenih vrijednosti."
+                  
+                }
+
+                // Troponin I - hitni
+
+                if (test.rezultat[0].includes("Troponin I - hitni")) {
+                  troponin = "Troponin I - hitni:\nREZULTATI VEĆI OD 0,01 ZNAK SU DA JE APARAT DETEKTOVAO ODREĐENI NIVO TROPONINA.\nPREPORUČUJE SE ODREĐIVANJE HIGH SENSITIVE-TROPONINA ZBOG POSTOJANJA ŠANSE DA JE TROPONIN I VIŠI!"
                   
                 }
 
@@ -1744,6 +1752,27 @@ module.exports = {
             }
             
           }
+
+          if(troponin.trim() != ""){
+
+            doc.moveDown(0.5);
+            doc.fontSize(12).text("Napomena:", 50);
+
+            doc.font("PTSansRegular");
+            eachLineComment = troponin.split("\n");
+
+            for (var i = 0, l = eachLineComment.length; i < l; i++) {
+              doc.text(eachLineComment[i], {
+                width: 465,
+                align: "justify",
+              });
+              if (eachLineComment[i].length === 0) {
+                // doc.moveDown(1);
+              }
+            }
+            
+          }
+          
           
           if (comment.trim().length) {
             doc.moveDown(0.5);
