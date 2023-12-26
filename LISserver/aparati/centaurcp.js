@@ -116,6 +116,8 @@ module.exports = {
                                                 else {
                                                       //---------------------------------------
                                                       //console.log(test)
+                                                      var nova_jedinica = jedinice_f
+
                                                       if(test===null){
                                                         console.log('U LIS-u ne postoji definisan test sa sifrom:'+sifra_p+' ni na jednom aparatu'+sn);
                                                       }else{
@@ -135,10 +137,10 @@ module.exports = {
                                                           rezultat.module_sn=module_sn
                                                           rezultat.reagens_lot='reagens_lot'
                                                           rezultat.reagens_sn='reagens_sn'
-                                                          console.log("Cuvam sifra "+sifra_p+" rezultat "+rezultat_f+" sa jedinicom "+jedinice_f )
+                                                          console.log("Cuvam sifra "+sifra_p+" rezultat "+rezultat_f+" sa jedinicom "+nova_jedinica )
                                                           console.log("Cuvam sifra "+sifra_p+" rezultat "+result[3]+" sa jedinicom "+result[4] )
                                                           rezultat.rezultat_f=rezultat_f
-                                                          rezultat.jedinice_f=jedinice_f
+                                                          rezultat.jedinice_f=nova_jedinica
                                                           rezultat.rezultat_p='rezultat_p'
                                                           rezultat.jedinice_p='jedinice_p'
                                                           rezultat.rezultat_i='rezultat_i'
