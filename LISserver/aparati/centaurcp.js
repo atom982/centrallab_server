@@ -396,10 +396,13 @@ module.exports = {
   
                                                     if(testovi.length < 1){
                                                       console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
-                                                      header='H|\\^&|||'+'|||||GRADACAC'+'\u000D';//\\^&
+                                                      // H|\\^&|||ATOM|||||ACCP1||P|1
+                                                      header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'+'\u000D';//\\^&
                                                       recordret.push(header);
-                                                      var query = 'Q|1|^'+json.sid+'||^^^ALL||||||||X'+'\u000D'
+                                                      // Q|1|^SID10768||ALL||||||||O
+                                                      var query = 'Q|1|^'+json.sid+'||ALL||||||||O'+'\u000D'
                                                       recordret.push(query);
+                                                      //L|1|I<CR>
                                                       var terminator = 'L|1|I'+'\u000D';
                                                       recordret.push(terminator);
                                                       callback(recordret);
@@ -416,7 +419,7 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|\\^&|||'+'|||||GRADACAC'//+'\u000D';//\\^&
+                                                      header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
                                                       // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
                                                       recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
@@ -439,6 +442,7 @@ module.exports = {
                                                       ime = ime.replace(/đ/g,'d')
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
+                                                      // P|1|PatID01|||Conti^Biagio^S||19741001|M|||||Martinez|||||||||||WestWing<CR>
                                                       var patient ='P|1|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
                                                       stype = json.sid.substring(0,1)
@@ -456,12 +460,14 @@ module.exports = {
                                                           order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                           break;                                                    
                                                         default:
+                                                            //     O|1|REQ1241||^^^T3\^^^T4\^^^TSH|R||||||||||||||||||||O\Q 
+
                                                           order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
                                                       recordret.push(order);
-                                                      var terminator = 'L|1|N'//'\u000D';
+                                                      var terminator = 'L|1|F'//'\u000D';
                                                       recordret.push(terminator);
                                                       header = ''
                                                       callback(recordret); 
