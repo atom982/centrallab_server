@@ -210,6 +210,7 @@ parsaj_rezultat: function (record, io) {
   var clintekStatus = require('./aparati/clintekStatus');
   var immulite= require('./aparati/immulite1000');
   var hitachi = require('./aparati/hitachi902');
+  var centaurcp = require('./aparati/centaurcp');
 
   console.log("Parsanje rezultata...");
   //console.log(record)
@@ -284,6 +285,7 @@ parsaj_query: function (record, callback) {
   var hitachi = require('./aparati/hitachi902');
   var bs480 = require('./aparati/bs480');
   var immulite= require('./aparati/immulite1000');
+  var centaurcp = require('./aparati/centaurcp');
   //console.log(record)
 
   var header = record[0].split("|");
@@ -302,10 +304,13 @@ parsaj_query: function (record, callback) {
     sn = "hitachi"; // Hitachi
   }
   if (record[0].includes("Mindry")) {
-    sn = "YM-94001518"; // Access 2ACCESS^572794
+    sn = "YM-94001518"; // 
   }
   if (record[0].includes("Mindray")) {
-    sn = "BB1-96000515"; // Access 2ACCESS^572794
+    sn = "BB1-96000515"; //
+  }
+  if (record[0].includes("ACCP1")) {
+    sn = "centaur_cp"; // Centaur CP
   }
   //Mindry
   switch (sn) {
@@ -321,6 +326,14 @@ parsaj_query: function (record, callback) {
       console.log("Query Parsing: Hitachi");
       var serijski = '62a6122c77e5656ca8b10d03'
       hitachi.parsaj_query(record,serijski, function (poruka) {
+        console.log(poruka)
+        callback(poruka);
+      });
+      break;
+      case "centaur_cp": // Centaur CP
+      console.log("Query Parsing: Centaur CP");
+      var serijski = '62a6142677e5656ca8b10dd3'
+      immulite.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
