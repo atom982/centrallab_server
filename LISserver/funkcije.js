@@ -237,6 +237,9 @@ parsaj_rezultat: function (record, io) {
   if (record[0].includes("HITACHI902")) {
     sn = "hitachi"; // Hitachi
   }
+  if (record[0].includes("ACCP1")) {
+    sn = "centaur_cp"; // Centaur CP
+  }
 console.log(sn)
   switch (sn) {
       case 'hitachi':  // Hitachi 902
@@ -259,6 +262,11 @@ console.log(sn)
       console.log("Immulite 1000");
       serijski = '62a612d777e5656ca8b10d24' // - done
       immulite.parsaj_rezultat(record,io,serijski);
+      break;
+      case 'centaur_cp': // Centaur CP
+      console.log("Result parsing Centaur CP");
+      serijski = '62a6142677e5656ca8b10dd3' // - done
+      centaurcp.parsaj_rezultat(record,io,serijski);
       break;
     default:
       console.log("Nije definisan aparat sa serijskim brojem: " + sn);
@@ -333,7 +341,7 @@ parsaj_query: function (record, callback) {
       case "centaur_cp": // Centaur CP
       console.log("Query Parsing: Centaur CP");
       var serijski = '62a6142677e5656ca8b10dd3'
-      immulite.parsaj_query(record,serijski, function (poruka) {
+      centaurcp.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
