@@ -66,7 +66,7 @@ module.exports = {
                             console.log("SID: " + sid);
                                     break;
                           case 'R':
-                                    console.log("rezultat");
+                                    
 
                                     Samples.findOne({id: sid}).populate('patient tests.labassay').exec(function (err, uzorak) {
                                         if (err) {
@@ -103,9 +103,6 @@ module.exports = {
                                                          }
 
                                                          }
-
-                                                         console.log(typeof(rezultat_f))
-                                                         console.log(rezultat_f)
 
                                                 jedinice_f = result[4];
                                                 vrijeme_rezultata=result[12];
