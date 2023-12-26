@@ -82,7 +82,12 @@ module.exports = {
                                               if (uzorak.status != "OBRAĐEN"){
                                                 result = element.split("|");
                                                 chunks=result[2].split("^");
-                                                sifra_p=chunks[3];
+                                                if(chunks[7]==="DOSE"){
+                                                    sifra_p=chunks[3];
+                                                }else{
+                                                    sifra_p="N/A RLU "+result[3];
+                                                }
+                                                
                                                 if(!isNaN(result[3])){
                                                        var rezultat_f = parseFloat(result[3]).toFixed(2);
 
