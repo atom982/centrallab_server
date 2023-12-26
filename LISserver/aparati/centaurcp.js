@@ -110,6 +110,7 @@ module.exports = {
                                                 jedinice_f = result[4];
                                                 vrijeme_rezultata=result[12];
                                                 module_sn='GRADACAC';
+                                                console.log("sifra "+sifra_p+" sa jedinicom"+jedinice_f )
                                               AnaAssays.findOne({kod:sifra_p}).populate('test').lean().exec(function (err, test) {
                                                 if (err) {
                                                   console.log("Greška:", err);
