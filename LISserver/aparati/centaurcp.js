@@ -141,7 +141,7 @@ module.exports = {
                                                           console.log("Cuvam sifra "+sifra_p+" rezultat "+rezultat_f+" sa jedinicom "+nova_jedinica )
                                                           console.log("Cuvam sifra "+sifra_p+" rezultat "+result[3]+" sa jedinicom "+result[4] )
                                                           rezultat.rezultat_f=rezultat_f
-                                                          rezultat.jedinice_f=nova_jedinica
+                                                          rezultat.jedinice_f=test.test.jedinica
                                                           rezultat.rezultat_p='rezultat_p'
                                                           rezultat.jedinice_p='jedinice_p'
                                                           rezultat.rezultat_i='rezultat_i'
