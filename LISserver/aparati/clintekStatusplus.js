@@ -49,7 +49,7 @@ module.exports = {
                                         sid = temp_rezultati[17].split("^")[0]
                                         console.log("sid:"+sid)
                                         console.log('Col: '+temp_rezultati[18].split("^")[1])
-                                        console.log("Cla: "+temp_rezultati[22])
+                                        console.log("Cla: "+temp_rezultati[18].split("^")[2])
     
                                         var pom= element.split(temp_rezultati[24]);
     
@@ -115,21 +115,21 @@ module.exports = {
                                       
                                 // Izgled
                                     var Cla = ""
-                                    Cla = temp_rezultati[18].split("^")[1]
+                                    Cla = temp_rezultati[18].split("^")[2]
 
-                                    if (temp_rezultati[18].split("^")[1].includes("Clear")) {
+                                    if (temp_rezultati[18].split("^")[2].includes("Clear")) {
 
                                       Cla = "bistar"
                                       
-                                  }else if (temp_rezultati[18].split("^")[1].includes("Slight")){
+                                  }else if (temp_rezultati[18].split("^")[2].includes("Slight")){
 
                                     Cla = "blago zamućen"
 
-                                  }else if (temp_rezultati[18].split("^")[1].includes("Turb")){
+                                  }else if (temp_rezultati[18].split("^")[2].split("^")[1].includes("Turb")){
 
                                     Cla = "veoma mutan"
                                     
-                                  }else if (temp_rezultati[18].split("^")[1].includes("Cloudy")){
+                                  }else if (temp_rezultati[18].split("^")[2].includes("Cloudy")){
 
                                     Cla = "mutan"
                                     
