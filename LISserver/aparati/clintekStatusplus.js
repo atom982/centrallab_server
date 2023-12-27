@@ -224,7 +224,7 @@ module.exports = {
                                       var KET = ""
                                           KET = pom[3].split("|")[2]
 
-                                          if (pom[3].split("|")[2].includes("Negative")|| ) {
+                                          if (pom[3].split("|")[2].includes("Negative")) {
 
                                             KET = "negativan"
                                             
