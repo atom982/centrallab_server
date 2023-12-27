@@ -42,22 +42,19 @@ module.exports = {
                           case 'H':
                                     console.log("header");
                                     temp_rezultati= element.split("|");
+                                    sid = temp_rezultati[17].replace(/^/g, "")
+                                    console.log("sid:"+sid)
+                                    console.log('Col: '+temp_rezultati[18].split("^")[1])
+                                    console.log("Cla: "+temp_rezultati[22])
+
                                     var pom= element.split(temp_rezultati[24]);
 
                                     console.log("_niz tem rezultata")
                                     console.log(pom)
-
-
-                                    
-                                    sid = temp_rezultati[17].replace('/[\[\]^]+/g', '')
-                                    console.log("sid:"+sid)
-
-                                    
-                                    console.log('Col: '+temp_rezultati[18].split("^")[1])
-                                    console.log("Cla: "+temp_rezultati[22])
-                                    console.log("GLU: "+temp_rezultati[26])
-                                    console.log("BIL: "+temp_rezultati[37])
-                                    console.log("KET: "+temp_rezultati[46])
+                                               
+                                    console.log("GLU: "+pom[1].split("|")[2])
+                                    console.log("BIL: "+pom[2].split("|")[2])
+                                    console.log("KET: "+pom[3].split("|")[3])
                                     break;
 
                                     
