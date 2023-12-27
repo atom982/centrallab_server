@@ -35,23 +35,21 @@ module.exports = {
       var mode = ''
       var unit_type = ''
         console.log("U fajlu za parsanje")
-          
+          record.shift()
           record.forEach(function(element) {
               record_type =element.charAt(0);
               switch (record_type) {
                           case 'H':
                                     console.log("header");
-                                    temp_rezultati= record[1].split("|");
+                                    temp_rezultati= element.split("|");
                                     //sid = order[2]
                                     console.log("_niz tem rezultata")
                                     console.log(temp_rezultati)
 
-                                    var result = element.split("|")[3].split(",")
 
-                                    console.log(result)
                                     
                                     sid = temp_rezultati[11]
-                                    console.log(sid)
+                                    console.log("sid:"+sid)
 
                                     
                                     console.log('Col: '+temp_rezultati[12].split("^")[1])
