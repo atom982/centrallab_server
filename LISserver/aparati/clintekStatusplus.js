@@ -117,7 +117,7 @@ module.exports = {
                                     var Cla = ""
                                     Cla = temp_rezultati[18].split("^")[1]
 
-                                    if (ttemp_rezultati[18].split("^")[1].includes("Clear")) {
+                                    if (temp_rezultati[18].split("^")[1].includes("Clear")) {
 
                                       Cla = "bistar"
                                       
@@ -156,11 +156,11 @@ module.exports = {
 
                                           GLU = "negativan"
                                           
-                                      }else if (pom[1].split("|")[2].includes("1+")) {
+                                      }else if (pom[1].split("|")[2].includes("100")) {
   
                                         GLU = "pozitivan 1+"
                                           
-                                      }else if (pom[1].split("|")[2].includes("2+")) {
+                                      }else if (pom[1].split("|")[2].includes("250")) {
   
                                         GLU = "pozitivan 2+"
                                           
