@@ -179,8 +179,7 @@ class lisServer {
           console.log(temp_rec)
           funkcija.parsaj_rezultat(temp_rec, io);
         }  
-         // Erbalyte block
-
+ 
 
    //----------------------MYTHIC 18 blok
    if (JSON.stringify(data).includes('MYTHIC')) {
@@ -383,7 +382,8 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
  
         if (data.includes('\u0004')) {
           //console.log("EOT primljen: ");
-          
+                   // Clintek Status plus
+
           frame_number = 1;
 
           ///lisserver.broadcast('\u0006', client);
@@ -393,7 +393,11 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
           var temp_rec = [];
           var message_type = '';
 
-
+          if(JSON.stringify(lisserver.message).includes('1750^296540^Status') ){//&& JSON.stringify(data).includes('\r\n')
+            
+            lisserver.message.unshift("H|\\^&|||clintekStatus^1.00^6721^H1R1L1|||||||P|1|")
+            funkcija.parsaj_rezultat(lisserver.message, io);
+          } 
           //console.log("Primljena poruka:")
 
           var temp = lisserver.message[0]
