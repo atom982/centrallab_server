@@ -48,15 +48,17 @@ module.exports = {
 
 
                                     
-                                    sid = temp_rezultati[17]
+                                    sid = temp_rezultati[17].replaceAll('^', '')
                                     console.log("sid:"+sid)
 
                                     
                                     console.log('Col: '+temp_rezultati[18].split("^")[1])
-                                    break;
                                     console.log("Cla: "+result[8])
-                                    console.log("GLU: "+result[10])
-                                    console.log("BIL: "+result[13])
+                                    console.log("GLU: "+temp_rezultati[26])
+                                    console.log("BIL: "+result[36])
+                                    break;
+
+                                    
                                     console.log("KET: "+result[16])
                                     console.log("SG: "+result[19])
                                     console.log("BLD: "+result[22])
