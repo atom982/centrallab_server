@@ -48,7 +48,7 @@ module.exports = {
 
 
                                     
-                                    sid = temp_rezultati[17].replaceAll('^', '')
+                                    sid = temp_rezultati[17].replace('/[\[\]^]+/g', '')
                                     console.log("sid:"+sid)
 
                                     
