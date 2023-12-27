@@ -53,13 +53,14 @@ module.exports = {
 
                                     
                                     console.log('Col: '+temp_rezultati[18].split("^")[1])
-                                    console.log("Cla: "+result[8])
+                                    console.log("Cla: "+temp_rezultati[22])
                                     console.log("GLU: "+temp_rezultati[26])
-                                    console.log("BIL: "+result[36])
+                                    console.log("BIL: "+temp_rezultati[36])
+                                    console.log("KET: "+temp_rezultati[46])
                                     break;
 
                                     
-                                    console.log("KET: "+result[16])
+                                    
                                     console.log("SG: "+result[19])
                                     console.log("BLD: "+result[22])
                                     console.log("pH: "+result[25])
