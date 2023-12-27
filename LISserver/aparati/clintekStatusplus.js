@@ -53,7 +53,7 @@ module.exports = {
                                     sid = result[2]
                                     console.log(sid)
 
-                                    
+                                    break;
                                     console.log('Col: '+result[7])
                                     console.log("Cla: "+result[8])
                                     console.log("GLU: "+result[10])
