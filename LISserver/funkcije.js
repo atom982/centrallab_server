@@ -211,6 +211,7 @@ parsaj_rezultat: function (record, io) {
   var immulite= require('./aparati/immulite1000');
   var hitachi = require('./aparati/hitachi902');
   var centaurcp = require('./aparati/centaurcp');
+  var clintekStatusPlus = require('./aparati/clintekStatusplus');
 
   console.log("Parsanje rezultata...");
   //console.log(record)
@@ -240,6 +241,9 @@ parsaj_rezultat: function (record, io) {
   if (record[0].includes("ACCP1")) {
     sn = "centaur_cp"; // Centaur CP
   }
+  if (record[0].includes("296540")) {
+    sn = "296540"; // Celintek status plus
+  }
 console.log(sn)
   switch (sn) {
       case 'hitachi':  // Hitachi 902
@@ -253,6 +257,12 @@ console.log(sn)
       var serijski = '600408e5f5e7ce7d39d4c203'
       clintekStatus.parsaj_rezultat(record, io,serijski);
       break;
+      case "296540":
+        console.log("ClintekStatus plus");
+        
+        var serijski = '600408e5f5e7ce7d39d4c203'
+        clintekStatusPlus.parsaj_rezultat(record, io,serijski);
+        break;
       case 'A5303': //sysmex kx 21
       console.log("sysmex kx 21");
       serijski = '62a611a477e5656ca8b10ce9' // - done
