@@ -42,9 +42,10 @@ module.exports = {
                           case 'H':
                                     console.log("header");
                                     temp_rezultati= element.split("|");
-                                    //sid = order[2]
+                                    var pom= element.split(temp_rezultati[24]);
+
                                     console.log("_niz tem rezultata")
-                                    console.log(temp_rezultati)
+                                    console.log(pom)
 
 
                                     
@@ -55,7 +56,7 @@ module.exports = {
                                     console.log('Col: '+temp_rezultati[18].split("^")[1])
                                     console.log("Cla: "+temp_rezultati[22])
                                     console.log("GLU: "+temp_rezultati[26])
-                                    console.log("BIL: "+temp_rezultati[36])
+                                    console.log("BIL: "+temp_rezultati[37])
                                     console.log("KET: "+temp_rezultati[46])
                                     break;
 
