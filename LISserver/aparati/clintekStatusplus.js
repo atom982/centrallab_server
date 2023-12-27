@@ -64,22 +64,11 @@ module.exports = {
                                         console.log("pH: "+pom[6].split("|")[2])
                                         console.log("PRO: "+pom[7].split("|")[2])
                                         console.log("UBG: "+pom[8].split("|")[2])
+                                        console.log("NIT: "+pom[9].split("|")[2])
+                                        console.log("LEU: "+pom[10].split("|")[2])
                                     }
 
-                                    break;
-
-                                    
-                                    
-
-                                    //     
-                                    console.log("NIT: "+result[34])
-                                    console.log("LEU: "+result[37])
-                                
-    
-                               
-                                
-                                //     console.log("VC: "+result[1].split(',')[43].trim())
-
+                                   
 
                                     // Opšti pregled urina - fizikalno hemijski pregled
                                     // LabAssay ObjectId("5f76fc20c5294a1764bd7134")
@@ -88,30 +77,30 @@ module.exports = {
 
                                     // Boja
                                     var Col = ""
-                                        Col = result[7]
+                                        Col = temp_rezultati[18].split("^")[1]
 
-                                        if (result[7].includes("Yellow")) {
+                                        if (temp_rezultati[18].split("^")[1].includes("Yellow")) {
 
                                            Col = "žuta"
                                           
-                                        }else if (result[7].includes("Orange")){
+                                        }else if (temp_rezultati[18].split("^")[1].includes("Orange")){
 
                                           Col = "narandžasta"
       
 
-                                        }else if (result[7].includes("Brown")){
+                                        }else if (temp_rezultati[18].split("^")[1].includes("Brown")){
 
                                           Col = "smeđa"
       
-                                        }else if (result[7].includes("Red")){
+                                        }else if (temp_rezultati[18].split("^")[1].includes("Red")){
 
                                           Col = "crvena"
       
-                                        }else if (result[7].includes("Green")){
+                                        }else if (temp_rezultati[18].split("^")[1].includes("Green")){
 
                                           Col = "zelena"
       
-                                        }else if (result[7].includes("Blue")){
+                                        }else if (temp_rezultati[18].split("^")[1].includes("Blue")){
 
                                           Col = "plava"
       
@@ -128,21 +117,21 @@ module.exports = {
                                       
                                 // Izgled
                                     var Cla = ""
-                                    Cla = result[8]
+                                    Cla = temp_rezultati[22]
 
-                                    if (result[8].includes("Clear")) {
+                                    if (temp_rezultati[22].includes("Clear")) {
 
                                       Cla = "bistar"
                                       
-                                  }else if (result[8].includes("Slight")){
+                                  }else if (temp_rezultati[22].includes("Slight")){
 
                                     Cla = "blago zamućen"
 
-                                  }else if (result[8].includes("Turb")){
+                                  }else if (temp_rezultati[22].includes("Turb")){
 
                                     Cla = "veoma mutan"
                                     
-                                  }else if (result[8].includes("Cloudy")){
+                                  }else if (temp_rezultati[22].includes("Cloudy")){
 
                                     Cla = "mutan"
                                     
@@ -163,25 +152,25 @@ module.exports = {
                                               // Glukoza
 
                                       var GLU = ""
-                                          GLU = result[10]
+                                          GLU = pom[1].split("|")[2]
 
-                                      if (result[10].includes("Negative")) {
+                                      if (pom[1].split("|")[2].includes("Negative")) {
 
                                           GLU = "negativan"
                                           
-                                      }else if (result[10].includes("1+")) {
+                                      }else if (pom[1].split("|")[2].includes("1+")) {
   
                                         GLU = "pozitivan 1+"
                                           
-                                      }else if (result[10].includes("2+")) {
+                                      }else if (pom[1].split("|")[2].includes("2+")) {
   
                                         GLU = "pozitivan 2+"
                                           
-                                      }else if (result[10].includes("3+")) {
+                                      }else if (pom[1].split("|")[2].includes("3+")) {
   
                                         GLU = "pozitivan 3+"
                                           
-                                      }else if (result[10].includes("4+")) {
+                                      }else if (pom[1].split("|")[2].includes("4+")) {
   
                                         GLU = "pozitivan 4+"
                                           
@@ -200,22 +189,22 @@ module.exports = {
                                       })  
                                       // Bilirubin
 
-                                      var BIL = result[13]
+                                      var BIL =pom[2].split("|")[2]
                                     
 
-                                      if (result[13].includes("Negative")) {
+                                      if (pom[2].split("|")[2].includes("Negative")) {
 
                                         BIL = "negativan"
                                         
-                                        }else if (result[13].includes("1+")) {
+                                        }else if (pom[2].split("|")[2].includes("1+")) {
 
                                         BIL = "pozitivan 1+"
                                             
-                                        }else if (result[13].includes("2+")) {
+                                        }else if (pom[2].split("|")[2].includes("2+")) {
 
                                         BIL = "pozitivan 2+"
                                             
-                                        }else if (result[13].includes("3+")) {
+                                        }else if (pom[2].split("|")[2].includes("3+")) {
 
                                         BIL = "pozitivan 3+"
                                             
@@ -235,29 +224,29 @@ module.exports = {
                                               // Ketoni
 
                                       var KET = ""
-                                          KET = result[16]
+                                          KET = pom[3].split("|")[2]
 
-                                          if (result[16].includes("Negative")) {
+                                          if (pom[3].split("|")[2].includes("Negative")) {
 
                                             KET = "negativan"
                                             
-                                        }else if (result[16].includes("1+")) {
+                                        }else if (pom[3].split("|")[2].includes("1+")) {
     
                                           KET = "pozitivan 1+"
                                             
-                                        }else if (result[16].includes("2+")) {
+                                        }else if (pom[3].split("|")[2].includes("2+")) {
     
                                           KET = "pozitivan 2+"
                                             
-                                        }else if (result[16].includes("3+")) {
+                                        }else if (pom[3].split("|")[2].includes("3+")) {
     
                                           KET = "pozitivan 3+"
                                             
-                                        }else if (result[16].includes("4+")) {
+                                        }else if (pom[3].split("|")[2].includes("4+")) {
     
                                           KET = "pozitivan 4+"
                                             
-                                        }else if (result[16].includes("5+")) {
+                                        }else if (pom[3].split("|")[2].includes("5+")) {
     
                                           KET = "pozitivan 5+"
                                             
@@ -277,29 +266,29 @@ module.exports = {
 
                                            // Specifična težina
                                     var SG = ""
-                                        SG = result[19]
+                                        SG = pom[4].split("|")[2]
 
-                                        if (result[19].includes("<=1.005")) {
+                                        if (pom[4].split("|")[2].includes("<=1.005")) {
 
                                           SG = "<=1.005"
                                           
-                                      }else if (result[19].includes("1.010")) {
+                                      }else if (pom[4].split("|")[2].includes("1.010")) {
 
                                         SG = "1.010"
                                         
-                                    }else if (result[19].includes("1.015")) {
+                                    }else if (pom[4].split("|")[2].includes("1.015")) {
 
                                       SG = "1.015"
                                         
-                                    }else if (result[19].includes("1.020")) {
+                                    }else if (pom[4].split("|")[2].includes("1.020")) {
 
                                       SG = "1.020"
                                       
-                                  }else if (result[19].includes("1.025")) {
+                                  }else if (pom[4].split("|")[2].includes("1.025")) {
 
                                     SG = "1.025"
                                       
-                                  }else if (result[19].includes(">=1.030")) {
+                                  }else if (pom[4].split("|")[2].includes(">=1.030")) {
   
                                     SG = ">=1.030"
                                           
@@ -321,29 +310,29 @@ module.exports = {
                                               // Eritrociti (HGB)
 
                                       var BLD = ""
-                                      BLD = result[22]
+                                      BLD = pom[5].split("|")[2]
 
-                                          if (result[22].includes("Negative")) {
+                                          if (pom[5].split("|")[2].includes("Negative")) {
 
                                             BLD = "negativan"
                                             
-                                        }else if (result[22].includes("+/- Intact")) {
+                                        }else if (pom[5].split("|")[2].includes("+/- Intact")) {
     
                                           BLD = "+/- netaknut"
                                             
-                                        }else if (result[22].includes("+/-")) {
+                                        }else if (pom[5].split("|")[2].includes("+/-")) {
     
                                           BLD = "+/-"
                                             
-                                        }else if (result[22].includes("1+")) {
+                                        }else if (pom[5].split("|")[2].includes("1+")) {
     
                                           BLD = "pozitivan 1+"
                                             
-                                        }else if (result[22].includes("2+")) {
+                                        }else if (pom[5].split("|")[2].includes("2+")) {
     
                                           BLD = "pozitivan 2+"
                                             
-                                        }else if (result[22].includes("3+")) {
+                                        }else if (pom[5].split("|")[2].includes("3+")) {
     
                                           BLD = "pozitivan 3+"
                                             
@@ -363,41 +352,41 @@ module.exports = {
 
                                     // pH urina
                                     var pH = ""
-                                        pH = result[25]
+                                        pH = pom[6].split("|")[2]
 
-                                        if (result[25].includes("5.0")) {
+                                        if (pom[6].split("|")[2].includes("5.0")) {
 
                                           pH = "5.0"
                                           
-                                      }else if (result[25].includes("5.5")) {
+                                      }else if (pom[6].split("|")[2].includes("5.5")) {
   
                                         pH = "5.5"
                                           
-                                      }else if (result[25].includes("6.0")) {
+                                      }else if (pom[6].split("|")[2].includes("6.0")) {
 
                                         pH = "6.0"
                                         
-                                    }else if (result[25].includes("6.5")) {
+                                    }else if (pom[6].split("|")[2].includes("6.5")) {
 
                                       pH = "6.5"
                                         
-                                    }else if (result[25].includes("7.0")) {
+                                    }else if (pom[6].split("|")[2].includes("7.0")) {
 
                                       pH = "7.0"
                                       
-                                  }else if (result[25].includes("7.5")) {
+                                  }else if (pom[6].split("|")[2].includes("7.5")) {
 
                                     pH = "7.5"
                                       
-                                  }else if (result[25].includes("8.0")) {
+                                  }else if (pom[6].split("|")[2].includes("8.0")) {
   
                                         pH = "8.0"
                                           
-                                      }else if (result[25].includes("8.5")) {
+                                      }else if (pom[6].split("|")[2].includes("8.5")) {
   
                                         pH = "8.5"
                                           
-                                      }else if (result[25].includes(">=9.0")) {
+                                      }else if (pom[6].split("|")[2].includes(">=9.0")) {
   
                                         pH = ">=9.0"
                                           
@@ -419,25 +408,25 @@ module.exports = {
                                     // Proteini
 
                                     var PRO = ""
-                                        PRO = result[28]
+                                        PRO =pom[7].split("|")[2]
 
-                                        if (result[28].includes("Negative")) {
+                                        if (pom[7].split("|")[2].includes("Negative")) {
 
                                           PRO = "negativan"
                                           
-                                      }else if (result[28].includes("+/-")) {
+                                      }else if (pom[7].split("|")[2].includes("+/-")) {
   
                                           PRO = "+/-"
                                           
-                                      }else if (result[28].includes("1+")) {
+                                      }else if (pom[7].split("|")[2].includes("1+")) {
   
                                           PRO = "pozitivan 1+"
                                           
-                                      }else if (result[28].includes("2+")) {
+                                      }else if (pom[7].split("|")[2].includes("2+")) {
   
                                           PRO = "pozitivan 2+"
                                           
-                                      }else if (result[28].includes("3+")) {
+                                      }else if (pom[7].split("|")[2].includes("3+")) {
   
                                           PRO = "pozitivan 3+"
                                           
@@ -459,25 +448,25 @@ module.exports = {
                                                // Urobilinogen
 
                                       var URO = ""
-                                      URO = result[31]
+                                      URO = pom[8].split("|")[2]
 
-                                      if (result[31].includes("3.2")) {
+                                      if (pom[8].split("|")[2].includes("3.2")) {
 
                                         URO = "3.2"
                                         
-                                    }else if (result[31].includes("16")) {
+                                    }else if (pom[8].split("|")[2].includes("16")) {
 
                                         URO = "16"
                                         
-                                    }else if (result[31].includes("33")) {
+                                    }else if (pom[8].split("|")[2].includes("33")) {
 
                                         URO = "33"
                                         
-                                    }else if (result[31].includes("66")) {
+                                    }else if (pom[8].split("|")[2].includes("66")) {
 
                                         URO = "66"
                                         
-                                    }else if (result[31].includes(">=131")) {
+                                    }else if (pom[8].split("|")[2].includes(">=131")) {
 
                                         URO = ">=131"
                                         
@@ -498,13 +487,13 @@ module.exports = {
                                              // Nitriti
 
                                              var NIT = ""
-                                             NIT = result[34]
+                                             NIT = pom[9].split("|")[2]
        
-                                             if (result[34].includes("Negative")) {
+                                             if (pom[9].split("|")[2].includes("Negative")) {
        
                                                NIT = "negativan"
                                                
-                                           }else if (result[34].includes("Positive")) {
+                                           }else if (pom[9].split("|")[2].includes("Positive")) {
        
                                              NIT = "pozitivan"
                                                
@@ -526,25 +515,25 @@ module.exports = {
                                                          // Leukociti (HGB)
 
                                       var LEU = ""
-                                      LEU = result[37]
+                                      LEU = pom[10].split("|")[2]
 
-                                          if (result[37].includes("Negative")) {
+                                          if (pom[10].split("|")[2].includes("Negative")) {
 
                                             LEU = "negativan"
                                             
-                                        }else if (result[37].includes("1+")) {
+                                        }else if (pom[10].split("|")[2].includes("1+")) {
     
                                           LEU = "pozitivan 1+"
                                             
-                                        }else if (result[37].includes("2+")) {
+                                        }else if (pom[10].split("|")[2].includes("2+")) {
     
                                           LEU = "pozitivan 2+"
                                             
-                                        }else if (result[37].includes("3+")) {
+                                        }else if (pom[10].split("|")[2].includes("3+")) {
     
                                           LEU = "pozitivan 3+"
                                             
-                                        }else if (result[37].includes("4+")) {
+                                        }else if (pom[10].split("|")[2].includes("4+")) {
     
                                           LEU = "pozitivan 4+"
                                             
@@ -623,25 +612,7 @@ module.exports = {
                                         
                                 //     // }
  
-                                    
-                                    break;
-                          case 'C':
-                                    console.log("komentar");
-                                    break;
-                          case 'L':
-                                    console.log("terminator"); 
-                                    // rezultati.push({
-                                    //     analit:'Izg',
-                                    //     analit_rez:'',
-                                    //     analit_jedinica:'',
-                                    //     analit_status:'',
-                                    //   })  
-                                    //   rezultati.push({
-                                    //     analit:'Col',
-                                    //     analit_rez:'',
-                                    //     analit_jedinica:'',
-                                    //     analit_status:'',
-                                    //   }) 
+                                
                                     console.log(rezultati)  
                                     Results.findOne({id:sid}).populate('aparat').exec(function (err, rezultat) {
                                       if (err) {
