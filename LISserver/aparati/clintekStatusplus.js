@@ -46,7 +46,7 @@ module.exports = {
                                     }else{
                                         console.log("Ovo je real rezultat")
                                         temp_rezultati= element.split("|");
-                                        sid = temp_rezultati[17].replace(/^/g, "")
+                                        sid = temp_rezultati[17].split("^")[0]
                                         console.log("sid:"+sid)
                                         console.log('Col: '+temp_rezultati[18].split("^")[1])
                                         console.log("Cla: "+temp_rezultati[22])
@@ -115,21 +115,21 @@ module.exports = {
                                       
                                 // Izgled
                                     var Cla = ""
-                                    Cla = temp_rezultati[22]
+                                    Cla = temp_rezultati[18].split("^")[1]
 
-                                    if (temp_rezultati[22].includes("Clear")) {
+                                    if (ttemp_rezultati[18].split("^")[1].includes("Clear")) {
 
                                       Cla = "bistar"
                                       
-                                  }else if (temp_rezultati[22].includes("Slight")){
+                                  }else if (temp_rezultati[18].split("^")[1].includes("Slight")){
 
                                     Cla = "blago zamućen"
 
-                                  }else if (temp_rezultati[22].includes("Turb")){
+                                  }else if (temp_rezultati[18].split("^")[1].includes("Turb")){
 
                                     Cla = "veoma mutan"
                                     
-                                  }else if (temp_rezultati[22].includes("Cloudy")){
+                                  }else if (temp_rezultati[18].split("^")[1].includes("Cloudy")){
 
                                     Cla = "mutan"
                                     
