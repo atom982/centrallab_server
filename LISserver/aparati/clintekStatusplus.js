@@ -41,6 +41,11 @@ module.exports = {
               switch (record_type) {
                           case 'H':
                                     console.log("header");
+                                    if(element.length<200){
+                                        console.log("Check header nije rezultat")
+                                    }else{
+                                        console.log("Ovo je real rezultat")
+                                    }
                                     temp_rezultati= element.split("|");
                                     sid = temp_rezultati[17].replace(/^/g, "")
                                     console.log("sid:"+sid)
