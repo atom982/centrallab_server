@@ -29,33 +29,23 @@ module.exports = {
       var analit='';
       var analit_rez = ''
       var rezultati = []
+      var temp_rezultati=[]
       var vrijeme_rezultata='';
       var module_sn='';
       var mode = ''
       var unit_type = ''
         console.log("U fajlu za parsanje")
-          console.log(record)
+          
           record.forEach(function(element) {
               record_type =element.charAt(0);
               switch (record_type) {
                           case 'H':
                                     console.log("header");
-                                    var header= element.split("|");
-                                    var sender=header[4].split("^");
-                                    if(sender[0]==="URI2P"){
-                                        sn = sender[1].trim()
-                                      }
-                                    break;
-                          case 'O':
-                                    console.log("order");
-                                    var order= element.split("|");
-                                    sid = order[2]
-                                    console.log(sid)
-                                    break;
-                          case 'R':
-                                    console.log("rezultat");
-                                    //'R|5|5^^^Glu|norm|mg/dl||||||autologin|20190208112929|20190208113034',
-                                    //O|1|K001M90208|^^^^SAMPLE||R||||||X|||20190209055710'
+                                    temp_rezultati= record[1].split("|");
+                                    //sid = order[2]
+                                    console.log("_niz tem rezultata")
+                                    console.log(temp_rezultati)
+
                                     var result = element.split("|")[3].split(",")
 
                                     console.log(result)
