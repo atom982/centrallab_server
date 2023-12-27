@@ -45,30 +45,32 @@ module.exports = {
                                         console.log("Check header nije rezultat")
                                     }else{
                                         console.log("Ovo je real rezultat")
+                                        temp_rezultati= element.split("|");
+                                        sid = temp_rezultati[17].replace(/^/g, "")
+                                        console.log("sid:"+sid)
+                                        console.log('Col: '+temp_rezultati[18].split("^")[1])
+                                        console.log("Cla: "+temp_rezultati[22])
+    
+                                        var pom= element.split(temp_rezultati[24]);
+    
+                                        console.log("_niz tem rezultata")
+                                        console.log(pom)
+                                                   
+                                        console.log("GLU: "+pom[1].split("|")[2])
+                                        console.log("BIL: "+pom[2].split("|")[2])
+                                        console.log("KET: "+pom[3].split("|")[2])
+                                        console.log("SG: "+pom[4].split("|")[2])
+                                        console.log("BLD: "+pom[5].split("|")[2])
+                                        console.log("pH: "+pom[6].split("|")[2])
+                                        console.log("PRO: "+pom[7].split("|")[2])
+                                        console.log("UBG: "+pom[8].split("|")[2])
                                     }
-                                    temp_rezultati= element.split("|");
-                                    sid = temp_rezultati[17].replace(/^/g, "")
-                                    console.log("sid:"+sid)
-                                    console.log('Col: '+temp_rezultati[18].split("^")[1])
-                                    console.log("Cla: "+temp_rezultati[22])
 
-                                    var pom= element.split(temp_rezultati[24]);
-
-                                    console.log("_niz tem rezultata")
-                                    console.log(pom)
-                                               
-                                    console.log("GLU: "+pom[1].split("|")[2])
-                                    console.log("BIL: "+pom[2].split("|")[2])
-                                    console.log("KET: "+pom[3].split("|")[3])
                                     break;
 
                                     
                                     
-                                    console.log("SG: "+result[19])
-                                    console.log("BLD: "+result[22])
-                                    console.log("pH: "+result[25])
-                                    console.log("PRO: "+result[28])
-                                    console.log("UBG: "+result[31])
+
                                     //     
                                     console.log("NIT: "+result[34])
                                     console.log("LEU: "+result[37])
