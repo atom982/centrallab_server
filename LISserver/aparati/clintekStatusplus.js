@@ -164,11 +164,11 @@ module.exports = {
   
                                         GLU = "pozitivan 2+"
                                           
-                                      }else if (pom[1].split("|")[2].includes("3+")) {
+                                      }else if (pom[1].split("|")[2].includes("500")) {
   
                                         GLU = "pozitivan 3+"
                                           
-                                      }else if (pom[1].split("|")[2].includes("4+")) {
+                                      }else if (pom[1].split("|")[2].includes("1000")) {
   
                                         GLU = "pozitivan 4+"
                                           
@@ -194,15 +194,15 @@ module.exports = {
 
                                         BIL = "negativan"
                                         
-                                        }else if (pom[2].split("|")[2].includes("1+")) {
+                                        }else if (pom[2].split("|")[2].includes("Small")) {
 
                                         BIL = "pozitivan 1+"
                                             
-                                        }else if (pom[2].split("|")[2].includes("2+")) {
+                                        }else if (pom[2].split("|")[2].includes("Moderate")) {
 
                                         BIL = "pozitivan 2+"
                                             
-                                        }else if (pom[2].split("|")[2].includes("3+")) {
+                                        }else if (pom[2].split("|")[2].includes("Large")) {
 
                                         BIL = "pozitivan 3+"
                                             
@@ -224,27 +224,27 @@ module.exports = {
                                       var KET = ""
                                           KET = pom[3].split("|")[2]
 
-                                          if (pom[3].split("|")[2].includes("Negative")) {
+                                          if (pom[3].split("|")[2].includes("Negative")|| ) {
 
                                             KET = "negativan"
                                             
-                                        }else if (pom[3].split("|")[2].includes("1+")) {
+                                        }else if (pom[3].split("|")[2].includes("Trace")) {
     
                                           KET = "pozitivan 1+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("2+")) {
+                                        }else if (pom[3].split("|")[2].includes("15")) {
     
                                           KET = "pozitivan 2+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("3+")) {
+                                        }else if (pom[3].split("|")[2].includes("40")) {
     
                                           KET = "pozitivan 3+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("4+")) {
+                                        }else if (pom[3].split("|")[2].includes("80")) {
     
                                           KET = "pozitivan 4+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("5+")) {
+                                        }else if (pom[3].split("|")[2].includes("160")) {
     
                                           KET = "pozitivan 5+"
                                             
@@ -314,23 +314,23 @@ module.exports = {
 
                                             BLD = "negativan"
                                             
-                                        }else if (pom[5].split("|")[2].includes("+/- Intact")) {
+                                        }else if (pom[5].split("|")[2].includes("Trace-lysed")) {
     
                                           BLD = "+/- netaknut"
                                             
-                                        }else if (pom[5].split("|")[2].includes("+/-")) {
+                                        }else if (pom[5].split("|")[2].includes("Trace-intact")) {
     
                                           BLD = "+/-"
                                             
-                                        }else if (pom[5].split("|")[2].includes("1+")) {
+                                        }else if (pom[5].split("|")[2].includes("Small")) {
     
                                           BLD = "pozitivan 1+"
                                             
-                                        }else if (pom[5].split("|")[2].includes("2+")) {
+                                        }else if (pom[5].split("|")[2].includes("Moderate")) {
     
                                           BLD = "pozitivan 2+"
                                             
-                                        }else if (pom[5].split("|")[2].includes("3+")) {
+                                        }else if (pom[5].split("|")[2].includes("Large")) {
     
                                           BLD = "pozitivan 3+"
                                             
@@ -412,19 +412,19 @@ module.exports = {
 
                                           PRO = "negativan"
                                           
-                                      }else if (pom[7].split("|")[2].includes("+/-")) {
+                                      }else if (pom[7].split("|")[2].includes("Trace")) {
   
                                           PRO = "+/-"
                                           
-                                      }else if (pom[7].split("|")[2].includes("1+")) {
+                                      }else if (pom[7].split("|")[2].includes("30")) {
   
                                           PRO = "pozitivan 1+"
                                           
-                                      }else if (pom[7].split("|")[2].includes("2+")) {
+                                      }else if (pom[7].split("|")[2].includes("100")) {
   
                                           PRO = "pozitivan 2+"
                                           
-                                      }else if (pom[7].split("|")[2].includes("3+")) {
+                                      }else if (pom[7].split("|")[2].includes("300")) {
   
                                           PRO = "pozitivan 3+"
                                           
@@ -448,23 +448,23 @@ module.exports = {
                                       var URO = ""
                                       URO = pom[8].split("|")[2]
 
-                                      if (pom[8].split("|")[2].includes("3.2")) {
+                                      if (pom[8].split("|")[2].includes("0.2")) {
 
                                         URO = "3.2"
                                         
-                                    }else if (pom[8].split("|")[2].includes("16")) {
+                                    }else if (pom[8].split("|")[2].includes("1.0")) {
 
                                         URO = "16"
                                         
-                                    }else if (pom[8].split("|")[2].includes("33")) {
+                                    }else if (pom[8].split("|")[2].includes("2.0")) {
 
                                         URO = "33"
                                         
-                                    }else if (pom[8].split("|")[2].includes("66")) {
+                                    }else if (pom[8].split("|")[2].includes("4.0")) {
 
                                         URO = "66"
                                         
-                                    }else if (pom[8].split("|")[2].includes(">=131")) {
+                                    }else if (pom[8].split("|")[2].includes("8.0")) {
 
                                         URO = ">=131"
                                         
@@ -519,19 +519,19 @@ module.exports = {
 
                                             LEU = "negativan"
                                             
-                                        }else if (pom[10].split("|")[2].includes("1+")) {
+                                        }else if (pom[10].split("|")[2].includes("Trace")) {
     
                                           LEU = "pozitivan 1+"
                                             
-                                        }else if (pom[10].split("|")[2].includes("2+")) {
+                                        }else if (pom[10].split("|")[2].includes("Small")) {
     
                                           LEU = "pozitivan 2+"
                                             
-                                        }else if (pom[10].split("|")[2].includes("3+")) {
+                                        }else if (pom[10].split("|")[2].includes("Moderate")) {
     
                                           LEU = "pozitivan 3+"
                                             
-                                        }else if (pom[10].split("|")[2].includes("4+")) {
+                                        }else if (pom[10].split("|")[2].includes("Large")) {
     
                                           LEU = "pozitivan 4+"
                                             
