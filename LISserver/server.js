@@ -395,7 +395,7 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
 
           if(JSON.stringify(lisserver.message).includes('1750^296540^Status') ){//&& JSON.stringify(data).includes('\r\n')
             
-            lisserver.message.unshift("H|\\^&|||clintekStatus^1.00^6721^H1R1L1|||||||P|1|")
+            lisserver.message.unshift("H|\\^&|||Siemens Healthcare Diagnostics Inc.^1750^296540^Status V2.620^H1R1L1|||||||P|1|")
             funkcija.parsaj_rezultat(lisserver.message, io);
           } 
           //console.log("Primljena poruka:")
