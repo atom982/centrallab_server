@@ -50,11 +50,12 @@ module.exports = {
 
                                     console.log(result)
                                     
-                                    sid = result[2]
+                                    sid = temp_rezultati[11]
                                     console.log(sid)
 
+                                    
+                                    console.log('Col: '+temp_rezultati[12].split("^")[1])
                                     break;
-                                    console.log('Col: '+result[7])
                                     console.log("Cla: "+result[8])
                                     console.log("GLU: "+result[10])
                                     console.log("BIL: "+result[13])
