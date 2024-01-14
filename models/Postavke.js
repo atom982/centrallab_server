@@ -695,6 +695,27 @@ var SchemaPartneri = mongoose.Schema({
   updated_by: { type: String, default: "Nema podataka" },
 });
 
+// Reference (14.01.2024. godine)
+
+var SchemaReference = mongoose.Schema({
+  id: { type: String, default: null },
+  rezultat: {
+    type: Object,
+    default: { },
+  },
+  reference: {
+    type: Object,
+    default: { },
+  },
+  created_at: {
+    type: Date,
+    default: new Date(
+      new Date().getTime() - new Date().getTimezoneOffset() * 60000
+    ),
+  },
+  created_by: { type: String, default: null },
+});
+
 const models = [
   (tipAparata = mongoose.model("tipAparata", SchemaTip)),
   (tehnologijaAparata = mongoose.model("tehnologijaAparata", SchemaTehno)),
@@ -723,6 +744,8 @@ const models = [
   (Uzorci = mongoose.model("Uzorci", SchemaUzorci)),
   (IntegrationRaw = mongoose.model("IntegrationRaw", SchemaIntegrationRaw)),
   (Integration = mongoose.model("Integration", SchemaIntegration)),
+
+  (Reference = mongoose.model("Reference", SchemaReference)),
 ];
 
 module.exports = models;

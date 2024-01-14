@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var Samples = mongoose.model("Samples");
 var Results = mongoose.model("Results");
+var Reference = mongoose.model("Reference");
 const config = require("../config/index");
 const fs = require("fs");
 const net = require("net");
@@ -761,9 +762,8 @@ odobravanjeController.SetReferences = function (req, res) {
                       JSON.stringify(element.labassay) ===
                       JSON.stringify(req.body.analiza.labassay_id)
                     ) {
-                      element.rezultat[
-                        element.rezultat.length - 1
-                      ].anaassay = mongoose.Types.ObjectId(anaassay._id);
+                      element.rezultat[element.rezultat.length - 1].anaassay =
+                        mongoose.Types.ObjectId(anaassay._id);
 
                       anaassay.reference.forEach((ref) => {
                         set = reference.get(
@@ -1746,6 +1746,14 @@ odobravanjeController.Reference = function (req, res) {
         var Audit_Rez = new Audit_Rezultati(audit);
         Audit_Rez.save();
 
+        var ref = {};
+        ref.id = req.body.reference.sample
+        ref.rezultat = rezultat
+        ref.reference = req.body.reference
+        ref.created_by = req.body.decoded.user
+
+        var References = new Reference(ref);
+
         rezultat.rezultati.forEach((element) => {
           if (
             element.labassay.equals(
@@ -1764,7 +1772,7 @@ odobravanjeController.Reference = function (req, res) {
         rezultat.updated_by = req.body.decoded.user;
         rezultat.updated_at = Date.now();
 
-        rezultat.save(function (err) {
+        References.save(function (err) {
           if (err) {
             console.log("Greška:", err);
             res.json({
@@ -1772,9 +1780,19 @@ odobravanjeController.Reference = function (req, res) {
               message: err,
             });
           } else {
-            res.json({
-              success: true,
-              message: "Referentne vrijednosti sačuvane.",
+            rezultat.save(function (err) {
+              if (err) {
+                console.log("Greška:", err);
+                res.json({
+                  success: false,
+                  message: err,
+                });
+              } else {
+                res.json({
+                  success: true,
+                  message: "Referentne vrijednosti sačuvane.",
+                });
+              }
             });
           }
         });
