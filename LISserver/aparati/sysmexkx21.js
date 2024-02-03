@@ -95,6 +95,10 @@ module.exports = {
                                             temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
                                             temprez = (parseFloat(temprez)).toFixed(1).toString()
                                             break;
+                                            case 'LYM#':                                                    
+                                            temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseFloat(temprez)).toFixed(1).toString()
+                                            break;
                                             case 'MIX#':                                                    
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
                                             temprez = (parseFloat(temprez)).toFixed(1).toString()
