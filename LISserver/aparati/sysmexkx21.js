@@ -103,6 +103,10 @@ module.exports = {
                                             temprez = temprez.substring(2,3)+'.'+temprez.substring(3,5)
                                             temprez = (parseFloat(temprez)).toFixed(1).toString()
                                             break;
+                                            case 'NEU#':                                                    
+                                            temprez = temprez.substring(1,3)+'.'+temprez.substring(3,5)
+                                            temprez = (parseFloat(temprez)).toFixed(1).toString()
+                                            break;
                                             case 'MCHC':                                                    
                                               temprez = temprez.substring(1,4)
                                               temprez = (parseFloat(temprez)).toFixed(0).toString();
