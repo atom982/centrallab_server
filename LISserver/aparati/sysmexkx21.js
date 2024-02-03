@@ -80,7 +80,7 @@ module.exports = {
                                             temprez = (parseFloat(temprez)/100).toFixed(3).toString()
                                             break;                                    
                                             case 'PLT':                                                    
-                                              temprez = temprez.substring(1,4)
+                                              temprez = temprez.substring(0,4)
                                               temprez = (parseFloat(temprez)).toFixed(0).toString();
                                             break;  
                                             case 'LYM':                                                    
