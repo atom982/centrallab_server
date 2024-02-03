@@ -156,21 +156,21 @@ module.exports = {
 
                                           GLU = "negativan"
                                           
-                                      }else if (pom[1].split("|")[2].includes("100")) {
+                                      }else if (pom[1].split("|")[2].includes("1+") || pom[1].split("|")[2].includes("Small")) {
   
                                         GLU = "pozitivan 1+"
                                           
-                                      }else if (pom[1].split("|")[2].includes("250")) {
+                                      }else if (pom[1].split("|")[2].includes("2+") || pom[1].split("|")[2].includes("Moderate")) {
   
                                         GLU = "pozitivan 2+"
                                           
-                                      }else if (pom[1].split("|")[2].includes("500")) {
+                                      }else if (pom[1].split("|")[2].includes("3+") || pom[1].split("|")[2].includes("Large")) {
   
                                         GLU = "pozitivan 3+"
                                           
-                                      }else if (pom[1].split("|")[2].includes("1000")) {
+                                      }else if (pom[1].split("|")[2].includes("Trace")) {
   
-                                        GLU = "pozitivan 4+"
+                                        GLU = "u tragu"
                                           
                                       }else {
   
@@ -194,15 +194,15 @@ module.exports = {
 
                                         BIL = "negativan"
                                         
-                                        }else if (pom[2].split("|")[2].includes("Small")) {
+                                        }else if (pom[2].split("|")[2].includes("Small") || pom[2].split("|")[2].includes("1+")) {
 
                                         BIL = "pozitivan 1+"
                                             
-                                        }else if (pom[2].split("|")[2].includes("Moderate")) {
+                                        }else if (pom[2].split("|")[2].includes("Moderate") || pom[2].split("|")[2].includes("2+")) {
 
                                         BIL = "pozitivan 2+"
                                             
-                                        }else if (pom[2].split("|")[2].includes("Large")) {
+                                        }else if (pom[2].split("|")[2].includes("Large") || pom[2].split("|")[2].includes("3+")) {
 
                                         BIL = "pozitivan 3+"
                                             
@@ -228,29 +228,29 @@ module.exports = {
 
                                             KET = "negativan"
                                             
-                                        }else if (pom[3].split("|")[2].includes("Trace")) {
+                                        }else if (pom[3].split("|")[2].includes("1+") || pom[3].split("|")[2].includes("Small") ) {
     
                                           KET = "pozitivan 1+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("15")) {
+                                        }else if (pom[3].split("|")[2].includes("2+") || pom[3].split("|")[2].includes("Moderate") ) {
     
                                           KET = "pozitivan 2+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("40")) {
+                                        }else if (pom[3].split("|")[2].includes("3+") || pom[3].split("|")[2].includes("Large") ) {
     
                                           KET = "pozitivan 3+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("80")) {
+                                        }else if (pom[3].split("|")[2].includes("4+")) {
     
                                           KET = "pozitivan 4+"
                                             
-                                        }else if (pom[3].split("|")[2].includes("160")) {
+                                        }else if (pom[3].split("|")[2].includes("Trace")) {
     
-                                          KET = "pozitivan 5+"
+                                          KET = "u tragu"
                                             
                                         }else {
     
-                                          KET = "Greška"
+                                          KET = "pozitivan 4+"
     
                                         }
 
@@ -316,27 +316,28 @@ module.exports = {
                                             
                                         }else if (pom[5].split("|")[2].includes("Trace-lysed")) {
     
-                                          BLD = "+/- netaknut"
+                                          BLD = "u tragu"
                                             
-                                        }else if (pom[5].split("|")[2].includes("Trace-intact")) {
+                                        }else if (pom[5].split("|")[2].includes("Trace-intact") || pom[5].split("|")[2].includes("+/- Intact")) {
     
-                                          BLD = "+/-"
+                                          BLD = "u tragu intaktni"
                                             
-                                        }else if (pom[5].split("|")[2].includes("Small")) {
+                                        }else if (pom[5].split("|")[2].includes("Small") || pom[5].split("|")[2].includes("1+")) {
     
                                           BLD = "pozitivan 1+"
                                             
-                                        }else if (pom[5].split("|")[2].includes("Moderate")) {
+                                        }else if (pom[5].split("|")[2].includes("Moderate") || pom[5].split("|")[2].includes("2+")) {
     
                                           BLD = "pozitivan 2+"
                                             
-                                        }else if (pom[5].split("|")[2].includes("Large")) {
+                                        }else if (pom[5].split("|")[2].includes("Large") || pom[5].split("|")[2].includes("3+")) {
     
                                           BLD = "pozitivan 3+"
                                             
                                         }else {
     
-                                          BLD = "Greška"
+                                          // BLD = "Greška"
+                                          BLD = "u tragu"
     
                                         }
 
@@ -414,17 +415,17 @@ module.exports = {
                                           
                                       }else if (pom[7].split("|")[2].includes("Trace")) {
   
-                                          PRO = "+/-"
+                                          PRO = "u tragu"
                                           
-                                      }else if (pom[7].split("|")[2].includes("30")) {
+                                      }else if (pom[7].split("|")[2].includes("1+") || pom[7].split("|")[2].includes("Small")) {
   
                                           PRO = "pozitivan 1+"
                                           
-                                      }else if (pom[7].split("|")[2].includes("100")) {
+                                      }else if (pom[7].split("|")[2].includes("2+") || pom[7].split("|")[2].includes("Moderate")) {
   
                                           PRO = "pozitivan 2+"
                                           
-                                      }else if (pom[7].split("|")[2].includes("300")) {
+                                      }else if (pom[7].split("|")[2].includes("3+") || pom[7].split("|")[2].includes("Large")) {
   
                                           PRO = "pozitivan 3+"
                                           
@@ -521,19 +522,19 @@ module.exports = {
                                             
                                         }else if (pom[10].split("|")[2].includes("Trace")) {
     
+                                          LEU = "u tragu"
+                                            
+                                        }else if (pom[10].split("|")[2].includes("Small") || pom[10].split("|")[2].includes("1+")) {
+    
                                           LEU = "pozitivan 1+"
                                             
-                                        }else if (pom[10].split("|")[2].includes("Small")) {
+                                        }else if (pom[10].split("|")[2].includes("Moderate") || pom[10].split("|")[2].includes("2+")) {
     
                                           LEU = "pozitivan 2+"
                                             
-                                        }else if (pom[10].split("|")[2].includes("Moderate")) {
+                                        }else if (pom[10].split("|")[2].includes("Large") || pom[10].split("|")[2].includes("3+")) {
     
                                           LEU = "pozitivan 3+"
-                                            
-                                        }else if (pom[10].split("|")[2].includes("Large")) {
-    
-                                          LEU = "pozitivan 4+"
                                             
                                         }else {
     
