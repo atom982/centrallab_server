@@ -417,23 +417,19 @@ module.exports = {
   
                                           PRO = "u tragu"
                                           
-                                      }else if (pom[7].split("|")[2].includes("1+") || pom[7].split("|")[2].includes("Small")) {
+                                      }else if (pom[7].split("|")[2].includes("1+") || pom[7].split("|")[2].includes("Small") || pom[7].split("|")[2].includes("30")) {
   
                                           PRO = "pozitivan 1+"
                                           
-                                      }else if (pom[7].split("|")[2].includes("2+") || pom[7].split("|")[2].includes("Moderate")) {
+                                      }else if (pom[7].split("|")[2].includes("2+") || pom[7].split("|")[2].includes("Moderate") || pom[7].split("|")[2].includes("100")) {
   
                                           PRO = "pozitivan 2+"
                                           
-                                      }else if (pom[7].split("|")[2].includes("3+") || pom[7].split("|")[2].includes("Large")) {
+                                      }else if (pom[7].split("|")[2].includes("3+") || pom[7].split("|")[2].includes("Large") || pom[7].split("|")[2].includes(">=300")) {
   
                                           PRO = "pozitivan 3+"
                                           
-                                      } else if (pom[7].split("|")[2].includes("3+") || pom[7].split("|")[2].includes(">=300")) {
-  
-                                        PRO = ">=300"
-                                        
-                                    } else{
+                                      } else{
   
                                           PRO = "Greška"
   
