@@ -429,7 +429,11 @@ module.exports = {
   
                                           PRO = "pozitivan 3+"
                                           
-                                      }else {
+                                      } else if (pom[7].split("|")[2].includes("3+") || pom[7].split("|")[2].includes(">=300")) {
+  
+                                        PRO = ">=300"
+                                        
+                                    } else{
   
                                           PRO = "Greška"
   
