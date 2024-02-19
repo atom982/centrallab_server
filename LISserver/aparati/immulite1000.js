@@ -89,12 +89,20 @@ module.exports = {
                                                        if(result[6] == "<"){
                                                         rezultat_f = "< " + parseFloat(result[3]).toFixed(2)
                                                        }
+                                                       
+                                                       else if(result[6] == ">"){
+                                                        rezultat_f = "> " + parseFloat(result[3]).toFixed(2)
+                                                       }
 
                                                     }else{
                                                          var rezultat_f = result[3]
 
                                                          if(result[6] == "<"){
                                                           rezultat_f = "< " + result[3]
+                                                         }
+                                                         
+                                                         else if(result[6] == ">"){
+                                                          rezultat_f = "> " + result[3]
                                                          }
 
                                                          }
