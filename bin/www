@@ -61,7 +61,7 @@ var loggerserver= new loggerServer();
 // Starting our server
 
 lisserver.start(io,5081,"Central Lab (Gradačac): Sysmex KX-21N");
-lisserver.start(io,5082,"Central Lab (Gradačac): Siemens IMMULITE 1000");
+lisserver.start(io,5082,"Central Lab (Gradačac): Siemens IMMULITE 1000 or AU480");
 lisserver.start(io,5083,"Central Lab (Gradačac): Siemens Clinitek Status");
 lisserver.start(io,5084,"Central Lab (Gradačac): Siemens Advia Centaur CP");
 

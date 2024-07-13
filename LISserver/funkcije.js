@@ -304,6 +304,7 @@ parsaj_query: function (record, callback) {
   var bs480 = require('./aparati/bs480');
   var immulite= require('./aparati/immulite1000');
   var centaurcp = require('./aparati/centaurcp');
+  var au480 = require('./aparati/au480');
   //console.log(record)
 
   var header = record[0].split("|");
@@ -330,6 +331,9 @@ parsaj_query: function (record, callback) {
   if (record[0].includes("ACCP1")) {
     sn = "centaur_cp"; // Centaur CP
   }
+  if (record[0].includes("0055487")) {
+    sn = "au_480"; // Centaur CP
+  }
   //Mindry
   switch (sn) {
     case "GRADACAC": // Immulite
@@ -352,6 +356,14 @@ parsaj_query: function (record, callback) {
       console.log("Query Parsing: Centaur CP");
       var serijski = '62a6142677e5656ca8b10dd3'
       centaurcp.parsaj_query(record,serijski, function (poruka) {
+        console.log(poruka)
+        callback(poruka);
+      });
+      break;
+      case "au_480": // AU 480
+      console.log("Query Parsing: AU_480");
+      var serijski = '62a6122c77e5656ca8b10d03'
+      au480.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
