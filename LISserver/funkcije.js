@@ -212,6 +212,7 @@ parsaj_rezultat: function (record, io) {
   var hitachi = require('./aparati/hitachi902');
   var centaurcp = require('./aparati/centaurcp');
   var clintekStatusPlus = require('./aparati/clintekStatusplus');
+  var au480 = require('./aparati/au480');
 
   console.log("Parsanje rezultata...");
   //console.log(record)
@@ -243,6 +244,9 @@ parsaj_rezultat: function (record, io) {
   }
   if (record[0].includes("296540")) {
     sn = "296540"; // Celintek status plus
+  }
+  if (record[0].includes("0055487")) {
+    sn = "au_480"; // Centaur CP
   }
 console.log(sn)
   switch (sn) {
@@ -277,6 +281,11 @@ console.log(sn)
       console.log("Result parsing Centaur CP");
       serijski = '62a6142677e5656ca8b10dd3' // - done
       centaurcp.parsaj_rezultat(record,io,serijski);
+      break;
+      case 'au_480': // AU 480
+      console.log("Result parsing AU 480");
+      serijski = '62a6122c77e5656ca8b10d03' // - done
+      au480.parsaj_rezultat(record,io,serijski);
       break;
     default:
       console.log("Nije definisan aparat sa serijskim brojem: " + sn);
