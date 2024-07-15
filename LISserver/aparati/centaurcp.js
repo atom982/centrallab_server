@@ -315,7 +315,7 @@ module.exports = {
           });
     },
   
-    parsaj_query: function(record,serijski,callback){
+    parsaj_query: function(record,aparat,callback){
       var mongoose = require("mongoose");
   
       var Samples = require("../../models/Postavke");
@@ -371,7 +371,7 @@ module.exports = {
                                                 var counter =0;
                                                 var uzoraklength=uzorak.tests.length;
                                                 
-                                                AnaAssays.find({}).populate('aparat test').lean().exec(function (err, anaassays) {
+                                                AnaAssays.find({aparat: mongoose.Types.ObjectId(aparat)}).populate('aparat test').lean().exec(function (err, anaassays) {
                                                   uzorak.tests.forEach(function(test) {
                                                     anaassays.forEach(function(anaassay) { 
                                                       if((anaassay.aparat.sn === json.sn) && (anaassay.test.sifra === test.labassay.sifra)  && (anaassay.test.calculated)){
