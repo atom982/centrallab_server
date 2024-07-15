@@ -362,6 +362,10 @@ module.exports = {
                         case  'L':
                                   console.log("terminator");
                                   var testovi = [];
+                                  var counter = 1
+                                  header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
+                                  // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
+                                  recordret.push(header);
                                   sids.forEach(querysid => {
                                     
                                   
@@ -427,9 +431,6 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
-                                                      // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
-                                                      recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
                                                       if(prezime.length > 20){
@@ -451,34 +452,31 @@ module.exports = {
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
                                                       // P|1|PatID01|||Conti^Biagio^S||19741001|M|||||Martinez|||||||||||WestWing<CR>
-                                                      var patient ='P|1|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
+                                                      var patient ='P|'+i+'|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
                                                       stype = querysid.substring(0,1)
                                                       console.log(stype)
                                                       var order =''
                                                       switch (stype) {
                                                         case 'K':
-                                                          order = 'O|1|'+querysid+'^01||'+tests//+'\u000D';
+                                                          order = 'O|'+i+'|'+querysid+'^01||'+tests//+'\u000D';
                                                                 console.log('WHOLE BLOOD')
                                                           break;
                                                         case 'U':
-                                                          order = 'O|1|'+querysid+'||'+tests//+'\u000D';
+                                                          order = 'O|'+i+'|'+querysid+'||'+tests//+'\u000D';
                                                           break; 
                                                         case 'P':
-                                                          order = 'O|1|'+querysid+'||'+tests//+'\u000D';
+                                                          order = 'O|'+i+'|'+querysid+'||'+tests//+'\u000D';
                                                           break;                                                    
                                                         default:
                                                             //     O|1|REQ1241||^^^T3\^^^T4\^^^TSH|R||||||||||||||||||||O\Q 
 
-                                                          order = 'O|1|'+querysid+'||'+tests//+'\u000D';
+                                                          order = 'O|'+i+'|'+querysid+'||'+tests//+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
                                                       recordret.push(order);
-                                                      var terminator = 'L|1|F'//'\u000D';
-                                                      recordret.push(terminator);
-                                                      header = ''
-                                                      callback(recordret); 
+     
                                                     }
   
                                                   })                  
@@ -487,6 +485,14 @@ module.exports = {
   
                                     }
                                   });
+
+                                  if(sids.length = i){
+                                    var terminator = 'L|1|F'//'\u000D';
+                                    recordret.push(terminator);
+                                    header = ''
+                                    callback(recordret);
+                                  }
+                                   
                                 });
                                   break;
                         default:
