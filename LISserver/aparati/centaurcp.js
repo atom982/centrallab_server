@@ -332,6 +332,7 @@ module.exports = {
         var json = {};
         var testovi=[];
         var recordret =[];
+        var sids  =[]
         var dilution = ''
         var stype = ''
         var ime = ''
@@ -352,7 +353,7 @@ module.exports = {
                                   var sample_arr=query_arr[2].split("^");
 
                                   json.sid = sample_arr[1];
-                                  var sids  =json.sid.split("\\")
+                                  sids  =json.sid.split("\\")
                                   console.log(sids)
                                   //'Q|1|^S032B40715\\S033B40715^|^^|ALL^^^||||||||O'
                                   json.request_type = query_arr[12];
