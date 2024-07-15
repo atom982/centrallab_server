@@ -367,7 +367,7 @@ module.exports = {
                                   // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
                                   recordret.push(header);
                                   sids.forEach(querysid => {
-                                    
+                                    console.log("Prolaz "+querysid)
                                   
                                   Samples.findOne({id: querysid}).populate('patient tests.labassay').exec(function (err, uzorak) {
                                     if (err) {
@@ -475,6 +475,7 @@ module.exports = {
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
+                                                      recordret.push("Dodajem pacijenta "+ ime +":"+order);
                                                       recordret.push(order);
                                                       i++
                                                     }
@@ -486,6 +487,7 @@ module.exports = {
                                     }
                                   });
                                   console.log("petlja "+i)
+                                  console.log("petlja sids "+sids.length)
                                   console.log(recordret)
                                   if(sids.length = i){
                                     var terminator = 'L|1|F'//'\u000D';
