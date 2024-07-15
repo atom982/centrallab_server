@@ -382,7 +382,7 @@ module.exports = {
                                                 var tests = '';
                                                 var counter =0;
                                                 var uzoraklength=uzorak.tests.length;
-                                                
+                                                console.log("Pronasao uzorak "+uzorak.id)
                                                 AnaAssays.find({}).populate('aparat test').lean().exec(function (err, anaassays) {
                                                   uzorak.tests.forEach(function(test) {
                                                     anaassays.forEach(function(anaassay) { 
