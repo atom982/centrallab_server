@@ -478,6 +478,15 @@ module.exports = {
                                                       recordret.push("Dodajem pacijenta "+ ime +":"+order);
                                                       recordret.push(order);
                                                       i++
+                                                      console.log("petlja "+i)
+                                                      console.log("petlja sids "+sids.length)
+                                                      console.log(recordret)
+                                                      if(sids.length = i){
+                                                        var terminator = 'L|1|F'//'\u000D';
+                                                        recordret.push(terminator);
+                                                        header = ''
+                                                        callback(recordret);
+                                                      }
                                                     }
   
                                                   })                  
@@ -486,15 +495,7 @@ module.exports = {
   
                                     }
                                   });
-                                  console.log("petlja "+i)
-                                  console.log("petlja sids "+sids.length)
-                                  console.log(recordret)
-                                  if(sids.length = i){
-                                    var terminator = 'L|1|F'//'\u000D';
-                                    recordret.push(terminator);
-                                    header = ''
-                                    callback(recordret);
-                                  }
+
                                    
                                 });
                                   break;
