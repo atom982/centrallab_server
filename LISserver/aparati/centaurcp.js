@@ -332,7 +332,6 @@ module.exports = {
         var json = {};
         var testovi=[];
         var recordret =[];
-        var sids  =[]
         var dilution = ''
         var stype = ''
         var ime = ''
@@ -351,38 +350,27 @@ module.exports = {
                                   var query_arr = element.split("|");
                                   json.sequence= query_arr[1];
                                   var sample_arr=query_arr[2].split("^");
-
                                   json.sid = sample_arr[1];
-                                  sids  =json.sid.split("\\")
-                                  console.log(sids)
-                                  //'Q|1|^S032B40715\\S033B40715^|^^|ALL^^^||||||||O'
                                   json.request_type = query_arr[12];
                                   console.log('query za sid:'+json.sid);
                                   break;
                         case  'L':
                                   console.log("terminator");
                                   var testovi = [];
-                                  var i = 1
-                                  header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
-                                  // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
-                                  recordret.push(header);
-                                  sids.forEach(querysid => {
-                                    console.log("Prolaz "+querysid)
-                                  
-                                  Samples.findOne({id: querysid}).populate('patient tests.labassay').exec(function (err, uzorak) {
+                                  Samples.findOne({id: json.sid}).populate('patient tests.labassay').exec(function (err, uzorak) {
                                     if (err) {
                                       console.log("Greška:", err);
                                     }
                                     else {
                                           if(uzorak===null){
-                                            console.log("U LIS-u ne postoji uzorak sa brojem:"+querysid);
+                                            console.log("U LIS-u ne postoji uzorak sa brojem:"+json.sid);
                                             recordret = []
                                             callback(recordret); 
                                           }else{
                                                 var tests = '';
                                                 var counter =0;
                                                 var uzoraklength=uzorak.tests.length;
-                                                console.log("Pronasao uzorak "+uzorak.id)
+                                                
                                                 AnaAssays.find({}).populate('aparat test').lean().exec(function (err, anaassays) {
                                                   uzorak.tests.forEach(function(test) {
                                                     anaassays.forEach(function(anaassay) { 
@@ -407,12 +395,12 @@ module.exports = {
                                                   Results.findOne({'id':uzorak.id}).populate('patient rezultati.labassay').exec(function (err, rezultat) { 
   
                                                     if(testovi.length < 1){
-                                                      console.log("Za uzorak :"+querysid+" ne postoji niti jedan rerun zahtjev");
+                                                      console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
                                                       // H|\\^&|||ATOM|||||ACCP1||P|1
                                                       header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'+'\u000D';//\\^&
                                                       recordret.push(header);
                                                       // Q|1|^SID10768||ALL||||||||O
-                                                      var query = 'Q|1|^'+querysid+'||ALL||||||||O'+'\u000D'
+                                                      var query = 'Q|1|^'+json.sid+'||ALL||||||||O'+'\u000D'
                                                       recordret.push(query);
                                                       //L|1|I<CR>
                                                       var terminator = 'L|1|I'+'\u000D';
@@ -431,6 +419,9 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
+                                                      header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
+                                                      // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
+                                                      recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
                                                       var rime = rezultat.patient.ime
                                                       if(prezime.length > 20){
@@ -452,41 +443,34 @@ module.exports = {
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
                                                       // P|1|PatID01|||Conti^Biagio^S||19741001|M|||||Martinez|||||||||||WestWing<CR>
-                                                      var patient ='P|'+i+'|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
+                                                      var patient ='P|1|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
-                                                      stype = querysid.substring(0,1)
+                                                      stype = json.sid.substring(0,1)
                                                       console.log(stype)
                                                       var order =''
                                                       switch (stype) {
                                                         case 'K':
-                                                          order = 'O|'+i+'|'+querysid+'^01||'+tests//+'\u000D';
+                                                          order = 'O|1|'+json.sid+'^01||'+tests//+'\u000D';
                                                                 console.log('WHOLE BLOOD')
                                                           break;
                                                         case 'U':
-                                                          order = 'O|'+i+'|'+querysid+'||'+tests//+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                           break; 
                                                         case 'P':
-                                                          order = 'O|'+i+'|'+querysid+'||'+tests//+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                           break;                                                    
                                                         default:
                                                             //     O|1|REQ1241||^^^T3\^^^T4\^^^TSH|R||||||||||||||||||||O\Q 
 
-                                                          order = 'O|'+i+'|'+querysid+'||'+tests//+'\u000D';
+                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
-                                                      recordret.push("Dodajem pacijenta "+ ime +":"+order);
                                                       recordret.push(order);
-                                                      i++
-                                                      console.log("petlja "+i)
-                                                      console.log("petlja sids "+sids.length)
-                                                      console.log(recordret)
-                                                      if(sids.length = i){
-                                                        var terminator = 'L|1|F'//'\u000D';
-                                                        recordret.push(terminator);
-                                                        header = ''
-                                                        callback(recordret);
-                                                      }
+                                                      var terminator = 'L|1|F'//'\u000D';
+                                                      recordret.push(terminator);
+                                                      header = ''
+                                                      callback(recordret); 
                                                     }
   
                                                   })                  
@@ -495,9 +479,7 @@ module.exports = {
   
                                     }
                                   });
-
-                                   
-                                });
+                                
                                   break;
                         default:
   
