@@ -350,7 +350,11 @@ module.exports = {
                                   var query_arr = element.split("|");
                                   json.sequence= query_arr[1];
                                   var sample_arr=query_arr[2].split("^");
+
                                   json.sid = sample_arr[1];
+                                  var sids  =json.sid.split("\\")
+                                  console.log(sids)
+                                  //'Q|1|^S032B40715\\S033B40715^|^^|ALL^^^||||||||O'
                                   json.request_type = query_arr[12];
                                   console.log('query za sid:'+json.sid);
                                   break;
