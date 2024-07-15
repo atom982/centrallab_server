@@ -361,13 +361,16 @@ module.exports = {
                         case  'L':
                                   console.log("terminator");
                                   var testovi = [];
-                                  Samples.findOne({id: json.sid}).populate('patient tests.labassay').exec(function (err, uzorak) {
+                                  sids.forEach(querysid => {
+                                    
+                                  
+                                  Samples.findOne({id: querysid}).populate('patient tests.labassay').exec(function (err, uzorak) {
                                     if (err) {
                                       console.log("Greška:", err);
                                     }
                                     else {
                                           if(uzorak===null){
-                                            console.log("U LIS-u ne postoji uzorak sa brojem:"+json.sid);
+                                            console.log("U LIS-u ne postoji uzorak sa brojem:"+querysid);
                                             recordret = []
                                             callback(recordret); 
                                           }else{
@@ -399,12 +402,12 @@ module.exports = {
                                                   Results.findOne({'id':uzorak.id}).populate('patient rezultati.labassay').exec(function (err, rezultat) { 
   
                                                     if(testovi.length < 1){
-                                                      console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
+                                                      console.log("Za uzorak :"+querysid+" ne postoji niti jedan rerun zahtjev");
                                                       // H|\\^&|||ATOM|||||ACCP1||P|1
                                                       header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'+'\u000D';//\\^&
                                                       recordret.push(header);
                                                       // Q|1|^SID10768||ALL||||||||O
-                                                      var query = 'Q|1|^'+json.sid+'||ALL||||||||O'+'\u000D'
+                                                      var query = 'Q|1|^'+querysid+'||ALL||||||||O'+'\u000D'
                                                       recordret.push(query);
                                                       //L|1|I<CR>
                                                       var terminator = 'L|1|I'+'\u000D';
@@ -449,24 +452,24 @@ module.exports = {
                                                       // P|1|PatID01|||Conti^Biagio^S||19741001|M|||||Martinez|||||||||||WestWing<CR>
                                                       var patient ='P|1|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
-                                                      stype = json.sid.substring(0,1)
+                                                      stype = querysid.substring(0,1)
                                                       console.log(stype)
                                                       var order =''
                                                       switch (stype) {
                                                         case 'K':
-                                                          order = 'O|1|'+json.sid+'^01||'+tests//+'\u000D';
+                                                          order = 'O|1|'+querysid+'^01||'+tests//+'\u000D';
                                                                 console.log('WHOLE BLOOD')
                                                           break;
                                                         case 'U':
-                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
+                                                          order = 'O|1|'+querysid+'||'+tests//+'\u000D';
                                                           break; 
                                                         case 'P':
-                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
+                                                          order = 'O|1|'+querysid+'||'+tests//+'\u000D';
                                                           break;                                                    
                                                         default:
                                                             //     O|1|REQ1241||^^^T3\^^^T4\^^^TSH|R||||||||||||||||||||O\Q 
 
-                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
+                                                          order = 'O|1|'+querysid+'||'+tests//+'\u000D';
                                                                 console.log('DEFAULT SERUM')
                                                           break;
                                                       }
@@ -483,7 +486,7 @@ module.exports = {
   
                                     }
                                   });
-                                
+                                });
                                   break;
                         default:
   
