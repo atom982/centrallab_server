@@ -485,7 +485,8 @@ module.exports = {
   
                                     }
                                   });
-                                  
+                                  console.log("petlja "+i)
+                                  console.log(recordret)
                                   if(sids.length = i){
                                     var terminator = 'L|1|F'//'\u000D';
                                     recordret.push(terminator);
