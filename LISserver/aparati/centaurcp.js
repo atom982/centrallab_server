@@ -362,7 +362,7 @@ module.exports = {
                         case  'L':
                                   console.log("terminator");
                                   var testovi = [];
-                                  var counter = 1
+                                  var i = 1
                                   header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
                                   // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
                                   recordret.push(header);
