@@ -476,7 +476,7 @@ module.exports = {
                                                           break;
                                                       }
                                                       recordret.push(order);
-     
+                                                      i++
                                                     }
   
                                                   })                  
@@ -485,7 +485,7 @@ module.exports = {
   
                                     }
                                   });
-                                  i++
+                                  
                                   if(sids.length = i){
                                     var terminator = 'L|1|F'//'\u000D';
                                     recordret.push(terminator);
