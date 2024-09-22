@@ -152,8 +152,8 @@ module.exports = {
     } else {
       console.log(parseFloat(current))
       console.log(parseFloat(age))
-      console.log("starostReferentne - Line: 153 || " + parseFloat(current) - parseFloat(age));
-      return parseFloat(current) - parseFloat(age);
+      console.log("starostReferentne - Line: 153 || " + Number(parseFloat(Number(current)) - parseFloat(Number(age))));
+      return Number(parseFloat(Number(current)) - parseFloat(Number(age)));
       
     }
   }
