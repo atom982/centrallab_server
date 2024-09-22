@@ -150,7 +150,9 @@ module.exports = {
         return 0.1;
       }
     } else {
+      console.log("starostReferentne - Line: 153 || " + parseFloat(current) - parseFloat(age));
       return parseFloat(current) - parseFloat(age);
+      
     }
   }
 };
