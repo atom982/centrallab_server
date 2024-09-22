@@ -17,7 +17,8 @@ module.exports = {
     var jmbgObj = jmbgObjGet.godineStarosti(date);
 
     if (jmbgObj.years < 1 && jmbgObj.months < 1) {
-      console.log("Dana starosti: " + jmbgObj.days);
+
+      console.log("starostReferentne - Line: 21 || " + jmbgObj.days);
 
       switch (jmbgObj.days.toString()) {
         case "0": // 0.00 – 0.04

@@ -814,12 +814,17 @@ sampleController.Save = function (req, res) {
   jmbgObj = req.body.jmbgObj;
 
   if (jmbgObj.years < 1 && jmbgObj.months < 1) {
-    if (jmbgObj.days < 15) {
+
+    if (jmbgObj.days < 8) {
+      starost = 0.01;
+    } else if (jmbgObj.days < 15) {
       starost = 0.02;
     } else {
       starost = 0.06;
     }
+
   } else if (jmbgObj.years < 1) {
+
     if (jmbgObj.months > 10 && jmbgObj.months < 12) {
       starost = 0.95;
     } else if (jmbgObj.months > 9 && jmbgObj.months < 11) {
@@ -843,9 +848,13 @@ sampleController.Save = function (req, res) {
     } else if (jmbgObj.months > 0 && jmbgObj.months < 2) {
       starost = 0.1;
     }
+
   } else {
+    
     starost = parseFloat(current) - parseFloat(age);
   }
+
+  console.log("SampleController - Line: 850 || " + starost)
 
   var rezultat = {};
   rezultat.rezultati = [];
