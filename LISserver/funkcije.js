@@ -213,6 +213,7 @@ parsaj_rezultat: function (record, io) {
   var centaurcp = require('./aparati/centaurcp');
   var clintekStatusPlus = require('./aparati/clintekStatusplus');
   var au480 = require('./aparati/au480');
+  var sysmexXN330 = require('./aparati/sysmexxn330');
 
   console.log("Parsanje rezultata...");
   //console.log(record)
@@ -267,10 +268,10 @@ console.log(sn)
         var serijski = '600408e5f5e7ce7d39d4c203'
         clintekStatusPlus.parsaj_rezultat(record, io,serijski);
         break;
-      case 'A5303': //sysmex kx 21
-      console.log("sysmex kx 21");
+      case '16342': //sysmex xn 330
+      console.log("sysmex xn 330");
       serijski = '62a611a477e5656ca8b10ce9' // - done
-      kx21.parsaj_rezultat(record,io,serijski);
+      sysmexXN330.parsaj_rezultat(record,io,serijski);
       break;
       case 'GRADACAC': // Immulite 1000
       console.log("Immulite 1000");
