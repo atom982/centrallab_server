@@ -315,6 +315,7 @@ parsaj_query: function (record, callback) {
   var immulite= require('./aparati/immulite1000');
   var centaurcp = require('./aparati/centaurcp');
   var au480 = require('./aparati/au480');
+  var sysmexXN330 = require('./aparati/sysmexxn330');
   //console.log(record)
 
   var header = record[0].split("|");
@@ -354,10 +355,10 @@ parsaj_query: function (record, callback) {
         callback(poruka);
       });
       break;
-      case "hitachi": // hitachi
-      console.log("Query Parsing: Hitachi");
-      var serijski = '62a6122c77e5656ca8b10d03'
-      hitachi.parsaj_query(record,serijski, function (poruka) {
+      case "16342": // sysmex xn 330
+      console.log("sysmex xn 330 query");
+      serijski = '62a611a477e5656ca8b10ce9' // - done
+      sysmexXN330.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
