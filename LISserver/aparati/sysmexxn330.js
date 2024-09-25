@@ -82,7 +82,7 @@ module.exports = {
                                     if(test_type.length > 38){
                                       provjera = 55    
                                     }else{
-                                      provjera = 31
+                                      provjera = 25
                                     }
                                     Results.findOne({id:sid}).populate('aparat').exec(function (err, rezultat) {
                                       if (err) {
@@ -222,7 +222,7 @@ module.exports = {
                                                 }
                                               })
                                             }
-                                            if(provjera === 31 && k>13){
+                                            if(provjera === 25 && k>11){
                                               console.log("KKS 3")
                                               rezultat.controlmulti = true
                                               console.log('prije cuvanja')
