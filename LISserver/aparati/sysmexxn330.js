@@ -464,7 +464,7 @@ module.exports = {
                                                       //P|1|||100|^Carol^Thomas||20010820|F|||||^Dr. N||||||||||||^^^Eas
                                                       console.log(tests)
                                                       recordret.push(patient);
-                                                      if(tests.includes("KKS5")) {
+                                                      if(tests.includes("DIFF")) {
                                                         console.log("TRAZIM DIFERENCIJALNU")
                                                         // host code = "DIFF"
                                                         //tests="WBC~RBC~HGB~HCT~MCV~MCH~PLT~RDW-SD~RDW-CV~PDW~MPV~P-LCR~PCT~NEUT#~LYMPH#~MONO#~EO#~BASO#~NEUT%~LYMPH%~MONO%~EO%~BASO%~IG#~IG%"
