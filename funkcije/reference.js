@@ -6,8 +6,11 @@ module.exports = {
     var rezultat = result.trim()
 
     switch (interp) {
-     case "none":
+      case "none":
         return [test, rezultat, interpretacija.None(rezultat, dref, gref)[0], jedinica, "/", interpretacija.None(rezultat, dref, gref)[1], extend];
+        break;
+      case "poVP": 
+        return [test, rezultat, interpretacija.None(rezultat, dref, gref)[0], jedinica, "poVP", interpretacija.None(rezultat, dref, gref)[1], extend];
         break;
       case "A":
         return [test, rezultat, interpretacija.Standard(rezultat, dref, gref)[0], jedinica, dref + " - " + gref, interpretacija.Standard(rezultat, dref, gref)[1], extend];
