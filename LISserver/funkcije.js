@@ -395,6 +395,7 @@ parsaj_hl7: function(record,callback){
   var bc5390= require('./aparati/bc5390')
   var bc5120= require('./aparati/bc5120')
   var ichroma =  require('./aparati/ichromaII');
+  var X3 = require('./aparati/maglumix3hl7')
   const net = require('net');
   //-------------------------------------//
   var Parts = record.split("|");
@@ -426,6 +427,9 @@ if(Segments[0].includes('BS-380')){
 if (Segments[0].includes("ichroma2")) {
   sn = "CHRM"; // Access 2ACCESS^572794
 }
+  if(Segments[0].includes('Maglumi X3')){
+    sn = "0310maglumix3"
+  }
   // • Order Query
   // • Results Upload
   // • Test Status Update
@@ -433,7 +437,23 @@ if (Segments[0].includes("ichroma2")) {
   // • Connection Test
   // • Assay Availability
   switch(sn){
-
+      case '0310maglumix3':  // MAglumi X3
+                            var serijski = "696f7eabb2ae6dbc8c2c6d24"
+                            Type[0]=Parts[8].split("^")[0]
+                            console.log("Type[0]")
+                            //order_query
+                            if(Type[0]==="OUL"){
+                              X3.specimen_result(record,serijski,function(poruka){
+                                callback(poruka);
+                                });
+                            }
+                            if(Type[0]==="TSREQ"){
+                              X3.order_query(record,serijski,function(poruka){
+                                console.log('order created')
+                                callback(poruka);
+                                });
+                            }
+                 break; 
     case 'TQ-78000089':  // BC5120
                           var serijski = "61ea64c7d772949f59ff2ee8"
                           console.log('Mindray BC5120 AVAZ')
