@@ -918,7 +918,7 @@ module.exports = {
                 }
 
                 if (test.rezultat[0].includes("ANTINUKLEARNA At (ANA)")) {
-                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: dsDNA, ssDNA, SS-A 52 (Ro 52), SS-A 60 (Ro 60),\nSS-B (La), RNP-A. RNP-C, RNP-70, RNP/Sm kompleks, SCL70, Jo-1, centromerni protein B, polinukleozomi, mononukleozomi,\nhistoni proteini H1, H2A, H2B, H3, H4, histoni kompleks, Sm-BB, Sm-D, Sm-F, Sm-G, PmSCL100"
+                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: dsDNA, ssDNA, SS-A 52 (Ro 52),\nSS-A 60 (Ro 60),SS-B (La), RNP-A. RNP-C, RNP-70, RNP/Sm kompleks, SCL70, Jo-1,\ncentromerni protein B, polinukleozomi, mononukleozomi,\nnhistoni proteini H1, H2A, H2B, H3, H4,\nhistoni kompleks, Sm-BB, Sm-D, Sm-F, Sm-G, PmSCL100"
                 }
 
                 // Hromogranin A
