@@ -1494,7 +1494,7 @@ module.exports = {
 
         doc.moveDown(0.3);
         // doc.font("PTSansBold").fontSize(12).text("Laboratorij pod nadzorom supervizora Butković dr.Nusreta, specijaliste medicinske biohemije");
-        doc.font("PTSansRegular").fontSize(12).text("Tačnost i pouzdanost rezultata osigurani su redovnim sprovođenjem eksterne kontrole kvaliteta putem RIQUAS programa (Velika Britanija).");
+        doc.font("PTSansBold").fontSize(12).text("Tačnost i pouzdanost rezultata osigurani su redovnim sprovođenjem eksterne kontrole kvaliteta putem RIQUAS programa (Velika Britanija).");
 
 
         // if (hormoni) {
@@ -1507,8 +1507,6 @@ module.exports = {
         //   });
           
         // }
-
-        doc.font("PTSansBold").fontSize(12);
 
         if (enap === true) {
           // console.log("ENA Profil")
