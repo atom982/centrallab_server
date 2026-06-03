@@ -1508,6 +1508,8 @@ module.exports = {
           
         // }
 
+        doc.font("PTSansBold").fontSize(12);
+
         if (enap === true) {
           // console.log("ENA Profil")
 
