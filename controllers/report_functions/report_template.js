@@ -1497,6 +1497,17 @@ module.exports = {
           doc.addPage();
         }
 
+        if (prl) {
+          console.log("Prolaktin % nakon taloženja")
+          doc.addPage();
+          doc.image(config.nalaz_references + "PRL%.png", 50, doc.y + 15, {
+            width: 510,
+            keepAspectRatio: true,
+            lineBreak: false,
+          });
+          
+        }
+
         doc.moveDown(0.3);
         // doc.font("PTSansBold").fontSize(12).text("Laboratorij pod nadzorom supervizora Butković dr.Nusreta, specijaliste medicinske biohemije");
         doc.font("PTSansBold").fontSize(12).text("Tačnost i pouzdanost rezultata osigurani su redovnim sprovođenjem eksterne kontrole kvaliteta putem RIQUAS programa (Velika Britanija).");
@@ -1513,16 +1524,6 @@ module.exports = {
           
         // }
 
-        if (prl) {
-          console.log("Prolaktin % nakon taloženja")
-          doc.addPage();
-          doc.image(config.nalaz_references + "PRL%.png", 50, doc.y + 15, {
-            width: 510,
-            keepAspectRatio: true,
-            lineBreak: false,
-          });
-          
-        }
 
         if (enap === true) {
           // console.log("ENA Profil")
