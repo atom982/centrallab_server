@@ -1470,10 +1470,15 @@ module.exports = {
 
           var hormoni = false;
           var roma = false;
+          var prl = false;
 
           specificni.forEach((element) => {
             if (element.extend.includes("Hormones")) {
               hormoni = true;
+            }
+
+            if (element.extend.includes("PRL%")) {
+              prl = true;
             }
 
             // if (element.extend.includes("ROMAindex")) {
@@ -1507,6 +1512,17 @@ module.exports = {
         //   });
           
         // }
+
+        if (prl) {
+          console.log("Prolaktin % nakon taloženja")
+          doc.addPage();
+          doc.image(config.nalaz_references + "PRL%.png", 50, doc.y + 15, {
+            width: 510,
+            keepAspectRatio: true,
+            lineBreak: false,
+          });
+          
+        }
 
         if (enap === true) {
           // console.log("ENA Profil")
