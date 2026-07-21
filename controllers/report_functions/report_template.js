@@ -1500,7 +1500,7 @@ module.exports = {
         if (prl) {
           console.log("Prolaktin % nakon taloženja")
           // doc.addPage();
-          doc.image(config.nalaz_references + "PRL%.png", 50, {
+          doc.image(config.nalaz_references + "PRL%.png", 50, doc.y, {
             width: 510,
             keepAspectRatio: true,
             lineBreak: false,
