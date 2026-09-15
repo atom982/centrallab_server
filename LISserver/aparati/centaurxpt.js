@@ -398,13 +398,13 @@ module.exports = {
                                                       console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
                                                       // H|\\^&|||ATOM|||||ACCP1||P|1
                                                       //H|\\^&|||CENTAURXPT|||||atom||P||20260915151220'
-                                                      header='H|\\^&|||'+"ATOM"+'|||||CENTAURXPT||P|1'+'\u000D';//\\^&
+                                                      header='H|\\^&|||'+"ATOM"+'|||||CENTAURXPT||P|1'//+'\u000D';//\\^&
                                                       recordret.push(header);
                                                       // Q|1|^SID10768||ALL||||||||O
-                                                      var query = 'Q|1|^'+json.sid+'||ALL||||||||O'+'\u000D'
+                                                      var query = 'Q|1|^'+json.sid+'||ALL||||||||O'//+'\u000D'
                                                       recordret.push(query);
                                                       //L|1|I<CR>
-                                                      var terminator = 'L|1|I'+'\u000D';
+                                                      var terminator = 'L|1|I'//+'\u000D';
                                                       recordret.push(terminator);
                                                       callback(recordret);
                                                     }else{
