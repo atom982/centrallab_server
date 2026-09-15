@@ -214,6 +214,7 @@ parsaj_rezultat: function (record, io) {
   var clintekStatusPlus = require('./aparati/clintekStatusplus');
   var au480 = require('./aparati/au480');
   var sysmexXN330 = require('./aparati/sysmexxn330');
+  var centaurxpt = require('./aparati/centaurxpt');
 
   console.log("Parsanje rezultata...");
   //console.log(record)
@@ -249,6 +250,9 @@ parsaj_rezultat: function (record, io) {
   if (record[0].includes("0055487")) {
     sn = "au_480"; // Centaur CP
   }
+  if (record[0].includes("CENTAURXPT")) {
+    sn = "centaur_xpt"; // Centaur XPT
+  }
 console.log(sn)
   switch (sn) {
       case 'hitachi':  // Hitachi 902
@@ -278,10 +282,10 @@ console.log(sn)
       serijski = '62a612d777e5656ca8b10d24' // - done
       immulite.parsaj_rezultat(record,io,serijski);
       break;
-      case 'centaur_cp': // Centaur CP
-      console.log("Result parsing Centaur CP");
+      case 'centaur_xpt': // Centaur XPT
+      console.log("Result parsing Centaur XPT");
       serijski = '62a6142677e5656ca8b10dd3' // - done
-      centaurcp.parsaj_rezultat(record,io,serijski);
+      centaurxpt.parsaj_rezultat(record,io,serijski);
       break;
       case 'au_480': // AU 480
       console.log("Result parsing AU 480");
@@ -316,6 +320,7 @@ parsaj_query: function (record, callback) {
   var centaurcp = require('./aparati/centaurcp');
   var au480 = require('./aparati/au480');
   var sysmexXN330 = require('./aparati/sysmexxn330');
+  var centaurxpt = require('./aparati/centaurxpt');
   //console.log(record)
 
   var header = record[0].split("|");
@@ -345,6 +350,9 @@ parsaj_query: function (record, callback) {
   if (record[0].includes("0055487")) {
     sn = "au_480"; // Centaur CP
   }
+    if (record[0].includes("CENTAURXPT")) {
+    sn = "centaur_xpt"; // Centaur XPT
+  }
   //Mindry
   switch (sn) {
     case "GRADACAC": // Immulite
@@ -363,10 +371,10 @@ parsaj_query: function (record, callback) {
         callback(poruka);
       });
       break;
-      case "centaur_cp": // Centaur CP
-      console.log("Query Parsing: Centaur CP");
+      case "centaur_xpt": // Centaur XPT
+      console.log("Query Parsing: Centaur XPT");
       var serijski = '62a6142677e5656ca8b10dd3'
-      centaurcp.parsaj_query(record,serijski, function (poruka) {
+      centaurxpt.parsaj_query(record,serijski, function (poruka) {
         console.log(poruka)
         callback(poruka);
       });
