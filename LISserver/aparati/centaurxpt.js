@@ -451,7 +451,8 @@ module.exports = {
                                                       stype = json.sid.substring(0,1)
                                                       console.log(stype)
                                                       var order =''
-                                                      order = 'O|1|'+json.sid+'||'+tests+'|R||||||||||||||||||||O\\Q'//+'\u000D';
+
+                                                      order = 'O|1|'+json.sid+'||'+tests+'|R||||||||||||||||||||O\Q'//+'\u000D';
                                                       recordret.push(order);
                                                       var terminator = 'L|1|F'//'\u000D';
                                                       recordret.push(terminator);
