@@ -444,31 +444,16 @@ module.exports = {
                                                       ime = ime.replace(/ž/g,'z')
                                                       console.log(ime)
                                                       // P|1|PatID01|||Conti^Biagio^S||19741001|M|||||Martinez|||||||||||WestWing<CR>
+                                                      //P|1|20|||Jones^Alan^B||19560519|M|||||Jones^Alan^B|||||||||||General_Ward<CR>
+
                                                       var patient ='P|1|'+rezultat.patient.jmbg+'|'+'|'+'|'+ime//+'\u000D';
                                                       recordret.push(patient);
                                                       stype = json.sid.substring(0,1)
                                                       console.log(stype)
                                                       var order =''
-                                                      switch (stype) {
-                                                        case 'K':
-                                                          order = 'O|1|'+json.sid+'^01||'+tests//+'\u000D';
-                                                                console.log('WHOLE BLOOD')
-                                                          break;
-                                                        case 'U':
-                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
-                                                          break; 
-                                                        case 'P':
-                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
-                                                          break;                                                    
-                                                        default:
-                                                            //     O|1|REQ1241||^^^T3\^^^T4\^^^TSH|R||||||||||||||||||||O\Q 
-
-                                                          order = 'O|1|'+json.sid+'||'+tests//+'\u000D';
-                                                                console.log('DEFAULT SERUM')
-                                                          break;
-                                                      }
+                                                      order = 'O|1|'+json.sid+'||'+tests+'|R||||||||||||||||||||O\Q'//+'\u000D';
                                                       recordret.push(order);
-                                                      var terminator = 'L|1|F'//'\u000D';
+                                                      var terminator = 'L|1|N'//'\u000D';
                                                       recordret.push(terminator);
                                                       header = ''
                                                       callback(recordret); 
