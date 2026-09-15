@@ -453,7 +453,7 @@ module.exports = {
                                                       var order =''
                                                       order = 'O|1|'+json.sid+'||'+tests+'|R||||||||||||||||||||O\Q'//+'\u000D';
                                                       recordret.push(order);
-                                                      var terminator = 'L|1|N'//'\u000D';
+                                                      var terminator = 'L|1|F'//'\u000D';
                                                       recordret.push(terminator);
                                                       header = ''
                                                       callback(recordret); 
