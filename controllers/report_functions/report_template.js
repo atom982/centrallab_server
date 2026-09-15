@@ -918,8 +918,7 @@ module.exports = {
                 }
 
                 if (test.rezultat[0].includes("ANTINUKLEARNA At (ANA)")) {
-                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: ds DNA, ss DNA, SSA, SSB,\nRNP/Sm, SCL70, Jo-1, centromerni protein B, polinukleozomi, mononukleozomi, histoni, PmSCL100"
-                  
+                  ANA = "ANTINUKLEARNA At (ANA):\nOvim testom se detektuju antitijela na sljedeće antigene: dsDNA, ssDNA, SS-A 52 (Ro 52),\nSS-A 60 (Ro 60),SS-B (La), RNP-A. RNP-C, RNP-70, RNP/Sm kompleks, SCL70, Jo-1,\ncentromerni protein B, polinukleozomi, mononukleozomi, histoni proteini H1, H2A, H2B,\nH3, H4, histoni kompleks, Sm-BB, Sm-D, Sm-F, Sm-G, PmSCL100"
                 }
 
                 // Hromogranin A
@@ -1471,10 +1470,15 @@ module.exports = {
 
           var hormoni = false;
           var roma = false;
+          var prl = false;
 
           specificni.forEach((element) => {
             if (element.extend.includes("Hormones")) {
               hormoni = true;
+            }
+
+            if (element.extend.includes("PRL%")) {
+              prl = true;
             }
 
             // if (element.extend.includes("ROMAindex")) {
@@ -1493,8 +1497,20 @@ module.exports = {
           doc.addPage();
         }
 
-        // doc.moveDown(0.3);
+        if (prl) {
+          console.log("Prolaktin % nakon taloženja")
+          // doc.addPage();
+          doc.image(config.nalaz_references + "PRL%.png", 50, doc.y, {
+            width: 510,
+            keepAspectRatio: true,
+            lineBreak: false,
+          });
+          
+        }
+
+        doc.moveDown(0.3);
         // doc.font("PTSansBold").fontSize(12).text("Laboratorij pod nadzorom supervizora Butković dr.Nusreta, specijaliste medicinske biohemije");
+        doc.font("PTSansBold").fontSize(12).text("Tačnost i pouzdanost rezultata osigurani su redovnim sprovođenjem eksterne kontrole kvaliteta putem RIQUAS programa (Velika Britanija).");
 
 
         // if (hormoni) {
@@ -1507,6 +1523,7 @@ module.exports = {
         //   });
           
         // }
+
 
         if (enap === true) {
           // console.log("ENA Profil")
