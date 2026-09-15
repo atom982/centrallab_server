@@ -420,7 +420,7 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|\\^&|||'+"ATOM"+'|||||CENTAURXPT||P|1'+'\u000D';//\\^&
+                                                      header='H|\\^&|||'+"ATOM"+'|||||CENTAURXPT||P|1'//+'\u000D';//\\^&
                                                       // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
                                                       recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
@@ -452,7 +452,7 @@ module.exports = {
                                                       console.log(stype)
                                                       var order =''
 
-                                                      order = 'O|1|'+json.sid+'||'+tests+'|R||||||||||||||||||||O\Q'//+'\u000D';
+                                                      order = 'O|1|'+json.sid+'||'+tests+'|R||||||||||||||||||||O\\Q'//+'\u000D';
                                                       recordret.push(order);
                                                       var terminator = 'L|1|F'//'\u000D';
                                                       recordret.push(terminator);
