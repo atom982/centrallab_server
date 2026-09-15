@@ -397,7 +397,7 @@ module.exports = {
                                                     if(testovi.length < 1){
                                                       console.log("Za uzorak :"+json.sid+" ne postoji niti jedan rerun zahtjev");
                                                       // H|\\^&|||ATOM|||||ACCP1||P|1
-                                                      header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'+'\u000D';//\\^&
+                                                      header='H|\\^&|||'+"ATOM"+'|CENTAURXPT||||ACCP1||P|1'+'\u000D';//\\^&
                                                       recordret.push(header);
                                                       // Q|1|^SID10768||ALL||||||||O
                                                       var query = 'Q|1|^'+json.sid+'||ALL||||||||O'+'\u000D'
@@ -419,7 +419,7 @@ module.exports = {
                                                       });
                                                       uzorak.save()
                                                       console.log("Kreiram record;");
-                                                      header='H|\\^&|||'+"ATOM"+'|||||ACCP1||P|1'//+'\u000D';//\\^&
+                                                      header='H|\\^&|||'+"ATOM"+'|CENTAURXPT||||ACCP1||P|1'//+'\u000D';//\\^&
                                                       // H|\\^&|||GRADACAC|Flanders^New^Jersey^07836||973-927-2828|N81|||P|1|20220630112116
                                                       recordret.push(header);
                                                       var prezime = rezultat.patient.prezime
