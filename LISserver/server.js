@@ -352,12 +352,13 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
                     lisserver.poruka.push(frame); // dodaj frame u globalni niz poruka (server variable)
                     socket.write('\u0006'); //ACK //pošalji ACK
                   } else {
-                    socket.write('\u0021'); //NAK //pošalji NAK
+                    socket.write('\u0015'); //NAK //pošalji NAK
                     frame_number -= 1;
                     console.log('checksum NOT OK')
                   }
                 } else {
-                  socket.write('\u0021'); //NAK
+                  socket.write('\u0015'); //NAK
+                  frame_number -= 1; // aparat ponavlja isti frame, ne pomjeraj brojač
                   console.log("Brojevi frame -ova se ne slažu, šaljem NAK...");
                 }
               
@@ -403,7 +404,8 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
           var temp = lisserver.message[0]
           if (temp != undefined) {
             if (temp.includes("\r")) {
-              lisserver.message = temp.split("\r")
+              // spoji sve poruke prije razdvajanja po CR, inače se gubi sve osim prve
+              lisserver.message = lisserver.message.join("\r").split("\r").filter(function (r) { return r.length; })
               if(lisserver.message[lisserver.message.length-1].includes('C|')){
                 //console.log('nepravilan terminator')
                 lisserver.message.push('L|1|N')

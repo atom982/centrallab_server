@@ -72,8 +72,13 @@ module.exports = {
                           tempmessage='';
                         }
                         if(frame.indexOf("\u0017")>0){
-
-                            tempmessage+=frame.substring(frame.indexOf("\u0002")+2,frame.indexOf("\u0017")-1);
+                            // Međuframe (ETB) nema CR prije ETB - tekst je presječen bilo gdje,
+                            // pa se zadnji znak ne smije odbaciti (osim ako aparat ipak pošalje CR)
+                            var krajETB = frame.indexOf("\u0017");
+                            if(frame.charAt(krajETB-1) === "\r"){
+                              krajETB -= 1;
+                            }
+                            tempmessage+=frame.substring(frame.indexOf("\u0002")+2,krajETB);
                         }
 
     });
