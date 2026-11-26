@@ -959,6 +959,11 @@ module.exports = {
                   }
                 }
 
+                if (test.rezultat[0].includes("Procalcitonin")) {
+                  // console.log(test.rezultat)
+                  PCT = true;
+                }
+
                 rows.push(test.rezultat);
                 analit = true;
               }
@@ -1471,6 +1476,7 @@ module.exports = {
           var hormoni = false;
           var roma = false;
           var prl = false;
+          var PCT = false;
 
           specificni.forEach((element) => {
             if (element.extend.includes("Hormones")) {
@@ -1523,6 +1529,18 @@ module.exports = {
         //   });
           
         // }
+
+        if(PCT == true){
+
+          doc.moveDown(0.5);
+          // * doc.font("PTSansBold");
+          doc.font("PTSansRegular");
+          doc.fontSize(10).text("Tumačenje dobivenih vrijednosti za Procalcitonin:", 50);
+          doc.moveDown(0.1);
+          doc.image(config.nalaz_references + "PCT.jpg", 55, doc.y, { width: 400, keepAspectRatio: true });
+          doc.moveDown(0.5);
+
+        }
 
 
         if (enap === true) {
