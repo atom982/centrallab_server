@@ -33,7 +33,8 @@ module.exports = {
       var module_sn='';
       var mode = ''
       var unit_type = ''
-  
+      var neispravan = false
+
           record.forEach(function(element) {
               record_type =element.charAt(0);
               switch (record_type) {
@@ -55,10 +56,19 @@ module.exports = {
                                     console.log("rezultat");
                                     //'R|5|5^^^Glu|norm|mg/dl||||||autologin|20190208112929|20190208113034',
                                     //O|1|K001M90208|^^^^SAMPLE||R||||||X|||20190209055710'
-                                    var result = element.split("|")[3].split(",")
+                                    var result = (element.split("|")[3] || "").split(",")
 
                                     console.log(result)
-                                    
+
+                                    // Zaštita: nepotpun/neispravan zapis (npr. poruka prekinuta po TCP chunkovima)
+                                    // ne smije srušiti server - preskoči ga.
+                                    if (result.length < 38) {
+                                      console.log("ClintekStatus: nepotpun zapis (" + result.length + " polja, očekivano >= 38) - preskačem.")
+                                      console.log(JSON.stringify(element))
+                                      neispravan = true
+                                      break;
+                                    }
+
                                     sid = result[2]
                                     console.log(sid)
 
@@ -644,7 +654,11 @@ module.exports = {
                                     //     analit_jedinica:'',
                                     //     analit_status:'',
                                     //   }) 
-                                    console.log(rezultati)  
+                                    console.log(rezultati)
+                                    if (neispravan || !rezultati.length) {
+                                      console.log("ClintekStatus: nema ispravnih rezultata za upis.")
+                                      break;
+                                    }
                                     Results.findOne({id:sid}).populate('aparat').exec(function (err, rezultat) {
                                       if (err) {
                                         console.log("Greška:", err);

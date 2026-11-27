@@ -1,4 +1,10 @@
 
+// Zaštita: greška u parsiranju jedne poruke ne smije srušiti cijeli LIS server
+function logirajGresku(gdje, e, record) {
+  console.log("GREŠKA u " + gdje + " - poruka preskočena:", e && e.stack ? e.stack : e);
+  try { console.log("Poruka:", JSON.stringify(record)); } catch (x) {}
+}
+
 // ========
 module.exports = {
   checksum: function (frame) {//provjera checksum-a dolazeceg frame-a
@@ -223,6 +229,7 @@ parsaj_rezultat: function (record, io) {
 
   console.log("Parsanje rezultata...");
   //console.log(record)
+  try {
   var header = record[0].split("|");
   var sender = header[4].split("^");
   var _id = "";
@@ -282,6 +289,10 @@ console.log(sn)
       serijski = '62a611a477e5656ca8b10ce9' // - done
       sysmexXN330.parsaj_rezultat(record,io,serijski);
       break;
+      case 'A5303': // Sysmex KX-21N (port 5081) - ranije nije bilo case-a pa su rezultati ignorisani
+      console.log("Sysmex KX-21N");
+      kx21.parsaj_rezultat(record,io,'');
+      break;
       case 'GRADACAC': // Immulite 1000
       console.log("Immulite 1000");
       serijski = '62a612d777e5656ca8b10d24' // - done
@@ -301,6 +312,9 @@ console.log(sn)
       console.log("Nije definisan aparat sa serijskim brojem: " + sn);
       break;
 
+  }
+  } catch (e) {
+    logirajGresku("parsaj_rezultat", e, record);
   }
 },
 
@@ -328,6 +342,7 @@ parsaj_query: function (record, callback) {
   var centaurxpt = require('./aparati/centaurxpt');
   //console.log(record)
 
+  try {
   var header = record[0].split("|");
   var sender = header[4].split("^");
   var sn = "";
@@ -396,6 +411,9 @@ parsaj_query: function (record, callback) {
       console.log("Nije definisan aparat sa serijskim brojem: " + sn);
       break;
   }
+  } catch (e) {
+    logirajGresku("parsaj_query", e, record);
+  }
 },
 
 parsaj_hl7: function(record,callback){
@@ -411,6 +429,7 @@ parsaj_hl7: function(record,callback){
   var X3 = require('./aparati/maglumix3hl7')
   const net = require('net');
   //-------------------------------------//
+  try {
   var Parts = record.split("|");
   var Type = Parts[8].split("^")
   var Segments = record.split("\r")
@@ -567,7 +586,10 @@ if (Segments[0].includes("ichroma2")) {
                                       break;
                         default:
             console.log("U LIS -u nije definisan aparat, sa serijskim brojem: "+sn);
-            break; 
+            break;
+  }
+  } catch (e) {
+    logirajGresku("parsaj_hl7", e, record);
   }
 
 },

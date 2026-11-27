@@ -66,8 +66,11 @@ class lisServer {
       }
     });
   }
-  start(io,port,aparat, callback) {
+  // opcije.clintek = true -> na ovom portu je Clinitek Status (ne-ASTM, CSV zapis završen sa CR)
+  start(io,port,aparat, opcije) {
     let lisserver = this; // we'll use 'this' inside the callback belo
+    opcije = opcije || {}
+    const clintekPort = opcije.clintek === true
     this.port = port
     lisserver.connection = net.createServer((socket) => {
       socket.setEncoding('utf8');
@@ -77,7 +80,19 @@ class lisServer {
 
       // Storing client for later usage
       lisserver.clients.push(client);
-      
+
+      // Stanje prijenosa je po konekciji (ranije zajedničko za sve portove/aparate,
+      // pa su se frame-ovi dva aparata koji šalju istovremeno miješali u istu poruku)
+      const veza = {
+        poruka: [],
+        message: [],
+        sendmessage: [],
+        counter: 0,
+        frameCounter: 0,
+        nakcounter: 0,
+        timer: null
+      };
+
       var frame = '';
       var HL7data = ""
       var frames = '';
@@ -121,6 +136,7 @@ class lisServer {
 
       //-------------------------------------------- CLIENT
       socket.on('data', (data) => {
+       try {
         console.log(JSON.stringify(data))
         //---------------------Emerald blok
         // HL7
@@ -138,8 +154,8 @@ class lisServer {
              if(orders.length > 1){           
                lisserver.broadcasthl7(orders[1], client)
              }         
-             lisserver.poruka = [] 
-             lisserver.counter = 0;
+             veza.poruka = [] 
+             veza.counter = 0;
            });
            HL7data = ""
          }
@@ -156,10 +172,20 @@ class lisServer {
              if(orders.length > 1){           
                lisserver.broadcasthl7(orders[1], client)
              }         
-             lisserver.poruka = [] 
-             lisserver.counter = 0;
+             veza.poruka = [] 
+             veza.counter = 0;
            });
            HL7data = ""
+         }
+       }
+       // Zaštita od curenja memorije: ranije se SVAKI podatak (i sa ne-HL7 aparata) dodavao
+       // u HL7data i nikad brisao. Bufferuj samo ako je počela HL7 poruka (VT ili MSH).
+       if (HL7data.length) {
+         if (!HL7data.includes('\u000b') && !HL7data.includes('MSH|')) {
+           HL7data = HL7data.slice(-16) // ostavi rep, za slučaj da je 'MSH|' presječen između chunkova
+         } else if (HL7data.length > 1048576) {
+           console.log(aparat + ': HL7 buffer prevelik (>1MB) bez kompletne poruke - odbacujem.')
+           HL7data = ''
          }
        }
         // HL7
@@ -231,19 +257,32 @@ class lisServer {
   }
 //------------- End of Mythic 18 blok
 
-//------------- End of ClintekStatus blok
-if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).includes('71130') ) {
+//------------- ClintekStatus blok
+// Samo na portu označenom kao Clinitek (ranije je svaki podatak sa bilo kojeg aparata
+// koji sadrži '71130', npr. timestamp 20261127113012, završavao u Clinitek parseru).
+if (clintekPort) {
+  // Bufferuj sve sa ovog porta, da se ne izgubi početak zapisa koji stigne prije chunka sa '71130'
   clintekStatus += data
-  if(JSON.stringify(clintekStatus).includes('\\r')){
-    var temp_rec = []
-    temp_rec.push("H|\\^&|||clintekStatus^1.00^6721^H1R1L1|||||||P|1|")
-    temp_rec.push("R|1|^^^Urin|"+clintekStatus+"||^DEFAULT|H|N|F||||")
-    temp_rec.push("L|1|N")
-    funkcija.parsaj_rezultat(temp_rec, io);
+  var zadnjiCR = clintekStatus.lastIndexOf('\r')
+  if (zadnjiCR >= 0) {
+    // Kompletan dio (do zadnjeg CR) se obrađuje, ostatak ostaje u bufferu za sljedeći zapis
+    var kompletno = clintekStatus.substring(0, zadnjiCR + 1)
+    clintekStatus = clintekStatus.substring(zadnjiCR + 1)
     console.log('ClintekStatus blok')
-    console.log(clintekStatus)
+    console.log(JSON.stringify(kompletno))
+    if (kompletno.includes('71130')) {
+      var temp_rec = []
+      temp_rec.push("H|\\^&|||clintekStatus^1.00^6721^H1R1L1|||||||P|1|")
+      temp_rec.push("R|1|^^^Urin|"+kompletno+"||^DEFAULT|H|N|F||||")
+      temp_rec.push("L|1|N")
+      funkcija.parsaj_rezultat(temp_rec, io);
+    } else {
+      console.log('ClintekStatus: zapis bez 71130 - nije rezultat, preskačem.')
+    }
+  }
+  if (clintekStatus.length > 65536) { // zaštita od beskonačnog rasta ako CR nikad ne stigne
+    console.log('ClintekStatus: buffer prevelik bez CR - odbacujem.')
     clintekStatus = ''
-   
   }
 }
 //------------- End of ClintekStatus blok
@@ -256,11 +295,11 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
          
          //BC-3200 MINDRAY BLOCK
          if (data.includes('\u001a')) { //ENQ primljen
-          lisserver.poruka.push("H|\\^&|||BC-3200^1.00^RM-02101641^H1R1L1|||||||P|1|")
-          lisserver.poruka.push("R|"+frame)
-          funkcija.parsaj_rezultat(lisserver.poruka, io);
+          veza.poruka.push("H|\\^&|||BC-3200^1.00^RM-02101641^H1R1L1|||||||P|1|")
+          veza.poruka.push("R|"+frame)
+          funkcija.parsaj_rezultat(veza.poruka, io);
           frame = ''
-          lisserver.poruka = [] 
+          veza.poruka = [] 
         }
          //BC-3200 MINDRAY BLOCK END
           
@@ -271,59 +310,59 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
               if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003"))==='RE' ){
                 frame = ''
                 data = ''
-                lisserver.poruka = []   
+                veza.poruka = []   
               }
               if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003"))==='DE' ){
                 frame = ''
                 data = ''
-                lisserver.poruka = []   
+                veza.poruka = []   
               }
               if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003"))==='DB' ){
                 frame = ''
                 data = ''
-                lisserver.poruka = []   
+                veza.poruka = []   
               }
               console.log(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")))
               if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003"))==='RB' || frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003"))==='DB'){
-                lisserver.poruka.push(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
+                veza.poruka.push(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
                 frame = ''
                 data = ''
               }
               else if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")+1).includes('R ')){
-                lisserver.poruka.push(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
+                veza.poruka.push(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
                 frame = ''
                 data = ''
                 console.log('Query');
-                lisserver.poruka.unshift("H|\\^&|||AU400^1.00^0055487^H1R1L1|||||||P|1|");
-                funkcija.parsaj_query(lisserver.poruka, function (poruka) {
+                veza.poruka.unshift("H|\\^&|||AU400^1.00^0055487^H1R1L1|||||||P|1|");
+                funkcija.parsaj_query(veza.poruka, function (poruka) {
                   socket.write('\u0002'+poruka+'\u0003'); 
                   console.log('Poruka za slanje: ');
                   console.log(poruka);
-                  lisserver.counter = 0;
-                  lisserver.poruka = [] 
+                  veza.counter = 0;
+                  veza.poruka = [] 
                 });
               
                 if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003"))==='RE' ){
-                  console.log(lisserver.poruka)
-                  lisserver.poruka = []   
+                  console.log(veza.poruka)
+                  veza.poruka = []   
                 }
               }else if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")+1).includes('D ')){
-                lisserver.poruka.push(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
+                veza.poruka.push(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
                 frame = ''
                 data = ''
                 console.log('Result');
-                lisserver.poruka.unshift("H|\\^&|||AU400^1.00^0055487^H1R1L1|||||||P|1|");
-                funkcija.parsaj_rezultat(lisserver.poruka, io);
-                lisserver.poruka = []  
+                veza.poruka.unshift("H|\\^&|||AU400^1.00^0055487^H1R1L1|||||||P|1|");
+                funkcija.parsaj_rezultat(veza.poruka, io);
+                veza.poruka = []  
                 // AU400 END
               }else if(frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")+1).includes('D1U')){
-                lisserver.poruka.unshift("H|\\^&|||KX21^1.00^3012321^H1R1L1|||||||P|1|");
-                lisserver.poruka.push('R'+frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
-                lisserver.poruka.push('L|1');
+                veza.poruka.unshift("H|\\^&|||KX21^1.00^3012321^H1R1L1|||||||P|1|");
+                veza.poruka.push('R'+frame.substring(frame.indexOf("\u0002")+1,frame.indexOf("\u0003")));
+                veza.poruka.push('L|1');
                 frame = ''
-                funkcija.parsaj_rezultat(lisserver.poruka, io);
+                funkcija.parsaj_rezultat(veza.poruka, io);
                 
-                lisserver.poruka = [] 
+                veza.poruka = [] 
             }
             }
             
@@ -349,7 +388,7 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
                 incom_frame_nr = frame.substring(frame.indexOf("\u0002") + 1, frame.indexOf("\u0002") + 2); //F# se nalazi iza STX tj njegov index je index stx+1                
                 if (frame_number == incom_frame_nr) { //ako su F# jednaki provjeravaj checksum
                   if (funkcija.checksum(frame)) {
-                    lisserver.poruka.push(frame); // dodaj frame u globalni niz poruka (server variable)
+                    veza.poruka.push(frame); // dodaj frame u globalni niz poruka (server variable)
                     socket.write('\u0006'); //ACK //pošalji ACK
                   } else {
                     socket.write('\u0015'); //NAK //pošalji NAK
@@ -388,40 +427,40 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
           frame_number = 1;
 
           ///lisserver.broadcast('\u0006', client);
-          lisserver.message = funkcija.uredi_ETB(lisserver.poruka);
+          veza.message = funkcija.uredi_ETB(veza.poruka);
 
           var record_type = '';
           var temp_rec = [];
           var message_type = '';
 
-          if(JSON.stringify(lisserver.message).includes('1750^296540^Status') ){//&& JSON.stringify(data).includes('\r\n')
+          if(JSON.stringify(veza.message).includes('1750^296540^Status') ){//&& JSON.stringify(data).includes('\r\n')
             
-            lisserver.message.unshift("H|\\^&|||Siemens Healthcare Diagnostics Inc.^1750^296540^Status V2.620^H1R1L1|||||||P|1|")
-            funkcija.parsaj_rezultat(lisserver.message, io);
+            veza.message.unshift("H|\\^&|||Siemens Healthcare Diagnostics Inc.^1750^296540^Status V2.620^H1R1L1|||||||P|1|")
+            funkcija.parsaj_rezultat(veza.message, io);
           } 
           //console.log("Primljena poruka:")
 
-          var temp = lisserver.message[0]
+          var temp = veza.message[0]
           if (temp != undefined) {
             if (temp.includes("\r")) {
               // spoji sve poruke prije razdvajanja po CR, inače se gubi sve osim prve
-              lisserver.message = lisserver.message.join("\r").split("\r").filter(function (r) { return r.length; })
-              if(lisserver.message[lisserver.message.length-1].includes('C|')){
+              veza.message = veza.message.join("\r").split("\r").filter(function (r) { return r.length; })
+              if(veza.message.length && veza.message[veza.message.length-1].includes('C|')){
                 //console.log('nepravilan terminator')
-                lisserver.message.push('L|1|N')
+                veza.message.push('L|1|N')
                 
               }else{
                 //console.log('pravilan terminator')
               }
             }
           }
-          console.log(lisserver.message);
-          lisserver.message.forEach(function (element) {
+          console.log(veza.message);
+          veza.message.forEach(function (element) {
             record_type = element.charAt(0)
             switch (record_type) {
               case 'H':
                 var header = element.split("|");
-                var sender = header[4].split("^");
+                var sender = (header[4] || "").split("^");
                 //console.log("header u serveru")
                 if (sender[1] === "CDRuby") {
                   client.sn = sender[0].trim()
@@ -469,10 +508,10 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
                   //console.log('Query');
                   temp_rec.push(element);
                   funkcija.parsaj_query(temp_rec, function (poruka) {
-                    lisserver.sendmessage = poruka;
+                    veza.sendmessage = poruka;
                     lisserver.broadcast('\u0005', client);
                     console.log("Saljem ENQ za slanje ordera...");
-                    lisserver.counter = 0;
+                    veza.counter = 0;
                   });
                   message_type = '';
                 }
@@ -484,13 +523,13 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
             }
 
           });
-          lisserver.poruka = [];
-          lisserver.message = [];
+          veza.poruka = [];
+          veza.message = [];
         }
 
         if (data.charCodeAt(0) === 6){// || data.charCodeAt(0) === 4) { //ACK primljen
           
-          clearTimeout(lisserver.timer);
+          clearTimeout(veza.timer);
           frame_number = 1;
           var cs = require('./funkcije');
           var stx = '\u0002';
@@ -499,57 +538,57 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
           var lf = '\u000A';
           var eot = '\u0004';
           var enq = '\u0005';
-          if (lisserver.frameCounter === lisserver.sendmessage.length) {
-            console.log(lisserver.sendmessage.length)
-            if(lisserver.sendmessage.length){
+          if (veza.frameCounter === veza.sendmessage.length) {
+            console.log(veza.sendmessage.length)
+            if(veza.sendmessage.length){
               lisserver.broadcast(eot, client);
             }
-            lisserver.counter = 0;
-            lisserver.frameCounter = 0
-            lisserver.sendmessage = []
+            veza.counter = 0;
+            veza.frameCounter = 0
+            veza.sendmessage = []
           }
-          if (lisserver.frameCounter < lisserver.sendmessage.length) {
-            var text = lisserver.sendmessage[lisserver.frameCounter];
+          if (veza.frameCounter < veza.sendmessage.length) {
+            var text = veza.sendmessage[veza.frameCounter];
 
-            if (lisserver.frameCounter === lisserver.sendmessage.length - 1) {
+            if (veza.frameCounter === veza.sendmessage.length - 1) {
 
               frames = '\u0002';
-              frames += String(lisserver.counter + 1);
-              frames += lisserver.sendmessage[lisserver.frameCounter];
+              frames += String(veza.counter + 1);
+              frames += veza.sendmessage[veza.frameCounter];
               frames += cr
               frames += etx
-              var checksum = cs.kreiraj_checksum(String(lisserver.counter + 1) + text + '\u000D' + '\u0003');
+              var checksum = cs.kreiraj_checksum(String(veza.counter + 1) + text + '\u000D' + '\u0003');
               frames += checksum;
               frames += cr
               frames += lf
-              console.log('saljem frame '+lisserver.frameCounter)
+              console.log('saljem frame '+veza.frameCounter)
               console.log(JSON.stringify(frames))
               lisserver.broadcast(frames, client);
-              if(lisserver.counter+1 === 7){
-                lisserver.counter = -1;
+              if(veza.counter+1 === 7){
+                veza.counter = -1;
               }else{
-                lisserver.counter += 1;
+                veza.counter += 1;
               }
-              lisserver.frameCounter += 1;
-              clearTimeout(lisserver.timer);
+              veza.frameCounter += 1;
+              clearTimeout(veza.timer);
             } else {
               frames = '\u0002';
-              frames += String(lisserver.counter + 1);
-              frames += lisserver.sendmessage[lisserver.frameCounter];
+              frames += String(veza.counter + 1);
+              frames += veza.sendmessage[veza.frameCounter];
               frames += cr
               frames += etx
-              var checksum = cs.kreiraj_checksum(String(lisserver.counter + 1) + text + '\u000D' + '\u0003');
+              var checksum = cs.kreiraj_checksum(String(veza.counter + 1) + text + '\u000D' + '\u0003');
               frames += checksum;
               frames += cr
               frames += lf
               lisserver.broadcast(frames, client);
-              if(lisserver.counter+1 === 7){
-                lisserver.counter = -1;
+              if(veza.counter+1 === 7){
+                veza.counter = -1;
               }else{
-                lisserver.counter += 1;
+                veza.counter += 1;
               }
-              lisserver.frameCounter += 1;
-              lisserver.timer = setTimeout(function () {
+              veza.frameCounter += 1;
+              veza.timer = setTimeout(function () {
                 lisserver.broadcast(eot, client);
               }, 15000);
             }
@@ -558,13 +597,13 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
         if (data.charCodeAt(0) === 21) { //NAK primljen
           console.log("NAK...");
           io.emit('kompletiran', 'NAK', undefined, undefined, undefined, undefined)  
-          // lisserver.nakcounter++;
-          // if (lisserver.nakcounter < 2) {
+          // veza.nakcounter++;
+          // if (veza.nakcounter < 2) {
           //   setTimeout(function () {
 
-          //     if (lisserver.counter >= 1) {
+          //     if (veza.counter >= 1) {
 
-          //       lisserver.counter -= 1;
+          //       veza.counter -= 1;
           //       const enq = Buffer.from('\u0005');
           //       lisserver.broadcast('\u0005', client);
           //       console.log("Šaljem ENQ...");
@@ -578,25 +617,43 @@ if (JSON.stringify(data).includes('71130') || JSON.stringify(clintekStatus).incl
 
         }
 
-
+       } catch (e) {
+        // Neispravna/nepotpuna poruka ne smije srušiti server - logiraj i očisti buffere
+        console.log(aparat + ': GREŠKA pri obradi podataka - poruka odbačena:', e && e.stack ? e.stack : e);
+        console.log('Podaci:', JSON.stringify(data));
+        frame = '';
+        HL7data = '';
+        emerald = '';
+        clintekStatus = '';
+        frame_number = 1;
+        veza.poruka = [];
+        veza.message = [];
+       }
       });
 
       // Triggered when this client disconnects
       socket.on('end', () => {
-        // Removing the client from the list
-        lisserver.clients.splice(lisserver.clients.indexOf(client), 1);
         console.log(`${client.name} Disconnected.`);
-
       });
 
       socket.on('error', (error) => {
-
         if (error.code == 'ECONNRESET') {
           console.log('Konekcija resetovana.');
-          lisserver.clients.splice(lisserver.clients.indexOf(client), 1);
-          console.log(`${client.name} Diskonektovan.`);
+        } else {
+          console.log(aparat + ': greška na konekciji:', error.code || error);
         }
+      });
 
+      // 'close' se uvijek okine tačno jednom (i nakon 'end' i nakon 'error'), pa se klijent
+      // uklanja samo ovdje. Ranije je drugi splice dobio indexOf = -1 i uklonio ZADNJEG
+      // klijenta iz liste (pogrešan aparat), a kod ne-ECONNRESET grešaka klijent nikad nije uklonjen.
+      socket.on('close', () => {
+        clearTimeout(veza.timer);
+        var idx = lisserver.clients.indexOf(client);
+        if (idx >= 0) {
+          lisserver.clients.splice(idx, 1);
+        }
+        console.log(`${client.name} Diskonektovan.`);
       });
     });
     // starting the server
